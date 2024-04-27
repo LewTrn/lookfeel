@@ -3,8 +3,8 @@ import { Palette } from "./Palette";
 
 export const Theme = () => {
   return (
-    <div className="mt-16 flex gap-10">
-      <div className="flex w-[336px] -translate-x-2 flex-col gap-4">
+    <div className="mt-16 flex gap-8">
+      <div className="flex w-80 flex-col gap-4">
         <Palette />
         <Fonts />
       </div>
