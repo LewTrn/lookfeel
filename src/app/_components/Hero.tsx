@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { Button } from "~/components/ui/button";
 
 import { strings } from "./locales";
@@ -10,7 +12,9 @@ export const Hero = () => {
           <h1 className="text-5xl font-medium">{strings.hero.title}</h1>
         </div>
         <div>
-          <Button size="lg">{strings.hero.generate.action}</Button>
+          <Link href="/generate">
+            <Button size="lg">{strings.hero.generate.action}</Button>
+          </Link>
         </div>
       </div>
     </section>
