@@ -42,8 +42,8 @@ const Colour = ({ value, children }: ColourProps) => {
   return (
     <div
       className={cn(
-        "group flex h-16 w-full items-center justify-between p-4",
-        whiteIsReadable ? "text-white" : "text-black",
+        "group flex w-full items-center justify-between px-4 py-2.5",
+        whiteIsReadable ? "text-white" : "text-foreground",
       )}
       style={{ backgroundColor: value }}
     >
@@ -60,7 +60,7 @@ const Colour = ({ value, children }: ColourProps) => {
           className={cn(
             whiteIsReadable
               ? "!text-white hover:bg-white/5"
-              : "!text-black hover:bg-black/5",
+              : "!text-foreground hover:bg-foreground/5",
           )}
         />
       </div>
