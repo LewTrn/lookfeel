@@ -7,7 +7,9 @@ export const Colours = () => {
   return (
     <div>
       <Heading>{strings.options.colour.title}</Heading>
-      <Palette />
+      <div className="w-[calc(100%+16px)] -translate-x-2">
+        <Palette />
+      </div>
     </div>
   );
 };
