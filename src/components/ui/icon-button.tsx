@@ -11,6 +11,7 @@ const variants = cva(
       variant: {
         default:
           "bg-card text-card-foreground hover:bg-accent hover:text-accent-foreground focus-visible:bg-accent focus-visible:text-accent-foreground",
+        ghost: "hover:bg-accent hover:text-accent-foreground",
       },
       size: {
         default: "h-10 w-10",
@@ -25,7 +26,7 @@ const variants = cva(
 );
 
 const SIZES = {
-  default: { width: 24, height: 24, strokeWidth: 1.75 },
+  default: { width: 24, height: 24, strokeWidth: 1.5 },
   sm: { width: 20, height: 20, strokeWidth: 2 },
 };
 
