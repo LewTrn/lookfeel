@@ -57,7 +57,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           {...props}
         >
           <span className="-translate-x-2">
-            <Icon strokeWidth={1.75} width={20} height={20} />
+            <Icon strokeWidth={1.75} width={24} height={24} />
           </span>
           <span>{children}</span>
         </Comp>
