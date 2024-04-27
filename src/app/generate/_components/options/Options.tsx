@@ -1,4 +1,4 @@
-import { Colours } from "./Colours";
+import { Colours } from "./colours/Colours";
 import { Header } from "./Header";
 import { Typography } from "./Typography";
 

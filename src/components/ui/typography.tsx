@@ -8,8 +8,7 @@ export const variants = cva("select-none", {
     variant: {
       h1: "mb-4 text-4xl font-bold",
       h2: "mb-2 text-xl font-semibold",
-      h3: "mb-1 text-lg font-semibold",
-      h4: "text-sm font-semibold",
+      h3: "text-lg font-medium",
       body: "text-md",
       caption: "text-xs",
     },
