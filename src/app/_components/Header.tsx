@@ -1,8 +1,7 @@
 import Link from "next/link";
 
 import { Button } from "~/components/ui/button";
-
-import { strings } from "./locales";
+import { strings } from "~/locales/landing";
 
 export const Header = () => {
   return (
