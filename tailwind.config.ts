@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import plugin from "tailwindcss/plugin";
 
 const config = {
   darkMode: ["class"],
@@ -77,7 +78,17 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    plugin(function ({ addUtilities }) {
+      addUtilities({
+        ".wh-full": {
+          width: "100%",
+          height: "100%",
+        },
+      });
+    }),
+    require("tailwindcss-animate"),
+  ],
 } satisfies Config;
 
 export default config;
