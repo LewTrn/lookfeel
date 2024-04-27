@@ -1,8 +1,14 @@
+import { Colours } from "./Colours";
+import { Header } from "./Header";
+import { Typography } from "./Typography";
+
 export const Options = () => {
   return (
     <div>
-      <div className="flex h-16 items-center px-2">
-        <div className="text-2xl font-bold">lookfeel</div>
+      <Header />
+      <div className="flex flex-col gap-4">
+        <Colours />
+        <Typography />
       </div>
     </div>
   );
