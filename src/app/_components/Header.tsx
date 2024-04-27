@@ -1,0 +1,15 @@
+import { Button } from "~/components/ui/button";
+
+import { strings } from "./locales";
+
+export const Header = () => {
+  return (
+    <header className="mb-4 flex h-16 items-center justify-between px-2">
+      <div className="text-2xl font-bold">lookfeel</div>
+      <div className="flex gap-4">
+        <Button variant="ghost">{strings.header.logIn.action}</Button>
+        <Button>{strings.header.start.action}</Button>
+      </div>
+    </header>
+  );
+};
