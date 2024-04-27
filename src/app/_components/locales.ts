@@ -11,6 +11,6 @@ export const strings = {
     generate: {
       action: "Start generating",
     },
-    title: "Beautiful themes for your next project",
+    title: "Generate beautiful themes for your next project",
   },
 };
