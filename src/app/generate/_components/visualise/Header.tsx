@@ -3,10 +3,13 @@ import { strings } from "~/locales/generate";
 
 export const Header = () => {
   return (
-    <div className="mb-4 flex h-16 items-center justify-between px-2">
-      {/* TODO: Use typography component */}
-      <div>Press spacebar to generate</div>
-      <div className="flex gap-4">
+    <div className="mb-4 flex h-16 items-center justify-between">
+      <div>
+        <Button variant="ghost">
+          {strings.visualise.header.generate.action}
+        </Button>
+      </div>
+      <div className="flex gap-2">
         <Button variant="ghost">
           {strings.visualise.header.preview.action}
         </Button>
