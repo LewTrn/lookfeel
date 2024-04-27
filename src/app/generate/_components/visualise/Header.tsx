@@ -1,4 +1,5 @@
 import { RedoIcon, UndoIcon } from "lucide-react";
+import Link from "next/link";
 
 import { Button } from "~/components/ui/button";
 import { IconButton } from "~/components/ui/icon-button";
@@ -18,7 +19,9 @@ export const Header = () => {
         <Button variant="ghost">
           {strings.visualise.header.preview.action}
         </Button>
-        <Button>{strings.visualise.header.publish.action}</Button>
+        <Link href="/theme">
+          <Button>{strings.visualise.header.publish.action}</Button>
+        </Link>
       </div>
     </div>
   );
