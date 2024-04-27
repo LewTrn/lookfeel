@@ -70,7 +70,7 @@ const Colour = ({ value, children }: ColourProps) => {
 
 export const Palette = () => {
   return (
-    <div className="flex flex-col overflow-hidden rounded-lg">
+    <div className="flex flex-col overflow-hidden rounded-lg shadow">
       {COLOURS.map(({ value, name }, index) => (
         <Colour key={`${value}-${index}`} value={value}>
           {name}
