@@ -3,11 +3,9 @@ import { Hero } from "./_components/Hero";
 
 export default async function Home() {
   return (
-    <main className="flex justify-center px-8">
-      <div className="w-full max-w-screen-2xl">
-        <Header />
-        <Hero />
-      </div>
+    <main className="mx-auto w-full max-w-screen-2xl px-8">
+      <Header />
+      <Hero />
     </main>
   );
 }
