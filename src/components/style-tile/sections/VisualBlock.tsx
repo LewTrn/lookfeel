@@ -1,4 +1,4 @@
-export const VisualSection = () => {
+export const VisualBlock = () => {
   return (
     <div className="grid h-[540px] grid-rows-4 gap-4">
       <div className="flex items-center justify-center rounded-lg bg-[#99E1D9] text-white shadow">

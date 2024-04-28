@@ -1,8 +1,8 @@
 const WORDS = ["Energetic", "Harmony", "Positivity", "Fresh"];
 
-export const ComponentSection = () => {
+export const ComponentBlock = () => {
   return (
-    <section className="flex h-[540px] flex-col gap-4">
+    <div className="flex h-[540px] flex-col gap-4">
       <div className="flex shrink-0 flex-col overflow-clip rounded-lg bg-white shadow">
         <div className="bg-[#99E1D9]">
           <img
@@ -25,6 +25,6 @@ export const ComponentSection = () => {
           ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 };
