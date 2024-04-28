@@ -7,7 +7,7 @@ import { strings } from "~/locales/generate";
 
 export const Header = () => {
   return (
-    <div className="mb-4 mr-2 flex h-16 items-center justify-between">
+    <div className="mb-2 mr-2 flex h-16 items-center justify-between">
       <div className="flex items-center gap-2">
         <IconButton Icon={UndoIcon} />
         <IconButton Icon={RedoIcon} />
