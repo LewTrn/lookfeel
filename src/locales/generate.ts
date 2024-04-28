@@ -1,4 +1,15 @@
 export const strings = {
+  styleTile: {
+    heading: {
+      title: "Heading",
+    },
+    subheading: {
+      title: "Subheading",
+    },
+    textLink: {
+      action: "Text link",
+    },
+  },
   options: {
     colour: {
       title: "Colors",

@@ -1,3 +1,9 @@
+import { StyleTile } from "~/components/style-tile/StyleTile";
+
 export const Visual = () => {
-  return <div className="h-96 w-full rounded-lg bg-card shadow"></div>;
+  return (
+    <div className="w-full">
+      <StyleTile />
+    </div>
+  );
 };
