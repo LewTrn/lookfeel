@@ -42,9 +42,6 @@ export const strings = {
       generate: {
         action: "Press spacebar to generate",
       },
-      preview: {
-        action: "Preview",
-      },
       publish: {
         action: "Publish",
       },

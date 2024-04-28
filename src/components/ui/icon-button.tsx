@@ -11,7 +11,7 @@ const variants = cva(
       variant: {
         default:
           "bg-card text-card-foreground hover:bg-accent hover:text-accent-foreground focus-visible:bg-accent focus-visible:text-accent-foreground",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
+        ghost: "hover:bg-primary/5",
       },
       size: {
         default: "h-10 w-10",
