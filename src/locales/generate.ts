@@ -45,7 +45,7 @@ export const strings = {
         action: "Publish",
       },
     },
-    preview: {
+    tabs: {
       all: {
         action: "All",
       },
