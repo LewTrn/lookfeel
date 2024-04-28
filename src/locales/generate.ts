@@ -49,5 +49,13 @@ export const strings = {
         action: "Publish",
       },
     },
+    preview: {
+      all: {
+        action: "All",
+      },
+      styleTile: {
+        action: "Style tile",
+      },
+    },
   },
 };
