@@ -26,11 +26,6 @@ export const ArticleBlock = () => {
           egestas egestas fringilla phasellus faucibus.
         </p>
       </div>
-      <div>
-        <span className="cursor-pointer font-medium text-[#99E1D9] hover:underline">
-          {strings.styleTile.textLink.action}
-        </span>
-      </div>
     </section>
   );
 };

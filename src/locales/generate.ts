@@ -1,28 +1,40 @@
 export const strings = {
+  options: {
+    colour: {
+      palette: {
+        accent: "Accent",
+        background: "Background",
+        primary: "Primary",
+        secondary: "Secondary",
+        text: "Text",
+      },
+      title: "Colors",
+    },
+    typography: {
+      title: "Typography",
+    },
+  },
   styleTile: {
     heading: {
       title: "Heading",
     },
+    input: {
+      placeholder: "Enter text",
+    },
+    label: {
+      label: "Label",
+    },
+    placeholder: {
+      placeholder: "Placeholder",
+    },
+    primary: {
+      action: "Primary",
+    },
+    secondary: {
+      action: "Secondary",
+    },
     subheading: {
       title: "Subheading",
-    },
-    textLink: {
-      action: "Text link",
-    },
-  },
-  options: {
-    colour: {
-      title: "Colors",
-      palette: {
-        primary: "Primary",
-        secondary: "Secondary",
-        accent: "Accent",
-        background: "Background",
-        text: "Text",
-      },
-    },
-    typography: {
-      title: "Typography",
     },
   },
   visualise: {

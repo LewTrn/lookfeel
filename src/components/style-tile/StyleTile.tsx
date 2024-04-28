@@ -1,4 +1,5 @@
 import { ArticleBlock } from "./sections/ArticleBlock";
+import { ButtonBlock } from "./sections/ButtonBlock";
 import { ComponentBlock } from "./sections/ComponentBlock";
 import { PaletteBlock } from "./sections/PaletteBlock";
 import { VisualBlock } from "./sections/VisualBlock";
@@ -12,6 +13,7 @@ export const StyleTile = () => {
       <div className="col-span-3 flex flex-col gap-8">
         <PaletteBlock />
         <ArticleBlock />
+        <ButtonBlock />
       </div>
       <div className="col-span-2">
         <ComponentBlock />
