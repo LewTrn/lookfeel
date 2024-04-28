@@ -1,3 +1,5 @@
+"use client";
+
 import { LockKeyholeIcon } from "lucide-react";
 import { type PropsWithChildren } from "react";
 import Tinycolor from "tinycolor2";
@@ -5,30 +7,8 @@ import Tinycolor from "tinycolor2";
 import { IconButton } from "~/components/ui/icon-button";
 import Typography from "~/components/ui/typography";
 import { cn } from "~/lib/utils";
-import { strings } from "~/locales/generate";
 
-const COLOURS = [
-  {
-    name: strings.options.colour.palette.primary,
-    value: "#99E1D9",
-  },
-  {
-    name: strings.options.colour.palette.secondary,
-    value: "#705D56",
-  },
-  {
-    name: strings.options.colour.palette.accent,
-    value: "#70ABAF",
-  },
-  {
-    name: strings.options.colour.palette.background,
-    value: "#F0F7F4",
-  },
-  {
-    name: strings.options.colour.palette.text,
-    value: "#32292F",
-  },
-];
+import { useGenerateStore } from "../../_store/useGenerateStore";
 
 type ColourProps = PropsWithChildren<{
   value: string;
@@ -69,11 +49,13 @@ const Colour = ({ value, children }: ColourProps) => {
 };
 
 export const Palette = () => {
+  const colours = useGenerateStore((state) => state.palette);
+
   return (
     <div className="flex flex-col overflow-hidden rounded-lg shadow">
-      {COLOURS.map(({ value, name }, index) => (
-        <Colour key={`${value}-${index}`} value={value}>
-          {name}
+      {colours.map(({ type, colour }, index) => (
+        <Colour key={`${type}-${index}`} value={colour}>
+          {type}
         </Colour>
       ))}
     </div>
