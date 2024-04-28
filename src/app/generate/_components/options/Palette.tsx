@@ -1,20 +1,29 @@
 "use client";
 
 import { LockKeyholeIcon } from "lucide-react";
-import { type PropsWithChildren } from "react";
 import Tinycolor from "tinycolor2";
 
 import { IconButton } from "~/components/ui/icon-button";
 import Typography from "~/components/ui/typography";
 import { cn } from "~/lib/utils";
+import { strings } from "~/locales/generate";
 
 import { useGenerateStore } from "../../_store/useGenerateStore";
+import { ColourType } from "../../_types/Colour";
 
-type ColourProps = PropsWithChildren<{
+type ColourProps = {
+  colourType: ColourType;
   value: string;
-}>;
+};
 
-const Colour = ({ value, children }: ColourProps) => {
+const COLOUR_STRINGS = {
+  [ColourType.Primary]: strings.options.colour.palette.primary,
+  [ColourType.Secondary]: strings.options.colour.palette.secondary,
+  [ColourType.Accent]: strings.options.colour.palette.accent,
+  [ColourType.Neutral]: strings.options.colour.palette.neutral,
+};
+
+const Colour = ({ colourType, value }: ColourProps) => {
   const whiteIsReadable = Tinycolor.isReadable(value, "#fff", {
     size: "large",
   });
@@ -28,7 +37,7 @@ const Colour = ({ value, children }: ColourProps) => {
       style={{ backgroundColor: value }}
     >
       <div className="flex flex-col">
-        <Typography variant="h3">{children}</Typography>
+        <Typography variant="h3">{COLOUR_STRINGS[colourType]}</Typography>
         <Typography variant="caption" className="uppercase opacity-75">
           {value}
         </Typography>
@@ -54,9 +63,7 @@ export const Palette = () => {
   return (
     <div className="flex flex-col overflow-hidden rounded-lg shadow">
       {colours.map(({ type, colour }, index) => (
-        <Colour key={`${type}-${index}`} value={colour}>
-          {type}
-        </Colour>
+        <Colour key={`${type}-${index}`} colourType={type} value={colour} />
       ))}
     </div>
   );

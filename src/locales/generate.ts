@@ -3,10 +3,9 @@ export const strings = {
     colour: {
       palette: {
         accent: "Accent",
-        background: "Background",
+        neutral: "Neutral",
         primary: "Primary",
         secondary: "Secondary",
-        text: "Text",
       },
       title: "Colors",
     },

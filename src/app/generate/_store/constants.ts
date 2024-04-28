@@ -1,8 +1,8 @@
-import { type Palette } from "../_types/Palette";
+import { ColourType, type Palette } from "../_types/Colour";
 
 export const DEFAULT_PALETTE: Palette[] = [
-  { type: "primary", colour: "#e11d48" },
-  { type: "secondary", colour: "#facc15" },
-  { type: "accent", colour: "#fecdd3" },
-  { type: "neutral", colour: "#0a0a0a" },
+  { type: ColourType.Primary, colour: "#e11d48" },
+  { type: ColourType.Secondary, colour: "#facc15" },
+  { type: ColourType.Accent, colour: "#fecdd3" },
+  { type: ColourType.Neutral, colour: "#0a0a0a" },
 ];

@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-import { type Palette } from "../_types/Palette";
+import { type Palette } from "../_types/Colour";
 import { DEFAULT_PALETTE } from "./constants";
 
 export type GenerateState = {
