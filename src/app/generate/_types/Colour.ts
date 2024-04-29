@@ -6,6 +6,8 @@ export enum ColourType {
 }
 
 export type Palette = {
-  type: ColourType;
-  colour: string;
+  [ColourType.Primary]: string;
+  [ColourType.Secondary]: string;
+  [ColourType.Accent]: string;
+  [ColourType.Neutral]: string;
 };

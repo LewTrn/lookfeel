@@ -12,20 +12,33 @@ import { ColourType } from "../../_types/Colour";
 type ColourProps = {
   colourType: ColourType;
   value: string;
-  className?: string;
 };
 
-const COLOUR_STRINGS = {
-  [ColourType.Primary]: strings.options.colour.palette.primary,
-  [ColourType.Secondary]: strings.options.colour.palette.secondary,
-  [ColourType.Accent]: strings.options.colour.palette.accent,
-  [ColourType.Neutral]: strings.options.colour.palette.neutral,
+const COLOUR_PROPERTIES = {
+  [ColourType.Primary]: {
+    name: strings.options.colour.palette.primary,
+    className: "h-20",
+  },
+  [ColourType.Secondary]: {
+    name: strings.options.colour.palette.secondary,
+    className: "h-14",
+  },
+  [ColourType.Accent]: {
+    name: strings.options.colour.palette.accent,
+    className: "h-12",
+  },
+  [ColourType.Neutral]: {
+    name: strings.options.colour.palette.neutral,
+    className: "h-10",
+  },
 };
 
-const Colour = ({ colourType, value, className }: ColourProps) => {
+const Colour = ({ colourType, value }: ColourProps) => {
   const whiteIsReadable = Tinycolor.isReadable(value, "#fff", {
     size: "large",
   });
+
+  const { name, className } = COLOUR_PROPERTIES[colourType];
 
   return (
     <div
@@ -36,7 +49,7 @@ const Colour = ({ colourType, value, className }: ColourProps) => {
       )}
       style={{ backgroundColor: value }}
     >
-      <Typography variant="h4">{COLOUR_STRINGS[colourType]}</Typography>
+      <Typography variant="h4">{name}</Typography>
     </div>
   );
 };
@@ -50,26 +63,9 @@ export const Palette = () => {
         <Typography variant="h3">Colors</Typography>
       </div>
       <div className="overflow-hidden rounded-lg border">
-        <Colour
-          colourType={ColourType.Primary}
-          value={colours[0]!.colour}
-          className="h-20"
-        />
-        <Colour
-          colourType={ColourType.Secondary}
-          value={colours[1]!.colour}
-          className="h-14"
-        />
-        <Colour
-          colourType={ColourType.Accent}
-          value={colours[2]!.colour}
-          className="h-12"
-        />
-        <Colour
-          colourType={ColourType.Neutral}
-          value={colours[3]!.colour}
-          className="h-10"
-        />
+        {Object.entries(colours).map(([key, value]) => (
+          <Colour key={key} colourType={key as ColourType} value={value} />
+        ))}
       </div>
     </div>
   );
