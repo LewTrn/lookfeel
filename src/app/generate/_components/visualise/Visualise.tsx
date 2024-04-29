@@ -1,4 +1,4 @@
-import { StyleTile } from "~/components/style-tile/StyleTile";
+import { StyleTile } from "~/components/templates/style-tile/StyleTile";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
 import { strings } from "~/locales/generate";
 
