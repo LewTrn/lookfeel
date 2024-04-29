@@ -8,7 +8,8 @@ export const variants = cva("select-none", {
     variant: {
       h1: "mb-4 text-4xl font-bold",
       h2: "mb-2 text-xl font-semibold",
-      h3: "text-md font-medium",
+      h3: "mb-1 text-lg font-semibold",
+      h4: "text-md font-medium",
       body: "text-md",
       caption: "text-xs",
     },
@@ -26,7 +27,7 @@ export interface TypographyProps
 
 const Typography = React.forwardRef<HTMLHeadingElement, TypographyProps>(
   ({ className, variant, as, ...props }, ref) => {
-    const Comp = as ?? "span";
+    const Comp = as ?? "div";
     return (
       <Comp
         className={cn(variants({ variant, className }))}

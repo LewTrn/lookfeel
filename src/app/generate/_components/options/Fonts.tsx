@@ -1,6 +1,4 @@
-import { LockKeyholeIcon } from "lucide-react";
-
-import { IconButton } from "~/components/ui/icon-button";
+import Typography from "~/components/ui/typography";
 
 type FontProps = {
   font: string;
@@ -9,16 +7,12 @@ type FontProps = {
 
 const Font = ({ font, type }: FontProps) => {
   return (
-    <div
-      className="group flex items-center justify-between rounded-lg bg-card p-4 shadow"
-      style={{ fontFamily: font }}
-    >
-      <div className="flex flex-col">
-        <div className="text-2xl">{font}</div>
-        <div className="opacity-75">{type}</div>
+    <div>
+      <div className="text-secondary">
+        <Typography variant="h3">{type}</Typography>
       </div>
-      <div className="opacity-0 transition-opacity group-hover:opacity-100">
-        <IconButton Icon={LockKeyholeIcon} />
+      <div className="text-3xl" style={{ fontFamily: font }}>
+        {font}
       </div>
     </div>
   );
@@ -26,7 +20,7 @@ const Font = ({ font, type }: FontProps) => {
 
 export const Fonts = () => {
   return (
-    <div className="flex flex-col gap-2">
+    <div className="ml-2 flex flex-col gap-4">
       <Font font="Georgia" type="Heading" />
       <Font font="Arial" type="Body" />
     </div>

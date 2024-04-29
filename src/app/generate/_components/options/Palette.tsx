@@ -1,9 +1,7 @@
 "use client";
 
-import { LockKeyholeIcon } from "lucide-react";
 import Tinycolor from "tinycolor2";
 
-import { IconButton } from "~/components/ui/icon-button";
 import Typography from "~/components/ui/typography";
 import { cn } from "~/lib/utils";
 import { strings } from "~/locales/generate";
@@ -14,6 +12,7 @@ import { ColourType } from "../../_types/Colour";
 type ColourProps = {
   colourType: ColourType;
   value: string;
+  className?: string;
 };
 
 const COLOUR_STRINGS = {
@@ -23,7 +22,7 @@ const COLOUR_STRINGS = {
   [ColourType.Neutral]: strings.options.colour.palette.neutral,
 };
 
-const Colour = ({ colourType, value }: ColourProps) => {
+const Colour = ({ colourType, value, className }: ColourProps) => {
   const whiteIsReadable = Tinycolor.isReadable(value, "#fff", {
     size: "large",
   });
@@ -31,28 +30,13 @@ const Colour = ({ colourType, value }: ColourProps) => {
   return (
     <div
       className={cn(
-        "group flex w-full items-center justify-between px-4 py-2.5",
+        "group flex aspect-square w-full items-end px-2 pb-1",
         whiteIsReadable ? "text-white" : "text-foreground",
+        className,
       )}
       style={{ backgroundColor: value }}
     >
-      <div className="flex flex-col">
-        <Typography variant="h3">{COLOUR_STRINGS[colourType]}</Typography>
-        <Typography variant="caption" className="uppercase opacity-75">
-          {value}
-        </Typography>
-      </div>
-      <div className="opacity-0 transition-opacity group-hover:opacity-100">
-        <IconButton
-          Icon={LockKeyholeIcon}
-          variant="ghost"
-          className={cn(
-            whiteIsReadable
-              ? "!text-white hover:bg-white/5"
-              : "!text-foreground hover:bg-foreground/5",
-          )}
-        />
-      </div>
+      <Typography variant="h4">{COLOUR_STRINGS[colourType]}</Typography>
     </div>
   );
 };
@@ -61,10 +45,32 @@ export const Palette = () => {
   const colours = useGenerateStore((state) => state.palette);
 
   return (
-    <div className="flex flex-col overflow-hidden rounded-lg shadow">
-      {colours.map(({ type, colour }, index) => (
-        <Colour key={`${type}-${index}`} colourType={type} value={colour} />
-      ))}
+    <div>
+      <div className="mb-1 ml-2 text-secondary">
+        <Typography variant="h3">Colors</Typography>
+      </div>
+      <div className="overflow-hidden rounded-lg border">
+        <Colour
+          colourType={ColourType.Primary}
+          value={colours[0]!.colour}
+          className="h-20"
+        />
+        <Colour
+          colourType={ColourType.Secondary}
+          value={colours[1]!.colour}
+          className="h-14"
+        />
+        <Colour
+          colourType={ColourType.Accent}
+          value={colours[2]!.colour}
+          className="h-12"
+        />
+        <Colour
+          colourType={ColourType.Neutral}
+          value={colours[3]!.colour}
+          className="h-10"
+        />
+      </div>
     </div>
   );
 };
