@@ -1,8 +1,22 @@
+"use client";
+
+import { useEffect } from "react";
+
 import { Header } from "./_components/header/Header";
 import { Options } from "./_components/options/Options";
 import { Visualise } from "./_components/visualise/Visualise";
+import { useGenerateStore } from "./_store/useGenerateStore";
 
-export default async function Generate() {
+export default function Generate() {
+  const palette = useGenerateStore((state) => state.palette);
+  const generatePalette = useGenerateStore((state) => state.generatePalette);
+
+  useEffect(() => {
+    generatePalette();
+  }, [generatePalette]);
+
+  if (!palette) return null;
+
   return (
     <main className="flex w-full flex-col px-8">
       <Header />
