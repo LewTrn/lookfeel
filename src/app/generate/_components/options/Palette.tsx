@@ -4,6 +4,7 @@ import Tinycolor from "tinycolor2";
 
 import Typography from "~/components/ui/typography";
 import { cn } from "~/lib/utils";
+import { strings } from "~/locales/generate";
 
 import { useGenerateStore } from "../../_store/useGenerateStore";
 import { ColourType } from "../../_types/Colour";
@@ -37,21 +38,23 @@ const Colour = ({ colourType, value }: ColourProps) => {
       )}
       style={{ backgroundColor: value }}
     >
-      <Typography variant="h4">{paletteHeadings[colourType]}</Typography>
+      <div className="opacity-95">
+        <Typography variant="h4">{paletteHeadings[colourType]}</Typography>
+      </div>
     </div>
   );
 };
 
 export const Palette = () => {
-  const colours = useGenerateStore((state) => state.palette);
+  const palette = useGenerateStore((state) => state.palette);
 
   return (
     <div>
       <div className="mb-1 ml-2 text-secondary">
-        <Typography variant="h3">Colors</Typography>
+        <Typography variant="h3">{strings.options.colour.title}</Typography>
       </div>
       <div className="overflow-hidden rounded-lg border">
-        {Object.entries(colours).map(([key, value]) => (
+        {Object.entries(palette).map(([key, value]) => (
           <Colour key={key} colourType={key as ColourType} value={value} />
         ))}
       </div>

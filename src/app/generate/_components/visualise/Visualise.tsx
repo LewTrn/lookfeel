@@ -11,7 +11,6 @@ import { useGenerateStore } from "../../_store/useGenerateStore";
 
 export const Visualise = () => {
   const palette = useGenerateStore((state) => state.palette);
-  const colours = palette ? Object.values(palette) : [];
 
   return (
     <div className="w-full">
@@ -32,7 +31,7 @@ export const Visualise = () => {
           <StyleTile />
         </TabsContent>
         <TabsContent value="shades">
-          <Shades colours={colours} />
+          <Shades palette={palette!} />
         </TabsContent>
       </Tabs>
     </div>
