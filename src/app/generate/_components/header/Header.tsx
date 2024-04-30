@@ -2,7 +2,7 @@
 
 import { RedoIcon, UndoIcon } from "lucide-react";
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 import { Button } from "~/components/ui/button";
 import { IconButton } from "~/components/ui/icon-button";
@@ -11,6 +11,7 @@ import { strings } from "~/locales/generate";
 import { useGenerateStore } from "../../_store/useGenerateStore";
 
 export const Header = () => {
+  const generateRef = useRef<HTMLButtonElement>(null);
   const generatePalette = useGenerateStore((state) => state.generatePalette);
 
   useEffect(() => {
@@ -36,7 +37,14 @@ export const Header = () => {
         <div className="flex items-center gap-2">
           <IconButton Icon={UndoIcon} variant="ghost" />
           <IconButton Icon={RedoIcon} variant="ghost" />
-          <Button variant="ghost" onClick={() => generatePalette()}>
+          <Button
+            ref={generateRef}
+            variant="ghost"
+            onClick={() => {
+              generatePalette();
+              generateRef.current?.blur();
+            }}
+          >
             {strings.visualise.header.generate.action}
           </Button>
         </div>
