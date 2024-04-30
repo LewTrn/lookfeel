@@ -1,3 +1,4 @@
+import { CircleCheckBigIcon } from "lucide-react";
 import Tinycolor from "tinycolor2";
 
 import { useColourStop } from "~/app/generate/_utils/useColourStop";
@@ -12,21 +13,29 @@ type SwatchProps = {
 type ColourBlockProps = {
   colour: string;
   stop: number;
+  check?: boolean;
   textColour: { light: string; dark: string };
 };
 
-const ColourBlock = ({ colour, stop, textColour }: ColourBlockProps) => {
+const ColourBlock = ({ colour, stop, check, textColour }: ColourBlockProps) => {
   const displayColour = colour.replace("#", "").toUpperCase();
-  const lightIsReadable = Tinycolor.isReadable(colour, textColour.light);
+  const darkIsReadable = Tinycolor.isReadable(colour, textColour.dark);
 
   return (
     <div
-      className="flex aspect-square w-full flex-col justify-end overflow-hidden rounded-sm bg-popover shadow"
+      className="relative flex aspect-square w-full flex-col justify-end overflow-hidden rounded-sm bg-popover"
       style={{
         backgroundColor: colour,
-        color: lightIsReadable ? textColour.light : textColour.dark,
+        color: darkIsReadable ? textColour.dark : textColour.light,
       }}
     >
+      {check && (
+        <CircleCheckBigIcon
+          className="absolute right-1.5 top-1.5"
+          width={16}
+          height={16}
+        />
+      )}
       <div className="pb-1.5 pl-2 opacity-95">
         <Typography variant="caption" className="font-semibold">
           {stop}
@@ -42,7 +51,7 @@ export const Swatch = ({ baseColour }: SwatchProps) => {
 
   const swatch = createSwatch({
     colour: baseColour,
-    stop,
+    colourStop: stop,
     saturation: 0,
     lMin: 15,
     lMax: 100,
@@ -55,11 +64,12 @@ export const Swatch = ({ baseColour }: SwatchProps) => {
 
   return (
     <div className="flex gap-2">
-      {swatch.map(({ hex, stop }) => (
+      {swatch.map(({ hex, stop, isOriginal }) => (
         <ColourBlock
           key={stop}
           colour={hex}
           stop={stop}
+          check={isOriginal}
           textColour={textColour}
         />
       ))}

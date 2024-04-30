@@ -1,6 +1,6 @@
 export type SwatchConfig = {
   colour: string;
-  stop: number;
+  colourStop: number;
   saturation: number;
   lMin: number;
   lMax: number;

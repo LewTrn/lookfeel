@@ -13,7 +13,7 @@ export const Shades = ({ palette }: ShadesProps) => {
     <div className="grid gap-4 rounded-lg bg-popover p-8 pt-6">
       {Object.entries(palette).map(([key, colour], index) => (
         <div key={key}>
-          <Typography variant="h3">
+          <Typography variant="h3" className="text-secondary">
             {paletteHeadings[key as ColourType]}
           </Typography>
           <Swatch key={index} baseColour={colour} />
