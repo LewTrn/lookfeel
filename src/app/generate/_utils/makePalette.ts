@@ -1,5 +1,5 @@
 const please = require("pleasejs");
-import tinycolor from "tinycolor2";
+import Tinycolor from "tinycolor2";
 
 import { ColourType, type Palette } from "../_types/Colour";
 
@@ -9,7 +9,7 @@ export const makePalette = (): Palette => {
     full_random: true,
   }) as string[];
   const sorted = colours.sort(
-    (a, b) => tinycolor(a).getBrightness() - tinycolor(b).getBrightness(),
+    (a, b) => Tinycolor(a).getBrightness() - Tinycolor(b).getBrightness(),
   );
 
   return {

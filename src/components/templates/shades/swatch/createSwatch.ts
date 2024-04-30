@@ -1,18 +1,18 @@
-import tinycolor from "tinycolor2";
+import Tinycolor from "tinycolor2";
 
 import { STOPS } from "./constants";
 import { type SwatchConfig } from "./types";
 import { createLightnessScale } from "./utils/createLightnessScale";
 
 export const createSwatch = ({ colour, stop, lMin, lMax }: SwatchConfig) => {
-  const { h, s, l } = tinycolor(colour).toHsl();
+  const { h, s, l } = Tinycolor(colour).toHsl();
 
   const lightnessScale = createLightnessScale(lMin, lMax, l, stop);
 
   const swatch = STOPS.map((stop, index) => {
     const newL = lightnessScale[index]!.tweak;
 
-    const hex = tinycolor({ h, s, l: newL }).toHexString();
+    const hex = Tinycolor({ h, s, l: newL }).toHexString();
 
     return {
       hex,
