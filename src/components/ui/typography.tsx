@@ -12,6 +12,7 @@ export const variants = cva("select-none", {
       h4: "text-md font-medium",
       body: "text-md",
       caption: "text-xs",
+      button: "text-sm font-medium",
     },
   },
   defaultVariants: {
