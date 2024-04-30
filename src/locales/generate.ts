@@ -49,6 +49,9 @@ export const strings = {
       all: {
         action: "All",
       },
+      shades: {
+        action: "Shades",
+      },
       styleTile: {
         action: "Style tile",
       },
