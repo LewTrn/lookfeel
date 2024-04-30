@@ -4,10 +4,10 @@ import Tinycolor from "tinycolor2";
 
 import Typography from "~/components/ui/typography";
 import { cn } from "~/lib/utils";
-import { strings } from "~/locales/generate";
 
 import { useGenerateStore } from "../../_store/useGenerateStore";
 import { ColourType } from "../../_types/Colour";
+import { paletteHeadings } from "../../_utils/headings";
 
 type ColourProps = {
   colourType: ColourType;
@@ -15,22 +15,10 @@ type ColourProps = {
 };
 
 const COLOUR_PROPERTIES = {
-  [ColourType.Primary]: {
-    name: strings.options.colour.palette.primary,
-    className: "h-20",
-  },
-  [ColourType.Secondary]: {
-    name: strings.options.colour.palette.secondary,
-    className: "h-14",
-  },
-  [ColourType.Accent]: {
-    name: strings.options.colour.palette.accent,
-    className: "h-12",
-  },
-  [ColourType.Neutral]: {
-    name: strings.options.colour.palette.neutral,
-    className: "h-10",
-  },
+  [ColourType.Primary]: { className: "h-20" },
+  [ColourType.Secondary]: { className: "h-14" },
+  [ColourType.Accent]: { className: "h-12" },
+  [ColourType.Neutral]: { className: "h-10" },
 };
 
 const Colour = ({ colourType, value }: ColourProps) => {
@@ -38,7 +26,7 @@ const Colour = ({ colourType, value }: ColourProps) => {
     size: "large",
   });
 
-  const { name, className } = COLOUR_PROPERTIES[colourType];
+  const { className } = COLOUR_PROPERTIES[colourType];
 
   return (
     <div
@@ -49,7 +37,7 @@ const Colour = ({ colourType, value }: ColourProps) => {
       )}
       style={{ backgroundColor: value }}
     >
-      <Typography variant="h4">{name}</Typography>
+      <Typography variant="h4">{paletteHeadings[colourType]}</Typography>
     </div>
   );
 };
