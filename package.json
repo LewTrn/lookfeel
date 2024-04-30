@@ -22,6 +22,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "lucide-react": "^0.376.0",
+    "nearest-color": "^0.4.4",
     "next": "^14.2.1",
     "pleasejs": "^0.4.2",
     "react": "18.2.0",

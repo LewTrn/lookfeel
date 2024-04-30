@@ -1,5 +1,6 @@
 import Tinycolor from "tinycolor2";
 
+import { useColourStop } from "~/app/generate/_utils/useColourStop";
 import Typography from "~/components/ui/typography";
 
 import { createSwatch } from "./swatch/createSwatch";
@@ -37,9 +38,11 @@ const ColourBlock = ({ colour, stop, textColour }: ColourBlockProps) => {
 };
 
 export const Swatch = ({ baseColour }: SwatchProps) => {
+  const stop = useColourStop(baseColour);
+
   const swatch = createSwatch({
     colour: baseColour,
-    stop: 500,
+    stop,
     saturation: 0,
     lMin: 15,
     lMax: 100,

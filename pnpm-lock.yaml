@@ -41,6 +41,9 @@ dependencies:
   lucide-react:
     specifier: ^0.376.0
     version: 0.376.0(react@18.2.0)
+  nearest-color:
+    specifier: ^0.4.4
+    version: 0.4.4
   next:
     specifier: ^14.2.1
     version: 14.2.3(react-dom@18.2.0)(react@18.2.0)
@@ -2498,6 +2501,10 @@ packages:
   /natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
     dev: true
+
+  /nearest-color@0.4.4:
+    resolution: {integrity: sha512-orhcaIORC10tf41Ld2wwlcC+FaAavHG87JHWB3eHH5p7v2k9Tzym2XNEZzLAm5YJwGv6Q38WWc7SOb+Qfu/4NQ==}
+    dev: false
 
   /next@14.2.3(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-dowFkFTR8v79NPJO4QsBUtxv0g9BrS/phluVpMAt2ku7H+cbcBJlopXjkWlwxrk/xGqMemr7JkGPGemPrLLX7A==}
