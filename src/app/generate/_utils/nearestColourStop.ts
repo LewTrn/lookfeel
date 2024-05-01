@@ -1,5 +1,4 @@
 import nearest from "nearest-color";
-import { useMemo } from "react";
 
 const DEFAULT_STOP = 500;
 
@@ -248,13 +247,12 @@ const TW_COLOURS = {
   "rose-950": "#4c0519",
 };
 
-export const useColourStop = (colour: string) => {
-  const nearestColour = useMemo(() => {
-    const getNearest = nearest.from(TW_COLOURS) as (colour: string) => {
-      name: string;
-    };
-    return getNearest(colour).name;
-  }, [colour]);
+export const nearestColourStop = (colour: string) => {
+  const getNearest = nearest.from(TW_COLOURS) as (colour: string) => {
+    name: string;
+  };
+
+  const nearestColour = getNearest(colour).name;
 
   const stop = Number(nearestColour.split("-")[1] ?? DEFAULT_STOP);
   return stop;

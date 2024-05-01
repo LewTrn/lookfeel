@@ -11,3 +11,9 @@ export type Palette = {
   [ColourType.Accent]: string;
   [ColourType.Neutral]: string;
 };
+
+export type Swatch = {
+  hex: string;
+  stop: number;
+  isOriginal: boolean;
+};

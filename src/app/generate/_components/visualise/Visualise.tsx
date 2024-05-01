@@ -1,5 +1,3 @@
-"use client";
-
 import { LayoutDashboardIcon, SwatchBookIcon } from "lucide-react";
 
 import { Shades } from "~/components/templates/shades/Shades";
@@ -7,11 +5,7 @@ import { StyleTile } from "~/components/templates/style-tile/StyleTile";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
 import { strings } from "~/locales/generate";
 
-import { useGenerateStore } from "../../_store/useGenerateStore";
-
 export const Visualise = () => {
-  const palette = useGenerateStore((state) => state.palette);
-
   return (
     <div className="w-full">
       <Tabs defaultValue="all">
@@ -31,7 +25,7 @@ export const Visualise = () => {
           <StyleTile />
         </TabsContent>
         <TabsContent value="shades">
-          <Shades palette={palette!} />
+          <Shades />
         </TabsContent>
       </Tabs>
     </div>

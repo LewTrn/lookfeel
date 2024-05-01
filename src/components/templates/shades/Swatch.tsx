@@ -1,13 +1,11 @@
 import { CircleCheckBigIcon } from "lucide-react";
 import Tinycolor from "tinycolor2";
 
-import { useColourStop } from "~/app/generate/_utils/useColourStop";
+import { type Swatch as SwatchType } from "~/app/generate/_types/Colour";
 import Typography from "~/components/ui/typography";
 
-import { createSwatch } from "./swatch/createSwatch";
-
 type SwatchProps = {
-  baseColour: string;
+  swatch: SwatchType[];
 };
 
 type ColourBlockProps = {
@@ -46,17 +44,7 @@ const ColourBlock = ({ colour, stop, check, textColour }: ColourBlockProps) => {
   );
 };
 
-export const Swatch = ({ baseColour }: SwatchProps) => {
-  const stop = useColourStop(baseColour);
-
-  const swatch = createSwatch({
-    colour: baseColour,
-    colourStop: stop,
-    saturation: 0,
-    lMin: 15,
-    lMax: 100,
-  });
-
+export const Swatch = ({ swatch }: SwatchProps) => {
   const textColour = {
     light: swatch[0]!.hex,
     dark: swatch[swatch.length - 1]!.hex,
