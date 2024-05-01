@@ -10,12 +10,12 @@ export const Shades = () => {
 
   return (
     <div className="grid gap-4 rounded-lg bg-popover p-8 pt-6">
-      {Object.entries(shades).map(([key, swatch], index) => (
+      {Object.entries(shades).map(([key, { swatch, originalStop }], index) => (
         <div key={key}>
           <Typography variant="h3" className="text-secondary">
             {paletteHeadings[key as ColourType]}
           </Typography>
-          <Swatch key={index} swatch={swatch} />
+          <Swatch key={index} swatch={swatch} originalStop={originalStop} />
         </div>
       ))}
     </div>

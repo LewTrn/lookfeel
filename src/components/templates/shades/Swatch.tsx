@@ -1,16 +1,18 @@
 import { CircleCheckBigIcon } from "lucide-react";
 import Tinycolor from "tinycolor2";
 
-import { type Swatch as SwatchType } from "~/app/generate/_types/Colour";
 import Typography from "~/components/ui/typography";
 
+import { type TwSwatch } from "./swatch/types";
+
 type SwatchProps = {
-  swatch: SwatchType[];
+  swatch: TwSwatch;
+  originalStop: number;
 };
 
 type ColourBlockProps = {
   colour: string;
-  stop: number;
+  stop: string;
   check?: boolean;
   textColour: { light: string; dark: string };
 };
@@ -44,20 +46,20 @@ const ColourBlock = ({ colour, stop, check, textColour }: ColourBlockProps) => {
   );
 };
 
-export const Swatch = ({ swatch }: SwatchProps) => {
+export const Swatch = ({ swatch, originalStop }: SwatchProps) => {
   const textColour = {
-    light: swatch[0]!.hex,
-    dark: swatch[swatch.length - 1]!.hex,
+    light: swatch[50],
+    dark: swatch[950],
   };
 
   return (
     <div className="flex gap-2">
-      {swatch.map(({ hex, stop, isOriginal }) => (
+      {Object.entries(swatch).map(([stop, colour]) => (
         <ColourBlock
           key={stop}
-          colour={hex}
+          colour={colour}
           stop={stop}
-          check={isOriginal}
+          check={stop === originalStop.toString()}
           textColour={textColour}
         />
       ))}
