@@ -38,6 +38,9 @@ dependencies:
   clsx:
     specifier: ^2.1.1
     version: 2.1.1
+  color-scheme:
+    specifier: ^1.0.1
+    version: 1.0.1
   lucide-react:
     specifier: ^0.376.0
     version: 0.376.0(react@18.2.0)
@@ -47,9 +50,6 @@ dependencies:
   next:
     specifier: ^14.2.1
     version: 14.2.3(react-dom@18.2.0)(react@18.2.0)
-  pleasejs:
-    specifier: ^0.4.2
-    version: 0.4.2
   react:
     specifier: 18.2.0
     version: 18.2.0
@@ -1243,6 +1243,10 @@ packages:
 
   /color-name@1.1.4:
     resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==}
+
+  /color-scheme@1.0.1:
+    resolution: {integrity: sha512-4x+ya6+z6g9DaTFSfVzTZc8TSjxHuDT40NB43N3XPUkQlF6uujhwH8aeMeq8HBgoQQog/vrYgJ16mt/eVTRXwQ==}
+    dev: false
 
   /commander@4.1.1:
     resolution: {integrity: sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==}
@@ -2707,10 +2711,6 @@ packages:
   /pirates@4.0.6:
     resolution: {integrity: sha512-saLsH7WeYYPiD25LDuLRRY/i+6HaPYr6G1OUlN39otzkSTxKnubR9RTxS3/Kk50s1g2JTgFwWQDQyplC5/SHZg==}
     engines: {node: '>= 6'}
-
-  /pleasejs@0.4.2:
-    resolution: {integrity: sha512-nHsHKvdOiKgFrYXp3bBIHpiSLf723Ra36HRI1Y7shY5utkTmvlRzZCnDtFUbiAWCIIZN6hHm+ximnyOJgeGwXA==}
-    dev: false
 
   /possible-typed-array-names@1.0.0:
     resolution: {integrity: sha512-d7Uw+eZoloe0EHDIYoe+bQ5WXnGMOpmiZFTuMWCwpjzzkL2nTjcKiAk4hh8TjnGye2TwWOk3UXucZ+3rbmBa8Q==}

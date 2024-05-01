@@ -1,7 +1,7 @@
 import { create } from "zustand";
 
 import { type Palette } from "../_types/Colour";
-import { makePalette } from "../_utils/makePalette";
+import { generatePalette } from "../_utils/generatePalette";
 
 export type GenerateState = {
   palette: Palette | null;
@@ -11,7 +11,7 @@ export type GenerateState = {
 export const useGenerateStore = create<GenerateState>((set) => ({
   palette: null,
   generatePalette: () => {
-    const palette = makePalette();
+    const palette = generatePalette();
     set({ palette });
   },
 }));
