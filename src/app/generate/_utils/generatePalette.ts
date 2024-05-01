@@ -48,7 +48,7 @@ export const generatePalette = () => {
     (a, b) => tinycolor(a).getLuminance() - tinycolor(b).getLuminance(),
   );
 
-  const neutral = tinycolor(sorted[0]).desaturate(90).darken(40).toHexString();
+  const neutral = tinycolor(sorted[0]).desaturate(90).darken().toHexString();
 
   return {
     [ColourType.Primary]: sorted[0]!,

@@ -1,9 +1,11 @@
-const COLOURS = ["#99E1D9", "#705D56", "#70ABAF", "#32292F"];
+import { useGenerateStore } from "~/app/generate/_store/useGenerateStore";
 
 export const PaletteBlock = () => {
+  const palette = useGenerateStore((state) => state.palette)!;
+
   return (
     <div className="grid grid-cols-4 gap-4">
-      {COLOURS.map((colour, index) => (
+      {Object.values(palette).map((colour, index) => (
         <div
           key={`${colour}-${index}`}
           className="h-16 rounded-sm"
