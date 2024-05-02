@@ -9,9 +9,6 @@ export const strings = {
       },
       title: "Colors",
     },
-    typography: {
-      title: "Typography",
-    },
   },
   styleTile: {
     heading: {
@@ -46,9 +43,6 @@ export const strings = {
       },
     },
     tabs: {
-      all: {
-        action: "All",
-      },
       shades: {
         action: "Shades",
       },

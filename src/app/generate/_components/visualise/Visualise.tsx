@@ -8,11 +8,8 @@ import { strings } from "~/locales/generate";
 export const Visualise = () => {
   return (
     <div className="w-full">
-      <Tabs defaultValue="all">
+      <Tabs defaultValue="tile">
         <TabsList className="mb-6">
-          <TabsTrigger value="all">
-            {strings.visualise.tabs.all.action}
-          </TabsTrigger>
           <TabsTrigger value="tile" Icon={LayoutDashboardIcon}>
             {strings.visualise.tabs.styleTile.action}
           </TabsTrigger>
@@ -20,7 +17,6 @@ export const Visualise = () => {
             {strings.visualise.tabs.shades.action}
           </TabsTrigger>
         </TabsList>
-        <TabsContent value="all" />
         <TabsContent value="tile">
           <StyleTile />
         </TabsContent>
