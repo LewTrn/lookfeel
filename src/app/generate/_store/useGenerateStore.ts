@@ -1,41 +1,19 @@
 import { create } from "zustand";
 
-import { createTwSwatch } from "~/components/templates/shades/swatch/createSwatch";
-import { type TwSwatch } from "~/components/templates/shades/swatch/types";
+import { type Palette } from "~/types/Palette";
 
-import { type ColourType, type Palette } from "../_types/Colour";
-import { generatePalette } from "../_utils/generatePalette";
-import { nearestColourStop } from "../_utils/nearestColourStop";
-
-type Shade = { swatch: TwSwatch; originalStop: number };
+import { makePalette } from "../_utils/palette/makePalette";
+import { DEFAULT_PALETTE } from "./constants";
 
 export type GenerateState = {
-  palette: Palette | null;
-  shades: Record<ColourType, Shade> | null;
+  palette: Palette;
   generatePalette: () => void;
 };
 
 export const useGenerateStore = create<GenerateState>((set) => ({
-  palette: null,
-  shades: null,
+  palette: DEFAULT_PALETTE,
   generatePalette: () => {
-    const palette = generatePalette();
+    const palette = makePalette();
     set({ palette });
-
-    const shades = Object.entries(palette).reduce(
-      (acc, [key, colour]) => {
-        const colourStop = nearestColourStop(colour);
-        const swatch = createTwSwatch({
-          colour,
-          colourStop,
-          lMin: 15,
-          lMax: 100,
-        });
-
-        return { ...acc, [key]: { swatch, originalStop: colourStop } };
-      },
-      {} as Record<ColourType, Shade>,
-    );
-    set({ shades });
   },
 }));
