@@ -43,6 +43,12 @@ export const strings = {
       },
     },
     tabs: {
+      dashboard: {
+        action: "Dashboard",
+      },
+      landing: {
+        action: "Landing",
+      },
       shades: {
         action: "Shades",
       },
