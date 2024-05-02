@@ -1,16 +1,15 @@
 import { useGenerateStore } from "~/app/generate/_store/useGenerateStore";
-import { ColourType } from "~/app/generate/_types/Colour";
 import { strings } from "~/locales/generate";
 
 export const ArticleBlock = () => {
-  const shades = useGenerateStore((state) => state.shades);
+  const { Primary: primary } = useGenerateStore((state) => state.palette);
 
   return (
     <section className="flex h-full flex-col gap-4 text-[#32292F]">
       <div>
         <span
           className="text-4xl font-semibold"
-          style={{ color: shades?.[ColourType.Primary].swatch[950] }}
+          style={{ color: primary.shades[950] }}
         >
           {strings.styleTile.heading.title}
         </span>
@@ -18,7 +17,7 @@ export const ArticleBlock = () => {
       <div>
         <span
           className="text-2xl font-medium"
-          style={{ color: shades?.[ColourType.Primary].swatch[950] }}
+          style={{ color: primary.shades[950] }}
         >
           {strings.styleTile.subheading.title}
         </span>

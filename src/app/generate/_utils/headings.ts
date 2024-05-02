@@ -1,6 +1,5 @@
 import { strings } from "~/locales/generate";
-
-import { ColourType } from "../_types/Colour";
+import { ColourType } from "~/types/Palette";
 
 export const paletteHeadings = {
   [ColourType.Primary]: strings.options.colour.palette.primary,

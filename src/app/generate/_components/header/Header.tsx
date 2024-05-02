@@ -33,7 +33,7 @@ export const Header = () => {
       <Link href="/" className="w-[19.5rem] text-2xl font-bold">
         lookfeel
       </Link>
-      <div className="flex w-full justify-between">
+      <div className="flex w-full items-center justify-between">
         <div className="flex items-center gap-2">
           <IconButton Icon={UndoIcon} variant="ghost" />
           <IconButton Icon={RedoIcon} variant="ghost" />

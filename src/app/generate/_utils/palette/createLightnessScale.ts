@@ -16,7 +16,7 @@ export function createLightnessScale(
   ];
 
   // Create missing stops
-  for (const stopValue of stops) {
+  for (const stopValue of STOPS) {
     if (stopValue === 0 || stopValue === 1000 || stopValue === stop) {
       continue;
     }
@@ -24,9 +24,9 @@ export function createLightnessScale(
     const diff = Math.abs((stopValue - stop) / 100);
     const totalDiff =
       stopValue < stop
-        ? Math.abs(stops.indexOf(stop) - stops.indexOf(STOPS[0]!)) - 1
+        ? Math.abs(STOPS.indexOf(stop) - STOPS.indexOf(STOPS[0]!)) - 1
         : Math.abs(
-            stops.indexOf(stop) - stops.indexOf(STOPS[STOPS.length - 1]!),
+            STOPS.indexOf(stop) - STOPS.indexOf(STOPS[STOPS.length - 1]!),
           ) - 1;
     const increment = stopValue < stop ? max - lightness : lightness - min;
 

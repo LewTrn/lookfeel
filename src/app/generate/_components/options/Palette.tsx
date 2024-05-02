@@ -1,13 +1,13 @@
 "use client";
 
-import Tinycolor from "tinycolor2";
+import tinycolor from "tinycolor2";
 
 import Typography from "~/components/ui/typography";
 import { cn } from "~/lib/utils";
 import { strings } from "~/locales/generate";
+import { ColourType } from "~/types/Palette";
 
 import { useGenerateStore } from "../../_store/useGenerateStore";
-import { ColourType } from "../../_types/Colour";
 import { paletteHeadings } from "../../_utils/headings";
 
 type ColourProps = {
@@ -23,7 +23,7 @@ const COLOUR_PROPERTIES = {
 };
 
 const Colour = ({ colourType, value }: ColourProps) => {
-  const whiteIsReadable = Tinycolor.isReadable(value, "#fff", {
+  const whiteIsReadable = tinycolor.isReadable(value, "#fff", {
     size: "large",
   });
 
@@ -54,8 +54,8 @@ export const Palette = () => {
         <Typography variant="h3">{strings.options.colour.title}</Typography>
       </div>
       <div className="overflow-hidden rounded-lg border">
-        {Object.entries(palette).map(([key, value]) => (
-          <Colour key={key} colourType={key as ColourType} value={value} />
+        {Object.entries(palette).map(([key, { baseColour }]) => (
+          <Colour key={key} colourType={key as ColourType} value={baseColour} />
         ))}
       </div>
     </div>
