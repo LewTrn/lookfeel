@@ -1,7 +1,6 @@
 import tinycolor from "tinycolor2";
 
 import { useGenerateStore } from "~/app/generate/_store/useGenerateStore";
-import { ColourType } from "~/types/Palette";
 
 const getStyles = ({
   background,
@@ -21,16 +20,18 @@ const getStyles = ({
 };
 
 export const VisualBlock = () => {
-  const palette = useGenerateStore((state) => state.palette);
+  const { primary, secondary, accent, neutral } = useGenerateStore(
+    (state) => state.palette,
+  );
 
   return (
     <div className="grid h-[540px] grid-rows-4 gap-4">
       <div
         className="flex items-center justify-center rounded-lg shadow"
         style={getStyles({
-          background: palette[ColourType.Primary].baseColour,
-          light: palette[ColourType.Neutral].shades[50],
-          dark: palette[ColourType.Neutral].shades[950],
+          background: primary.baseColour,
+          light: neutral.shades[50],
+          dark: neutral.shades[950],
         })}
       >
         <span className="text-2xl font-bold">lookfeel</span>
@@ -38,9 +39,9 @@ export const VisualBlock = () => {
       <div
         className="flex items-center justify-center rounded-lg shadow"
         style={getStyles({
-          background: palette[ColourType.Secondary].baseColour,
-          light: palette[ColourType.Accent].baseColour,
-          dark: palette[ColourType.Neutral].shades[950],
+          background: secondary.baseColour,
+          light: accent.baseColour,
+          dark: neutral.shades[950],
         })}
       >
         <span className="text-2xl font-bold">lookfeel</span>

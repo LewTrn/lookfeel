@@ -1,8 +1,8 @@
 export enum ColourType {
-  Primary = "Primary",
-  Secondary = "Secondary",
-  Accent = "Accent",
-  Neutral = "Neutral",
+  Primary = "primary",
+  Secondary = "secondary",
+  Accent = "accent",
+  Neutral = "neutral",
 }
 
 export type Shades = {

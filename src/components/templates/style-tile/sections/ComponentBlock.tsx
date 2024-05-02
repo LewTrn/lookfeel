@@ -3,7 +3,7 @@ import { useGenerateStore } from "~/app/generate/_store/useGenerateStore";
 const WORDS = ["Energetic", "Harmony", "Positivity", "Fresh"];
 
 export const ComponentBlock = () => {
-  const { Primary: primary } = useGenerateStore((state) => state.palette);
+  const { primary } = useGenerateStore((state) => state.palette);
 
   return (
     <div className="flex h-[540px] flex-col gap-4">

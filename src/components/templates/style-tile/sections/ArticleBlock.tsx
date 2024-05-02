@@ -2,7 +2,7 @@ import { useGenerateStore } from "~/app/generate/_store/useGenerateStore";
 import { strings } from "~/locales/generate";
 
 export const ArticleBlock = () => {
-  const { Primary: primary } = useGenerateStore((state) => state.palette);
+  const { primary } = useGenerateStore((state) => state.palette);
 
   return (
     <section className="flex h-full flex-col gap-4 text-[#32292F]">
