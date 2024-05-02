@@ -1,4 +1,23 @@
 export const strings = {
+  discover: {
+    filter: {
+      latest: {
+        action: "Latest",
+      },
+      popular: {
+        action: "Popular",
+      },
+      saved: {
+        action: "Saved",
+      },
+      trending: {
+        action: "Trending",
+      },
+      your: {
+        action: "Your themes",
+      },
+    },
+  },
   header: {
     logIn: {
       action: "Log in",
