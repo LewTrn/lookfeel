@@ -15,9 +15,9 @@ export default function Generate() {
   }, [generatePalette]);
 
   return (
-    <main className="flex w-full flex-col px-8">
+    <main className="flex w-full flex-col">
       <Header />
-      <div className="flex gap-8">
+      <div className="flex gap-8 px-8">
         <div className="w-80">
           <Options />
         </div>
