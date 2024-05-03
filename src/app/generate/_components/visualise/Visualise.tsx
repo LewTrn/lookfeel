@@ -7,7 +7,6 @@ import {
 import { Landing } from "templates/components/landing/Landing";
 import { Shades } from "templates/components/shades/Shades";
 import { StyleTile } from "templates/components/style-tile/StyleTile";
-import { ThemeProvider } from "templates/components/theme/ThemeContext";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
 import { strings } from "~/locales/generate";
@@ -34,17 +33,15 @@ export const Visualise = () => {
             {strings.visualise.tabs.dashboard.action}
           </TabsTrigger>
         </TabsList>
-        <ThemeProvider theme={{ palette }}>
-          <TabsContent value="tile">
-            <StyleTile />
-          </TabsContent>
-          <TabsContent value="shades">
-            <Shades />
-          </TabsContent>
-          <TabsContent value="landing">
-            <Landing />
-          </TabsContent>
-        </ThemeProvider>
+        <TabsContent value="tile">
+          <StyleTile />
+        </TabsContent>
+        <TabsContent value="shades">
+          <Shades />
+        </TabsContent>
+        <TabsContent value="landing">
+          <Landing theme={{ palette }} />
+        </TabsContent>
       </Tabs>
     </div>
   );

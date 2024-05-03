@@ -4,7 +4,7 @@ import { type Palette } from "~/types/Palette";
 
 const toHsl = (hex: string) => {
   const hsl = tinycolor(hex).toHslString();
-  return hsl.replace("hsl(", "").replace(")", "").replace(",", "");
+  return hsl.match(/\(([^)]+)\)/)?.[1]!.replaceAll(",", "");
 };
 
 export const getThemeStyle = (palette: Palette) => {

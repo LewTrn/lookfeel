@@ -5,9 +5,13 @@ import { type Palette } from "~/types/Palette";
 
 import { getThemeStyle } from "./getThemeStyle";
 
+export type Theme = {
+  palette: Palette;
+};
+
 type ThemeProviderProps = PropsWithChildren<{
   className?: string;
-  theme: { palette: Palette };
+  theme: Theme;
 }>;
 
 const initialTheme = {

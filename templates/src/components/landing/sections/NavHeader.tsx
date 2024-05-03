@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { Button } from "templates/components/ui/button";
 
 import { cn } from "~/lib/utils";
 
@@ -54,8 +55,9 @@ const components: { title: string; href: string; description: string }[] = [
 
 export function NavHeader() {
   return (
-    <header className="m-4 flex justify-center">
-      <NavigationMenu>
+    <header className="m-4 flex items-center justify-center">
+      <div className="flex-grow text-xl font-semibold">lookfeel</div>
+      <NavigationMenu className="flex-grow">
         <NavigationMenuList>
           <NavigationMenuItem>
             <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
@@ -113,6 +115,9 @@ export function NavHeader() {
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
+      <div className="flex flex-grow justify-end">
+        <Button>Get started</Button>
+      </div>
     </header>
   );
 }
