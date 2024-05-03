@@ -11,8 +11,8 @@ export const Hero = () => {
       </div>
       <div className="mt-16 max-w-lg text-center text-lg">
         <p>
-          Streamline your workflows and boost productivity. Say goodbye to
-          manual tasks and hello to effortless efficiency.
+          Say goodbye to manual tasks and hello to effortless efficiency.
+          Streamline your workflows and boost productivity.
         </p>
       </div>
       <div className="mt-8 flex gap-4">

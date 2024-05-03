@@ -29,9 +29,6 @@ export const Visualise = () => {
           <TabsTrigger value="landing" Icon={LayoutPanelTopIcon}>
             {strings.visualise.tabs.landing.action}
           </TabsTrigger>
-          <TabsTrigger value="dashboard" Icon={LineChartIcon}>
-            {strings.visualise.tabs.dashboard.action}
-          </TabsTrigger>
         </TabsList>
         <TabsContent value="tile">
           <StyleTile />

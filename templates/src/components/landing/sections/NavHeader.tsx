@@ -15,41 +15,21 @@ import {
   navigationMenuTriggerStyle,
 } from "../../ui/navigation-menu";
 
-const components: { title: string; href: string; description: string }[] = [
+const components: { title: string; description: string }[] = [
   {
-    title: "Alert Dialog",
-    href: "/docs/primitives/alert-dialog",
+    title: "Intelligent Automation",
     description:
-      "A modal dialog that interrupts the user with important content and expects a response.",
+      "Streamline your workflows with our AI-powered automation tools.",
   },
   {
-    title: "Hover Card",
-    href: "/docs/primitives/hover-card",
+    title: "Predictive Analytics",
     description:
-      "For sighted users to preview content available behind a link.",
+      "Gain valuable insights and make data-driven decisions with our advanced analytics.",
   },
   {
-    title: "Progress",
-    href: "/docs/primitives/progress",
+    title: "Secure AI Solutions",
     description:
-      "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
-  },
-  {
-    title: "Scroll-area",
-    href: "/docs/primitives/scroll-area",
-    description: "Visually or semantically separates content.",
-  },
-  {
-    title: "Tabs",
-    href: "/docs/primitives/tabs",
-    description:
-      "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-  },
-  {
-    title: "Tooltip",
-    href: "/docs/primitives/tooltip",
-    description:
-      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+      "Protect your data and ensure compliance with our robust security features.",
   },
 ];
 
@@ -60,57 +40,56 @@ export function NavHeader() {
       <NavigationMenu className="flex-grow">
         <NavigationMenuList>
           <NavigationMenuItem>
-            <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
+            <NavigationMenuTrigger>Features</NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                 <li className="row-span-3">
                   <NavigationMenuLink asChild>
-                    <a
-                      className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                      href="/"
-                    >
+                    <a className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-accent/50 to-accent p-6 no-underline outline-none focus:shadow-md">
                       <div className="mb-2 mt-4 text-lg font-medium">
-                        shadcn/ui
+                        example.ai
                       </div>
                       <p className="text-sm leading-tight text-muted-foreground">
-                        Beautifully designed components that you can copy and
-                        paste into your apps. Accessible. Customizable. Open
-                        Source.
+                        Advanced features to help your business thrive
                       </p>
                     </a>
                   </NavigationMenuLink>
                 </li>
-                <ListItem href="/docs" title="Introduction">
-                  Re-usable components built using Radix UI and Tailwind CSS.
+                <ListItem title="Intelligent Automation">
+                  Streamline your workflows with our AI-powered automation
+                  tools.
                 </ListItem>
-                <ListItem href="/docs/installation" title="Installation">
-                  How to install dependencies and structure your app.
+                <ListItem title="Predictive Analytics">
+                  Gain valuable insights and make data-driven decisions with our
+                  advanced analytics.
                 </ListItem>
-                <ListItem href="/docs/primitives/typography" title="Typography">
-                  Styles for headings, paragraphs, lists...etc
+                <ListItem title="Secure AI Solutions">
+                  Protect your data and ensure compliance with our robust
+                  security features.
                 </ListItem>
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <NavigationMenuTrigger>Components</NavigationMenuTrigger>
+            <NavigationMenuTrigger>Use cases</NavigationMenuTrigger>
             <NavigationMenuContent>
-              <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                {components.map((component) => (
-                  <ListItem
-                    key={component.title}
-                    title={component.title}
-                    href={component.href}
-                  >
-                    {component.description}
-                  </ListItem>
-                ))}
+              <ul className="grid w-96 gap-1 p-4">
+                <ListItem title="Retail Optimization">
+                  Optimize inventory, pricing, and customer experiences.
+                </ListItem>
+                <ListItem title="Healthcare Insights">
+                  Improve patient outcomes and operational efficiency with
+                  AI-driven analytics.
+                </ListItem>
+                <ListItem title="Financial Risk Management">
+                  Mitigate risk with AI-powered financial solutions.
+                </ListItem>
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>
           <NavigationMenuItem>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Documentation
+              Pricing
             </NavigationMenuLink>
           </NavigationMenuItem>
         </NavigationMenuList>
