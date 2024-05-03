@@ -55,8 +55,8 @@ const components: { title: string; href: string; description: string }[] = [
 
 export function NavHeader() {
   return (
-    <header className="m-4 flex items-center justify-center">
-      <div className="flex-grow text-xl font-semibold">lookfeel</div>
+    <header className="m-4 flex w-full items-center justify-center">
+      <div className="flex-grow text-xl font-semibold">example.ai</div>
       <NavigationMenu className="flex-grow">
         <NavigationMenuList>
           <NavigationMenuItem>
@@ -116,7 +116,7 @@ export function NavHeader() {
         </NavigationMenuList>
       </NavigationMenu>
       <div className="flex flex-grow justify-end">
-        <Button>Get started</Button>
+        <Button>Request a demo</Button>
       </div>
     </header>
   );
