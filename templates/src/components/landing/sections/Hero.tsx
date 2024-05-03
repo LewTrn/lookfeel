@@ -1,3 +1,9 @@
+import { NavHeader } from "./NavHeader";
+
 export const Hero = () => {
-  return <div></div>;
+  return (
+    <div>
+      <NavHeader />
+    </div>
+  );
 };

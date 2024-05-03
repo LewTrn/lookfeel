@@ -2,5 +2,8 @@
   "name": "templates",
   "version": "1.0.0",
   "private": true,
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "@radix-ui/react-navigation-menu": "^1.1.4"
+  }
 }
