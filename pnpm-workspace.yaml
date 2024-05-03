@@ -1,0 +1,4 @@
+packages:
+  # - "lookfeel/*"
+  - "src/*""
+  - "templates/*"

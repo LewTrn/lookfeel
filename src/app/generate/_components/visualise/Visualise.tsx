@@ -4,11 +4,11 @@ import {
   LineChartIcon,
   SwatchBookIcon,
 } from "lucide-react";
+import { Landing } from "templates/components/landing/Landing";
+import { Shades } from "templates/components/shades/Shades";
+import { StyleTile } from "templates/components/style-tile/StyleTile";
+import { ThemeProvider } from "templates/components/theme/ThemeContext";
 
-import { Landing } from "~/components/templates/landing/Landing";
-import { Shades } from "~/components/templates/shades/Shades";
-import { StyleTile } from "~/components/templates/style-tile/StyleTile";
-import { ThemeProvider } from "~/components/templates/theme/ThemeContext";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
 import { strings } from "~/locales/generate";
 
