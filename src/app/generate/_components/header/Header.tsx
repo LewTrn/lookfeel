@@ -10,11 +10,14 @@ import { strings } from "~/locales/generate";
 
 import { useGenerateStore } from "../../_store/useGenerateStore";
 import { usePaletteParams } from "../../_utils/params/usePaletteParams";
+import { useGenerateHistory } from "./useGenerateHistory";
 
 export const Header = () => {
   const generateRef = useRef<HTMLButtonElement>(null);
-  const generatePalette = useGenerateStore((state) => state.generatePalette);
   const setPaletteParams = usePaletteParams();
+
+  const generatePalette = useGenerateStore((state) => state.generatePalette);
+  const { undo, redo, hasUndo, hasRedo } = useGenerateHistory();
 
   const handleGenerate = useCallback(() => {
     const palette = generatePalette();
@@ -43,8 +46,18 @@ export const Header = () => {
       </Link>
       <div className="flex w-full items-center justify-between">
         <div className="flex items-center gap-2">
-          <IconButton Icon={UndoIcon} variant="ghost" />
-          <IconButton Icon={RedoIcon} variant="ghost" />
+          <IconButton
+            Icon={UndoIcon}
+            variant="ghost"
+            onClick={undo}
+            disabled={!hasUndo}
+          />
+          <IconButton
+            Icon={RedoIcon}
+            variant="ghost"
+            onClick={redo}
+            disabled={!hasRedo}
+          />
           <Button
             ref={generateRef}
             variant="ghost"

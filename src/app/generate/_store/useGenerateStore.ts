@@ -7,16 +7,42 @@ import { makePalette } from "../_utils/palette/makePalette";
 
 export type GenerateState = {
   palette: Palette;
-  paletteLoaded?: boolean;
   generatePalette: (baseColours?: BaseColours) => Palette;
+
+  history: Palette[];
+  pointer: number;
+  updateHistory: (type?: "undo" | "redo" | "clear") => Palette;
 };
 
-export const useGenerateStore = create<GenerateState>((set) => ({
+export const useGenerateStore = create<GenerateState>((set, get) => ({
   palette: DEFAULT_PALETTE,
-  paletteLoaded: false,
   generatePalette: (baseColours) => {
     const palette = makePalette(baseColours);
-    set({ palette, paletteLoaded: true });
+    const { history, pointer } = get();
+
+    // Limit palette history to 20
+    const paletteHistory = [palette, ...history.slice(pointer, 19)];
+
+    set({ palette, history: paletteHistory, pointer: 0 });
+    return palette;
+  },
+
+  history: [],
+  pointer: 0,
+  updateHistory: (type = "undo") => {
+    if (type === "clear") {
+      set({ history: [], pointer: 0 });
+      return DEFAULT_PALETTE;
+    }
+
+    const { history, pointer } = get();
+    const newPointer =
+      type === "undo"
+        ? Math.min(pointer + 1, history.length - 1)
+        : Math.max(pointer - 1, 0);
+    const palette = history[newPointer]!;
+
+    set({ palette, pointer: newPointer });
     return palette;
   },
 }));

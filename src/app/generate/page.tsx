@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 import { extractBaseColours } from "~/utils/colours/extractBaseColours";
 
@@ -12,20 +12,23 @@ import { useGenerateStore } from "./_store/useGenerateStore";
 import { usePaletteParams } from "./_utils/params/usePaletteParams";
 
 export default function Generate() {
+  const paletteLoaded = useRef(false);
   const searchParams = useSearchParams();
   const setPaletteParams = usePaletteParams();
 
-  const paletteLoaded = useGenerateStore((state) => state.paletteLoaded);
   const generatePalette = useGenerateStore((state) => state.generatePalette);
+  const updateHistory = useGenerateStore((state) => state.updateHistory);
 
   useEffect(() => {
-    const baseColours = extractBaseColours(searchParams.get("colors"));
-    const palette = generatePalette(baseColours ?? undefined);
+    if (!paletteLoaded.current) {
+      updateHistory("clear");
+      const baseColours = extractBaseColours(searchParams.get("colors"));
+      const palette = generatePalette(baseColours ?? undefined);
+      paletteLoaded.current = true;
 
-    if (!baseColours) setPaletteParams(palette);
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- initialise palette from params
-  }, []);
+      if (!baseColours) setPaletteParams(palette);
+    }
+  }, [generatePalette, searchParams, setPaletteParams, updateHistory]);
 
   if (!paletteLoaded) return null;
 
