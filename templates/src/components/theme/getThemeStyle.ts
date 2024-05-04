@@ -14,5 +14,6 @@ export const getThemeStyle = (palette: Palette) => {
     "--primary": toHsl(primary.baseColour),
     "--secondary": toHsl(secondary.baseColour),
     "--accent": toHsl(accent.baseColour),
+    "--radius": "0.5rem",
   } as React.CSSProperties;
 };

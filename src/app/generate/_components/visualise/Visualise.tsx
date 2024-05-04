@@ -23,21 +23,21 @@ export const Visualise = () => {
           <TabsTrigger value="tile" Icon={Grid2X2Icon}>
             {strings.visualise.tabs.styleTile.action}
           </TabsTrigger>
-          <TabsTrigger value="shades" Icon={SwatchBookIcon}>
-            {strings.visualise.tabs.shades.action}
-          </TabsTrigger>
           <TabsTrigger value="landing" Icon={LayoutPanelTopIcon}>
             {strings.visualise.tabs.landing.action}
+          </TabsTrigger>
+          <TabsTrigger value="shades" Icon={SwatchBookIcon}>
+            {strings.visualise.tabs.shades.action}
           </TabsTrigger>
         </TabsList>
         <TabsContent value="tile">
           <StyleTile />
         </TabsContent>
-        <TabsContent value="shades">
-          <Shades />
-        </TabsContent>
         <TabsContent value="landing">
           <Landing theme={{ palette }} />
+        </TabsContent>
+        <TabsContent value="shades">
+          <Shades />
         </TabsContent>
       </Tabs>
     </div>

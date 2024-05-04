@@ -1,5 +1,6 @@
 "use client";
 
+import { FlaskConicalIcon, SparkleIcon, Wand2Icon } from "lucide-react";
 import * as React from "react";
 import { Button } from "templates/components/ui/button";
 
@@ -15,57 +16,40 @@ import {
   navigationMenuTriggerStyle,
 } from "../../ui/navigation-menu";
 
-const components: { title: string; description: string }[] = [
-  {
-    title: "Intelligent Automation",
-    description:
-      "Streamline your workflows with our AI-powered automation tools.",
-  },
-  {
-    title: "Predictive Analytics",
-    description:
-      "Gain valuable insights and make data-driven decisions with our advanced analytics.",
-  },
-  {
-    title: "Secure AI Solutions",
-    description:
-      "Protect your data and ensure compliance with our robust security features.",
-  },
-];
-
 export function NavHeader() {
   return (
     <header className="m-4 flex w-full items-center justify-center">
-      <div className="flex-grow text-xl font-semibold">example.ai</div>
-      <NavigationMenu className="flex-grow">
+      <div className="flex flex-1 items-center gap-0.5 text-xl font-semibold text-primary">
+        <FlaskConicalIcon /> spark labs
+      </div>
+      <NavigationMenu className="flex-1">
         <NavigationMenuList>
           <NavigationMenuItem>
             <NavigationMenuTrigger>Features</NavigationMenuTrigger>
             <NavigationMenuContent>
-              <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+              <ul className="grid gap-1 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                 <li className="row-span-3">
                   <NavigationMenuLink asChild>
                     <a className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-accent/50 to-accent p-6 no-underline outline-none focus:shadow-md">
-                      <div className="mb-2 mt-4 text-lg font-medium">
-                        example.ai
+                      <div className="mb-2 mt-4 text-lg font-semibold">
+                        spark labs
                       </div>
                       <p className="text-sm leading-tight text-muted-foreground">
-                        Advanced features to help your business thrive
+                        Fun-packed features you&apos;ll find in the AI
+                        Playground
                       </p>
                     </a>
                   </NavigationMenuLink>
                 </li>
-                <ListItem title="Intelligent Automation">
-                  Streamline your workflows with our AI-powered automation
-                  tools.
+                <ListItem title="Interactive AI Models">
+                  Play around with a variety of AI models, no PhD required.
                 </ListItem>
-                <ListItem title="Predictive Analytics">
-                  Gain valuable insights and make data-driven decisions with our
-                  advanced analytics.
+                <ListItem title="Customizable Projects">
+                  Got a wild idea? Bring it to life with our flexible platform.
                 </ListItem>
-                <ListItem title="Secure AI Solutions">
-                  Protect your data and ensure compliance with our robust
-                  security features.
+                <ListItem title="Educational Resources">
+                  Learn, laugh, and level up your skills with our tutorials and
+                  guides.
                 </ListItem>
               </ul>
             </NavigationMenuContent>
@@ -73,16 +57,15 @@ export function NavHeader() {
           <NavigationMenuItem>
             <NavigationMenuTrigger>Use cases</NavigationMenuTrigger>
             <NavigationMenuContent>
-              <ul className="grid w-96 gap-1 p-4">
-                <ListItem title="Retail Optimization">
-                  Optimize inventory, pricing, and customer experiences.
+              <ul className="grid w-80 gap-1 p-4">
+                <ListItem title="Developers and technologists">
+                  Robust tools and APIs necessary for high-level development.
                 </ListItem>
-                <ListItem title="Healthcare Insights">
-                  Improve patient outcomes and operational efficiency with
-                  AI-driven analytics.
+                <ListItem title="Creatives and innovators">
+                  Tools to start creating novel AI-powered art and designs.
                 </ListItem>
-                <ListItem title="Financial Risk Management">
-                  Mitigate risk with AI-powered financial solutions.
+                <ListItem title="Educators and students">
+                  Rich educational toolkit for learning and teaching AI.
                 </ListItem>
               </ul>
             </NavigationMenuContent>
@@ -94,8 +77,8 @@ export function NavHeader() {
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
-      <div className="flex flex-grow justify-end">
-        <Button>Request a demo</Button>
+      <div className="flex flex-1 justify-end">
+        <Button>Get started</Button>
       </div>
     </header>
   );
