@@ -6,9 +6,9 @@ import {
   type Shades,
   type Swatch,
 } from "~/types/Palette";
+import { generateBaseColours } from "~/utils/colours/generateBaseColours";
 
 import { createLightnessScale } from "./createLightnessScale";
-import { generateBaseColours } from "./generateBaseColours";
 import { nearestColourStop } from "./nearestColourStop";
 
 type ShadesConfig = {

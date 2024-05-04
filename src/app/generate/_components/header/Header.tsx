@@ -9,7 +9,7 @@ import { IconButton } from "~/components/ui/icon-button";
 import { strings } from "~/locales/generate";
 
 import { useGenerateStore } from "../../_store/useGenerateStore";
-import { usePaletteParams } from "../../_utils/usePaletteParams";
+import { usePaletteParams } from "../../_utils/params/usePaletteParams";
 
 export const Header = () => {
   const generateRef = useRef<HTMLButtonElement>(null);

@@ -3,18 +3,19 @@
 import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 
+import { extractBaseColours } from "~/utils/colours/extractBaseColours";
+
 import { Header } from "./_components/header/Header";
 import { Options } from "./_components/options/Options";
 import { Visualise } from "./_components/visualise/Visualise";
 import { useGenerateStore } from "./_store/useGenerateStore";
-import { extractBaseColours } from "./_utils/usePaletteParams";
 
 export default function Generate() {
   const searchParams = useSearchParams();
   const generatePalette = useGenerateStore((state) => state.generatePalette);
 
   useEffect(() => {
-    const baseColours = extractBaseColours(searchParams);
+    const baseColours = extractBaseColours(searchParams.get("colors"));
     if (baseColours) {
       generatePalette(baseColours);
     }
