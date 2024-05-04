@@ -25,6 +25,13 @@ export type Swatch = {
   shades: Shades;
 };
 
+export type BaseColours = {
+  [ColourType.Primary]: string;
+  [ColourType.Secondary]: string;
+  [ColourType.Accent]: string;
+  [ColourType.Neutral]: string;
+};
+
 export type Palette = {
   [ColourType.Primary]: Swatch;
   [ColourType.Secondary]: Swatch;

@@ -1,6 +1,11 @@
 import tinycolor from "tinycolor2";
 
-import { type Palette, type Shades, type Swatch } from "~/types/Palette";
+import {
+  type BaseColours,
+  type Palette,
+  type Shades,
+  type Swatch,
+} from "~/types/Palette";
 
 import { createLightnessScale } from "./createLightnessScale";
 import { generateBaseColours } from "./generateBaseColours";
@@ -34,10 +39,10 @@ const makeShades = ({ colour, colourStop }: ShadesConfig) => {
   return Object.fromEntries(swatch) as Shades;
 };
 
-export const makePalette = () => {
-  const baseColours = generateBaseColours();
+export const makePalette = (baseColours?: BaseColours) => {
+  const colours = baseColours ?? generateBaseColours();
 
-  return Object.entries(baseColours).reduce((acc, [key, colour]) => {
+  return Object.entries(colours).reduce((acc, [key, colour]) => {
     const colourStop = nearestColourStop(colour);
     const shades = makeShades({ colour, colourStop });
     const swatch: Swatch = { baseColour: colour, baseStop: colourStop, shades };

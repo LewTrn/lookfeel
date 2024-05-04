@@ -8,6 +8,6 @@ type TemplateProps = PropsWithChildren<{
 
 export const Template = (props: TemplateProps) => {
   return (
-    <ThemeProvider className="overflow-clip rounded-lg shadow" {...props} />
+    <ThemeProvider className="overflow-clip rounded-[1rem] shadow" {...props} />
   );
 };

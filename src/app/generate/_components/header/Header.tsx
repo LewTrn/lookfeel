@@ -2,22 +2,29 @@
 
 import { RedoIcon, UndoIcon } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 
 import { Button } from "~/components/ui/button";
 import { IconButton } from "~/components/ui/icon-button";
 import { strings } from "~/locales/generate";
 
 import { useGenerateStore } from "../../_store/useGenerateStore";
+import { usePaletteParams } from "../../_utils/usePaletteParams";
 
 export const Header = () => {
   const generateRef = useRef<HTMLButtonElement>(null);
   const generatePalette = useGenerateStore((state) => state.generatePalette);
+  const setPaletteParams = usePaletteParams();
+
+  const handleGenerate = useCallback(() => {
+    const palette = generatePalette();
+    setPaletteParams(palette);
+  }, [generatePalette, setPaletteParams]);
 
   useEffect(() => {
     const onSpace = (event: KeyboardEvent) => {
       if (event.code === "Space") {
-        generatePalette();
+        handleGenerate();
         event.preventDefault();
       }
     };
@@ -27,7 +34,7 @@ export const Header = () => {
     return () => {
       document.removeEventListener("keydown", onSpace);
     };
-  }, [generatePalette]);
+  }, [handleGenerate]);
 
   return (
     <header className="sticky top-0 z-50 mx-2 mb-4 flex h-16 items-center justify-between gap-8 bg-background px-8">
@@ -42,7 +49,7 @@ export const Header = () => {
             ref={generateRef}
             variant="ghost"
             onClick={() => {
-              generatePalette();
+              handleGenerate();
               generateRef.current?.blur();
             }}
           >
