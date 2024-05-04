@@ -9,18 +9,25 @@ import { Header } from "./_components/header/Header";
 import { Options } from "./_components/options/Options";
 import { Visualise } from "./_components/visualise/Visualise";
 import { useGenerateStore } from "./_store/useGenerateStore";
+import { usePaletteParams } from "./_utils/params/usePaletteParams";
 
 export default function Generate() {
   const searchParams = useSearchParams();
+  const setPaletteParams = usePaletteParams();
+
+  const paletteLoaded = useGenerateStore((state) => state.paletteLoaded);
   const generatePalette = useGenerateStore((state) => state.generatePalette);
 
   useEffect(() => {
     const baseColours = extractBaseColours(searchParams.get("colors"));
-    if (baseColours) {
-      generatePalette(baseColours);
-    }
+    const palette = generatePalette(baseColours ?? undefined);
+
+    if (!baseColours) setPaletteParams(palette);
+
     // eslint-disable-next-line react-hooks/exhaustive-deps -- initialise palette from params
   }, []);
+
+  if (!paletteLoaded) return null;
 
   return (
     <main className="flex w-full flex-col">
