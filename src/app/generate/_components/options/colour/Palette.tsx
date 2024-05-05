@@ -2,13 +2,12 @@
 
 import tinycolor from "tinycolor2";
 
+import { useGenerateStore } from "~/app/generate/_store/useGenerateStore";
+import { paletteHeadings } from "~/app/generate/_utils/headings";
 import Typography from "~/components/ui/typography";
 import { cn } from "~/lib/utils";
 import { strings } from "~/locales/generate";
 import { ColourType } from "~/types/Palette";
-
-import { useGenerateStore } from "../../_store/useGenerateStore";
-import { paletteHeadings } from "../../_utils/headings";
 
 type ColourProps = {
   colourType: ColourType;
@@ -51,7 +50,7 @@ export const Palette = () => {
   return (
     <div>
       <div className="mb-1 ml-2 text-secondary">
-        <Typography variant="h3">{strings.options.colour.title}</Typography>
+        <Typography variant="h3">{strings.colour.palette.title}</Typography>
       </div>
       <div className="overflow-hidden rounded-lg border">
         {Object.entries(palette).map(([key, { baseColour }]) => (

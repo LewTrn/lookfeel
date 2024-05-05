@@ -1,14 +1,24 @@
 export const strings = {
-  options: {
-    colour: {
-      palette: {
-        accent: "Accent",
-        neutral: "Neutral",
-        primary: "Primary",
-        secondary: "Secondary",
+  colour: {
+    palette: {
+      accent: {
+        label: "Accent",
       },
-      title: "Colors",
+      neutral: {
+        label: "Neutral",
+      },
+      primary: {
+        label: "Primary",
+      },
+      secondary: {
+        label: "Secondary",
+      },
+      title: "Palette",
     },
+    title: "Colors",
+  },
+  typography: {
+    title: "Typography",
   },
   styleTile: {
     badge: {

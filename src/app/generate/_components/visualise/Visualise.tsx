@@ -1,9 +1,4 @@
-import {
-  Grid2X2Icon,
-  LayoutPanelTopIcon,
-  LineChartIcon,
-  SwatchBookIcon,
-} from "lucide-react";
+import { Grid2X2Icon, LayoutPanelTopIcon, SwatchBookIcon } from "lucide-react";
 import { Landing } from "templates/components/landing/Landing";
 import { Shades } from "templates/components/shades/Shades";
 import { StyleTile } from "templates/components/style-tile/StyleTile";

@@ -2,8 +2,8 @@ import { strings } from "~/locales/generate";
 import { ColourType } from "~/types/Palette";
 
 export const paletteHeadings = {
-  [ColourType.Primary]: strings.options.colour.palette.primary,
-  [ColourType.Secondary]: strings.options.colour.palette.secondary,
-  [ColourType.Accent]: strings.options.colour.palette.accent,
-  [ColourType.Neutral]: strings.options.colour.palette.neutral,
+  [ColourType.Primary]: strings.colour.palette.primary.label,
+  [ColourType.Secondary]: strings.colour.palette.secondary.label,
+  [ColourType.Accent]: strings.colour.palette.accent.label,
+  [ColourType.Neutral]: strings.colour.palette.neutral.label,
 };
