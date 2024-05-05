@@ -25,9 +25,9 @@ export const VisualBlock = () => {
   );
 
   return (
-    <div className="grid h-[540px] grid-rows-4 gap-4">
+    <div className="flex w-60 max-w-60 flex-col gap-4">
       <div
-        className="flex items-center justify-center rounded-lg shadow"
+        className="flex h-32 items-center justify-center rounded-lg shadow"
         style={getStyles({
           background: primary.baseColour,
           light: neutral.shades[50],
@@ -37,7 +37,7 @@ export const VisualBlock = () => {
         <span className="text-2xl font-bold">lookfeel</span>
       </div>
       <div
-        className="flex items-center justify-center rounded-lg shadow"
+        className="flex h-32 items-center justify-center rounded-lg shadow"
         style={getStyles({
           background: secondary.baseColour,
           light: accent.baseColour,
@@ -46,11 +46,14 @@ export const VisualBlock = () => {
       >
         <span className="text-2xl font-bold">lookfeel</span>
       </div>
-      <div className="row-span-2 overflow-hidden rounded-lg shadow">
+      <div
+        className="aspect-square overflow-hidden rounded-lg shadow"
+        style={{ backgroundColor: primary.baseColour }}
+      >
         <img
-          src="https://source.unsplash.com/random/800x600"
+          src="https://source.unsplash.com/blue-orange-and-yellow-wallpaper-E8Ufcyxz514"
           alt=""
-          className="object-cover wh-full"
+          className="object-cover mix-blend-luminosity wh-full"
         />
       </div>
     </div>

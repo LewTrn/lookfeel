@@ -11,11 +11,17 @@ export const strings = {
     },
   },
   styleTile: {
+    badge: {
+      label: "Badge",
+    },
     heading: {
       title: "Heading",
     },
     input: {
       placeholder: "Enter text",
+    },
+    jobDescription: {
+      subtitle: "Co-Founder / CTO",
     },
     label: {
       label: "Label",

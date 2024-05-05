@@ -8,7 +8,7 @@ export const PaletteBlock = () => {
       {Object.values(palette).map(({ baseColour }, index) => (
         <div
           key={`${baseColour}-${index}`}
-          className="h-16 rounded-sm"
+          className="aspect-square rounded-lg 2xl:aspect-auto 2xl:h-32"
           style={{ backgroundColor: baseColour }}
         />
       ))}

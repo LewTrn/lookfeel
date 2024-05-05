@@ -1,35 +1,49 @@
-import { useGenerateStore } from "~/app/generate/_store/useGenerateStore";
+import { addDays } from "date-fns";
+import { useState } from "react";
+import { type DateRange } from "react-day-picker";
+import { Badge } from "templates/components/ui/badge";
+import { Calendar } from "templates/components/ui/calendar";
 
-const WORDS = ["Energetic", "Harmony", "Positivity", "Fresh"];
+import { strings } from "~/locales/generate";
+
+const from = new Date();
 
 export const ComponentBlock = () => {
-  const { primary } = useGenerateStore((state) => state.palette);
+  const defaultSelected: DateRange = {
+    from,
+    to: addDays(from, 5),
+  };
+  const [range, setRange] = useState<DateRange | undefined>(defaultSelected);
 
   return (
-    <div className="flex h-[540px] flex-col gap-4">
-      <div className="flex shrink-0 flex-col overflow-clip rounded-lg bg-white shadow">
-        <div style={{ backgroundColor: primary.baseColour }}>
-          <img
-            src="https://source.unsplash.com/blue-orange-and-yellow-wallpaper-E8Ufcyxz514"
-            alt=""
-            className="h-56 w-full object-cover mix-blend-luminosity"
-          />
+    <div className="flex w-full flex-col gap-8">
+      <Calendar
+        mode="range"
+        selected={range}
+        onSelect={setRange}
+        className="rounded-md border"
+      />
+      <div className="flex flex-col gap-4 p-4">
+        <div className="flex flex-col text-sm">
+          <div>
+            <Badge variant="secondary">{strings.styleTile.badge.label}</Badge>
+          </div>
         </div>
-        <div className="flex h-full flex-col p-4">
-          <h4 className="font-semibold">Title</h4>
-          <p className="text-sm">Description</p>
+        <div className="text-sm">
+          <h3 className="mb-1 font-bold">Lorem ipsum dolor sit amet</h3>
+          <p>
+            Donec vel dui ac elit interdum mollis. Vivamus gravida porttitor
+            nunc eu placerat.
+          </p>
         </div>
-      </div>
-      <div className="h-full">
-        <div
-          className="flex flex-col items-center justify-center p-2 wh-full"
-          style={{ color: primary.shades[950] }}
-        >
-          {WORDS.map((word, index) => (
-            <span key={`${word}-${index}`} className="text-3xl font-medium">
-              {word}
-            </span>
-          ))}
+        <div className="flex items-center gap-2">
+          <div className="flex aspect-square h-8 w-8 items-center justify-center rounded-full bg-primary text-sm">
+            LF
+          </div>
+          <div className="text-xs">
+            <p className="font-semibold">Luna Forrest</p>
+            <p>{strings.styleTile.jobDescription.subtitle}</p>
+          </div>
         </div>
       </div>
     </div>

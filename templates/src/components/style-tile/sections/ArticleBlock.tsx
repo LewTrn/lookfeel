@@ -5,8 +5,8 @@ export const ArticleBlock = () => {
   const { primary } = useGenerateStore((state) => state.palette);
 
   return (
-    <section className="flex h-full flex-col gap-4 text-[#32292F]">
-      <div>
+    <section className="mb-4 flex flex-col">
+      <div className="mb-4">
         <span
           className="text-4xl font-semibold"
           style={{ color: primary.shades[950] }}
@@ -14,7 +14,7 @@ export const ArticleBlock = () => {
           {strings.styleTile.heading.title}
         </span>
       </div>
-      <div>
+      <div className="mb-2">
         <span
           className="text-2xl font-medium"
           style={{ color: primary.shades[950] }}
@@ -23,16 +23,14 @@ export const ArticleBlock = () => {
         </span>
       </div>
       <div>
-        <p>
+        <p className="mb-2">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed enim
-          ut sem viverra aliquet eget. Ornare suspendisse sed nisi lacus sed
-          viverra.
+          ut sem viverra aliquet eget.
         </p>
         <p>
           Lorem dolor sed viverra ipsum. Montes nascetur ridiculus mus mauris.
-          Egestas purus viverra accumsan in nisl nisi. Diam volutpat commodo sed
-          egestas egestas fringilla phasellus faucibus.
+          Egestas purus viverra accumsan in nisl nisi.
         </p>
       </div>
     </section>

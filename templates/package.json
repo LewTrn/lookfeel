@@ -4,7 +4,10 @@
   "private": true,
   "type": "module",
   "dependencies": {
+    "@radix-ui/react-label": "^2.0.2",
     "@radix-ui/react-navigation-menu": "^1.1.4",
-    "@radix-ui/react-slot": "^1.0.2"
+    "@radix-ui/react-slot": "^1.0.2",
+    "date-fns": "^3.6.0",
+    "react-day-picker": "^8.10.1"
   }
 }

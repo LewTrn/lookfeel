@@ -31,7 +31,7 @@ export const Visualise = () => {
           </TabsTrigger>
         </TabsList>
         <TabsContent value="tile">
-          <StyleTile />
+          <StyleTile theme={{ palette }} />
         </TabsContent>
         <TabsContent value="landing">
           <Landing theme={{ palette }} />
