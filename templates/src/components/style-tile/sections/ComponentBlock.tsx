@@ -21,7 +21,7 @@ export const ComponentBlock = () => {
         mode="range"
         selected={range}
         onSelect={setRange}
-        className="rounded-md border"
+        className="rounded-lg border"
       />
       <div className="flex flex-col gap-4 p-4">
         <div className="flex flex-col text-sm">
