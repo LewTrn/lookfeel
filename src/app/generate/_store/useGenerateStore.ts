@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-import { DEFAULT_PALETTE } from "~/app/constants/palette";
+import { DEFAULT_PALETTE } from "~/constants/palette";
 import { type BaseColours, type Palette } from "~/types/Palette";
 
 import { makePalette } from "../_utils/palette/makePalette";

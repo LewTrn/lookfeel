@@ -1,6 +1,6 @@
 import { createContext, type PropsWithChildren, useContext } from "react";
 
-import { DEFAULT_PALETTE } from "~/app/constants/palette";
+import { DEFAULT_PALETTE } from "~/constants/palette";
 import { type Palette } from "~/types/Palette";
 
 import { getThemeStyle } from "./getThemeStyle";
