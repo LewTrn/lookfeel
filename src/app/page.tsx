@@ -6,7 +6,7 @@ export default async function Home() {
   return (
     <main className="mx-auto w-full max-w-screen-2xl px-8 pb-8">
       <Header />
-      <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-16">
         <Hero />
         <Discover />
       </div>
