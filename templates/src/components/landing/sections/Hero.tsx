@@ -18,12 +18,12 @@ export const Hero = () => {
           </a>
         </div>
         <div className="max-w-xl text-center text-6xl font-bold">
-          <h1>Beautiful themes for your next project</h1>
+          <h1>Beautiful UI themes for your next project</h1>
         </div>
         <div className="mt-16 max-w-lg text-center text-lg">
           <p>
-            Generate custom themes, visualise them with live previews and
-            discover trending designs from the community.
+            Generate custom UI themes, visualize with real layouts and discover
+            trending designs from the community.
           </p>
         </div>
         <div className="mt-8 grid grid-cols-2 gap-4">
