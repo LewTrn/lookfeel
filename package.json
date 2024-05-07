@@ -33,6 +33,7 @@
     "superjson": "^2.2.1",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
+    "templates": "link:templates",
     "tinycolor2": "^1.6.0",
     "zod": "^3.23.3",
     "zustand": "^4.5.2"
