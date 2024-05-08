@@ -3,8 +3,10 @@ import { create } from "zustand";
 import { DEFAULT_FONTS } from "~/constants/fonts";
 import { DEFAULT_PALETTE } from "~/constants/palette";
 import { type Fonts } from "~/types/Fonts";
+import { GenerateMode } from "~/types/Mode";
 import { type BaseColours, type Palette } from "~/types/Palette";
 
+import { selectFonts } from "../_utils/fonts/selectFonts";
 import { makePalette } from "../_utils/palette/makePalette";
 
 export type GenerateState = {
@@ -15,7 +17,11 @@ export type GenerateState = {
   pointer: number;
   updateHistory: (type?: "undo" | "redo" | "clear") => Palette;
 
+  mode: GenerateMode;
+  setMode: (mode: GenerateMode) => void;
+
   fonts: Fonts;
+  generateFonts: () => Fonts;
 };
 
 export const useGenerateStore = create<GenerateState>((set, get) => ({
@@ -50,5 +56,13 @@ export const useGenerateStore = create<GenerateState>((set, get) => ({
     return palette;
   },
 
+  mode: GenerateMode.Colour,
+  setMode: (mode) => set({ mode }),
+
   fonts: DEFAULT_FONTS,
+  generateFonts: () => {
+    const fonts = selectFonts();
+    set({ fonts });
+    return fonts;
+  },
 }));

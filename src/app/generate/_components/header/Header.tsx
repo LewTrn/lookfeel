@@ -7,6 +7,7 @@ import { useCallback, useEffect, useRef } from "react";
 import { Button } from "~/components/ui/button";
 import { IconButton } from "~/components/ui/icon-button";
 import { strings } from "~/locales/generate";
+import { GenerateMode } from "~/types/Mode";
 
 import { useGenerateStore } from "../../_store/useGenerateStore";
 import { usePaletteParams } from "../../_utils/params/usePaletteParams";
@@ -16,13 +17,22 @@ export const Header = () => {
   const generateRef = useRef<HTMLButtonElement>(null);
   const setPaletteParams = usePaletteParams();
 
+  const mode = useGenerateStore((state) => state.mode);
   const generatePalette = useGenerateStore((state) => state.generatePalette);
+  const generateFonts = useGenerateStore((state) => state.generateFonts);
   const { undo, redo, hasUndo, hasRedo } = useGenerateHistory();
 
   const handleGenerate = useCallback(() => {
-    const palette = generatePalette();
-    setPaletteParams(palette);
-  }, [generatePalette, setPaletteParams]);
+    switch (mode) {
+      case GenerateMode.Colour:
+        const palette = generatePalette();
+        setPaletteParams(palette);
+        break;
+      case GenerateMode.Typography:
+        generateFonts();
+        break;
+    }
+  }, [generateFonts, generatePalette, mode, setPaletteParams]);
 
   useEffect(() => {
     const onSpace = (event: KeyboardEvent) => {
