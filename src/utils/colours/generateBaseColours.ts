@@ -1,4 +1,5 @@
 import ColorScheme from "color-scheme";
+import { sample } from "lodash";
 import tinycolor from "tinycolor2";
 
 import { ColourType } from "~/types/Palette";
@@ -28,14 +29,14 @@ const SCHEMES = [
   { scheme: "mono", select: selectFromFour },
   { scheme: "contrast", select: selectFromEight },
   { scheme: "triade", select: selectFromTwelve },
-];
+] as const;
 
-const VARIATIONS = ["default", "pastel", "soft", "light", "hard"];
+const VARIATIONS = ["default", "pastel", "soft", "light", "hard"] as const;
 
 export const generateBaseColours = () => {
   const hue = Math.floor(Math.random() * 360);
-  const { scheme, select } = pickRandom(SCHEMES);
-  const variation = pickRandom(VARIATIONS);
+  const { scheme, select } = sample(SCHEMES)!;
+  const variation = sample(VARIATIONS);
 
   const s = new ColorScheme().from_hue(hue).scheme(scheme).variation(variation);
 

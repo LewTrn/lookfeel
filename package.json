@@ -24,6 +24,7 @@
     "clsx": "^2.1.1",
     "color-scheme": "^1.0.1",
     "edgedb": "^1.5.5",
+    "lodash": "^4.17.21",
     "lucide-react": "^0.376.0",
     "nearest-color": "^0.4.4",
     "next": "^14.2.1",
@@ -40,6 +41,7 @@
   },
   "devDependencies": {
     "@types/eslint": "^8.56.2",
+    "@types/lodash": "^4.17.1",
     "@types/node": "^20.11.20",
     "@types/react": "^18.2.57",
     "@types/react-dom": "^18.2.19",
