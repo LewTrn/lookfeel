@@ -7,7 +7,9 @@ const toHsl = (hex: string) => {
   return hsl.match(/\(([^)]+)\)/)?.[1]!.replaceAll(",", "");
 };
 
-export const getThemeStyle = (palette: Palette) => {
+export const getThemeStyle = (palette?: Palette) => {
+  if (!palette) return undefined;
+
   const { primary, accent, secondary } = palette;
 
   return {

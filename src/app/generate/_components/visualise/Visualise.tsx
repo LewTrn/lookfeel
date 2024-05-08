@@ -32,7 +32,7 @@ export const Visualise = () => {
           <Landing theme={{ palette }} />
         </TabsContent>
         <TabsContent value="shades">
-          <Shades />
+          <Shades theme={{ palette }} />
         </TabsContent>
       </Tabs>
     </div>

@@ -23,7 +23,7 @@ export const ComponentBlock = () => {
         onSelect={setRange}
         className="rounded-lg border"
       />
-      <div className="flex flex-col gap-4 p-4">
+      <div className="flex flex-col gap-4 p-2">
         <div className="flex flex-col text-sm">
           <div>
             <Badge variant="secondary">{strings.styleTile.badge.label}</Badge>

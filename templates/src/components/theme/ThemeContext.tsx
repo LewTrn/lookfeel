@@ -6,7 +6,7 @@ import { type Palette } from "~/types/Palette";
 import { getThemeStyle } from "./getThemeStyle";
 
 export type Theme = {
-  palette: Palette;
+  palette?: Palette;
 };
 
 type ThemeProviderProps = PropsWithChildren<{
@@ -18,7 +18,7 @@ const initialTheme = {
   palette: DEFAULT_PALETTE,
 };
 
-export const ThemeContext = createContext(initialTheme);
+export const ThemeContext = createContext<Theme>(initialTheme);
 
 export const ThemeProvider = ({
   className,

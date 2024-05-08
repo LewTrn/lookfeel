@@ -35,7 +35,7 @@ export default function Generate() {
   return (
     <main className="flex w-full flex-col">
       <Header />
-      <div className="flex gap-8 px-8">
+      <div className="flex gap-8 px-8 pb-8">
         <div className="w-80">
           <Options />
         </div>
