@@ -1,6 +1,8 @@
 import { create } from "zustand";
 
+import { DEFAULT_FONTS } from "~/constants/fonts";
 import { DEFAULT_PALETTE } from "~/constants/palette";
+import { type Fonts } from "~/types/Fonts";
 import { type BaseColours, type Palette } from "~/types/Palette";
 
 import { makePalette } from "../_utils/palette/makePalette";
@@ -12,6 +14,8 @@ export type GenerateState = {
   history: Palette[];
   pointer: number;
   updateHistory: (type?: "undo" | "redo" | "clear") => Palette;
+
+  fonts: Fonts;
 };
 
 export const useGenerateStore = create<GenerateState>((set, get) => ({
@@ -45,4 +49,6 @@ export const useGenerateStore = create<GenerateState>((set, get) => ({
     set({ palette, pointer: newPointer });
     return palette;
   },
+
+  fonts: DEFAULT_FONTS,
 }));

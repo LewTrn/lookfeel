@@ -4,6 +4,7 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useRef } from "react";
 
 import { extractBaseColours } from "~/utils/colours/extractBaseColours";
+import { useLoadFont } from "~/utils/typography/useLoadFont";
 
 import { Header } from "./_components/header/Header";
 import { Options } from "./_components/options/Options";
@@ -18,6 +19,10 @@ export default function Generate() {
 
   const generatePalette = useGenerateStore((state) => state.generatePalette);
   const updateHistory = useGenerateStore((state) => state.updateHistory);
+  const { heading, body } = useGenerateStore((state) => state.fonts);
+
+  useLoadFont(heading.family);
+  useLoadFont(body.family);
 
   useEffect(() => {
     if (!paletteLoaded.current) {

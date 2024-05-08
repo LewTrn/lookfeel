@@ -4,6 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
 import { strings } from "~/locales/generate";
 
 import { Colour } from "./colour/Colour";
+import { TypographyOptions } from "./typography/TypographyOptions";
 
 export const Options = () => {
   return (
@@ -28,7 +29,9 @@ export const Options = () => {
         <TabsContent value="colour">
           <Colour />
         </TabsContent>
-        <TabsContent value="typography"></TabsContent>
+        <TabsContent value="typography">
+          <TypographyOptions />
+        </TabsContent>
       </Tabs>
     </div>
   );
