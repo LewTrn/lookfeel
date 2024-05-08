@@ -9,7 +9,7 @@ export const Header = async () => {
     <header className="mx-2 mb-4 flex h-16 items-center justify-between">
       <div className="text-2xl font-bold">lookfeel</div>
       <div className="flex gap-2">
-        <Link href={auth.getBuiltinUISignUpUrl()}>
+        <Link href={auth.getBuiltinUIUrl()}>
           <Button variant="ghost">{strings.header.logIn.action}</Button>
         </Link>
         <Link href="/generate">
