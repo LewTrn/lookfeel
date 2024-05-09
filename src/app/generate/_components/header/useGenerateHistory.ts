@@ -1,8 +1,8 @@
 import { useGenerateStore } from "../../_store/useGenerateStore";
-import { usePaletteParams } from "../../_utils/params/usePaletteParams";
+import { useThemeParams } from "../../_utils/params/useThemeParams";
 
 export const useGenerateHistory = () => {
-  const setPaletteParams = usePaletteParams();
+  const setThemeParams = useThemeParams();
 
   const updateHistory = useGenerateStore((state) => state.updateHistory);
   const history = useGenerateStore((state) => state.history);
@@ -12,13 +12,13 @@ export const useGenerateHistory = () => {
   const hasRedo = pointer > 0;
 
   const undo = () => {
-    const palette = updateHistory("undo");
-    setPaletteParams(palette);
+    const theme = updateHistory("undo");
+    setThemeParams(theme);
   };
 
   const redo = () => {
-    const palette = updateHistory("redo");
-    setPaletteParams(palette);
+    const theme = updateHistory("redo");
+    setThemeParams(theme);
   };
 
   return { undo, redo, hasUndo, hasRedo };

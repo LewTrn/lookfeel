@@ -18,8 +18,6 @@ export const useInitTheme = () => {
 
   useEffect(() => {
     if (!themeLoaded.current) {
-      updateHistory("clear");
-
       const baseColours = extractBaseColours(searchParams.get("colors"));
       const palette = generatePalette(baseColours ?? undefined);
 
@@ -28,6 +26,7 @@ export const useInitTheme = () => {
 
       setThemeParams({ palette, fonts: generatedFonts });
       themeLoaded.current = true;
+      updateHistory("reset");
     }
   }, [
     generateFonts,

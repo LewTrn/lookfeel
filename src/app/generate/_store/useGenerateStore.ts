@@ -5,6 +5,7 @@ import { DEFAULT_PALETTE } from "~/constants/palette";
 import { type Fonts } from "~/types/Fonts";
 import { GenerateMode } from "~/types/Mode";
 import { type BaseColours, type Palette } from "~/types/Palette";
+import { type Theme } from "~/types/Theme";
 
 import { selectFonts } from "../_utils/fonts/selectFonts";
 import { makePalette } from "../_utils/palette/makePalette";
@@ -13,9 +14,9 @@ export type GenerateState = {
   palette: Palette;
   generatePalette: (baseColours?: BaseColours) => Palette;
 
-  history: Palette[];
+  history: Theme[];
   pointer: number;
-  updateHistory: (type?: "undo" | "redo" | "clear") => Palette;
+  updateHistory: (type?: "undo" | "redo" | "reset") => Theme;
 
   mode: GenerateMode;
   setMode: (mode: GenerateMode) => void;
@@ -24,25 +25,31 @@ export type GenerateState = {
   generateFonts: (fonts?: string[]) => Fonts;
 };
 
+const HISTORY_LIMIT = 30 - 1;
+
 export const useGenerateStore = create<GenerateState>((set, get) => ({
   palette: DEFAULT_PALETTE,
   generatePalette: (baseColours) => {
     const palette = makePalette(baseColours);
-    const { history, pointer } = get();
+    const { fonts, history, pointer } = get();
 
-    // Limit palette history to 20
-    const paletteHistory = [palette, ...history.slice(pointer, 19)];
+    const themeHistory = [
+      { palette, fonts },
+      ...history.slice(pointer, HISTORY_LIMIT),
+    ];
 
-    set({ palette, history: paletteHistory, pointer: 0 });
+    set({ palette, history: themeHistory, pointer: 0 });
     return palette;
   },
 
   history: [],
   pointer: 0,
   updateHistory: (type = "undo") => {
-    if (type === "clear") {
-      set({ history: [], pointer: 0 });
-      return DEFAULT_PALETTE;
+    if (type === "reset") {
+      const { palette, fonts } = get();
+      const theme = { palette, fonts };
+      set({ history: [theme], pointer: 0 });
+      return theme;
     }
 
     const { history, pointer } = get();
@@ -50,10 +57,10 @@ export const useGenerateStore = create<GenerateState>((set, get) => ({
       type === "undo"
         ? Math.min(pointer + 1, history.length - 1)
         : Math.max(pointer - 1, 0);
-    const palette = history[newPointer]!;
+    const { palette, fonts } = history[newPointer]!;
 
-    set({ palette, pointer: newPointer });
-    return palette;
+    set({ palette, fonts, pointer: newPointer });
+    return { palette, fonts };
   },
 
   mode: GenerateMode.Colour,
@@ -62,7 +69,14 @@ export const useGenerateStore = create<GenerateState>((set, get) => ({
   fonts: DEFAULT_FONTS,
   generateFonts: (fonts) => {
     const selectedFonts = selectFonts(fonts);
-    set({ fonts: selectedFonts });
+    const { palette, history, pointer } = get();
+
+    const themeHistory = [
+      { fonts: selectedFonts, palette },
+      ...history.slice(pointer, HISTORY_LIMIT),
+    ];
+
+    set({ fonts: selectedFonts, history: themeHistory, pointer: 0 });
     return selectedFonts;
   },
 }));

@@ -1,19 +1,13 @@
 import { usePathname } from "next/navigation";
 import { useCallback } from "react";
 
-import { type Fonts } from "~/types/Fonts";
-import { type Palette } from "~/types/Palette";
-
-type ThemeArgs = {
-  palette: Palette;
-  fonts: Fonts;
-};
+import { type Theme } from "~/types/Theme";
 
 export const useThemeParams = () => {
   const pathname = usePathname();
 
   return useCallback(
-    ({ palette, fonts }: ThemeArgs) => {
+    ({ palette, fonts }: Theme) => {
       const colours = Object.values(palette).map(
         ({ baseColour }) => baseColour,
       );
