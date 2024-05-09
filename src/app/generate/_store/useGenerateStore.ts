@@ -21,7 +21,7 @@ export type GenerateState = {
   setMode: (mode: GenerateMode) => void;
 
   fonts: Fonts;
-  generateFonts: () => Fonts;
+  generateFonts: (fonts?: string[]) => Fonts;
 };
 
 export const useGenerateStore = create<GenerateState>((set, get) => ({
@@ -60,9 +60,9 @@ export const useGenerateStore = create<GenerateState>((set, get) => ({
   setMode: (mode) => set({ mode }),
 
   fonts: DEFAULT_FONTS,
-  generateFonts: () => {
-    const fonts = selectFonts();
-    set({ fonts });
-    return fonts;
+  generateFonts: (fonts) => {
+    const selectedFonts = selectFonts(fonts);
+    set({ fonts: selectedFonts });
+    return selectedFonts;
   },
 }));

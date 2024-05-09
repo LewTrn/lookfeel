@@ -3,7 +3,6 @@ import { sample } from "lodash";
 import tinycolor from "tinycolor2";
 
 import { ColourType } from "~/types/Palette";
-import { pickRandom } from "~/utils/pickRandom";
 import { shuffle } from "~/utils/shuffle";
 
 const PICK = 3;

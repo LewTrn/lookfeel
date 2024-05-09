@@ -6,10 +6,8 @@ export const extractBaseColours = (coloursString: string | null) => {
   const colours = coloursString?.split("-") ?? [];
   const validColours = colours
     .map((colour) => {
-      // TODO: Add stricter hex code string validation
-      return tinycolor(colour).isValid()
-        ? tinycolor(colour).toHexString()
-        : null;
+      const isValidHex = colour.length === 6 && tinycolor(colour).isValid();
+      return isValidHex ? tinycolor(colour).toHexString() : null;
     })
     .filter(Boolean);
 

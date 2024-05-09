@@ -1,14 +1,8 @@
 import { type Fonts, type FontType } from "~/types/Fonts";
 
 export const DEFAULT_FONTS: Fonts = {
-  heading: {
-    family: "Roboto",
-    category: "sans-serif",
-  },
-  body: {
-    family: "Roboto",
-    category: "sans-serif",
-  },
+  heading: "Roboto",
+  body: "Roboto",
 };
 
 export const POPULAR_FONTS: FontType[] = [

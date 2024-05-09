@@ -18,6 +18,12 @@ export const strings = {
     title: "Colors",
   },
   typography: {
+    body: {
+      label: "Body",
+    },
+    heading: {
+      label: "Heading",
+    },
     title: "Typography",
   },
   styleTile: {

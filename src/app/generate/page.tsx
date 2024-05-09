@@ -1,42 +1,22 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
-import { useEffect, useRef } from "react";
-
-import { extractBaseColours } from "~/utils/colours/extractBaseColours";
 import { useLoadFont } from "~/utils/typography/useLoadFont";
 
 import { Header } from "./_components/header/Header";
 import { Options } from "./_components/options/Options";
 import { Visualise } from "./_components/visualise/Visualise";
 import { useGenerateStore } from "./_store/useGenerateStore";
-import { usePaletteParams } from "./_utils/params/usePaletteParams";
+import { useInitTheme } from "./_utils/useInitTheme";
 
 export default function Generate() {
-  const paletteLoaded = useRef(false);
-  const searchParams = useSearchParams();
-  const setPaletteParams = usePaletteParams();
-
-  const generatePalette = useGenerateStore((state) => state.generatePalette);
-  const updateHistory = useGenerateStore((state) => state.updateHistory);
   const { heading, body } = useGenerateStore((state) => state.fonts);
 
-  useLoadFont(heading.family);
-  useLoadFont(body.family);
+  useLoadFont(heading);
+  useLoadFont(body);
 
-  // TODO: Add font to history and params
-  useEffect(() => {
-    if (!paletteLoaded.current) {
-      updateHistory("clear");
-      const baseColours = extractBaseColours(searchParams.get("colors"));
-      const palette = generatePalette(baseColours ?? undefined);
-      paletteLoaded.current = true;
+  const { isThemeLoaded } = useInitTheme();
 
-      if (!baseColours) setPaletteParams(palette);
-    }
-  }, [generatePalette, searchParams, setPaletteParams, updateHistory]);
-
-  if (!paletteLoaded) return null;
+  if (!isThemeLoaded) return null;
 
   return (
     <main className="flex w-full flex-col">

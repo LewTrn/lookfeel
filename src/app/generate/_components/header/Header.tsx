@@ -32,7 +32,7 @@ export const Header = () => {
         break;
       case GenerateMode.Typography:
         const { heading, body } = generateFonts();
-        setFontParams([heading.family, body.family]);
+        setFontParams([heading, body]);
         break;
     }
   }, [generateFonts, generatePalette, mode, setFontParams, setPaletteParams]);

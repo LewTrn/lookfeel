@@ -1,11 +1,10 @@
-import { useGenerateStore } from "~/app/generate/_store/useGenerateStore";
 import { paletteHeadings } from "~/app/generate/_utils/headings";
 import Typography from "~/components/ui/typography";
 import { type ColourType } from "~/types/Palette";
 
-import { Swatch } from "./Swatch";
 import { Template } from "../template/Template";
-import { Theme } from "../theme/ThemeContext";
+import { type Theme } from "../theme/ThemeContext";
+import { Swatch } from "./Swatch";
 
 type ShadesProps = {
   theme: Theme;

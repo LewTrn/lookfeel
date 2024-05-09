@@ -9,6 +9,6 @@ export type FontType = {
 };
 
 export type Fonts = {
-  [Typography.Heading]: FontType;
-  [Typography.Body]: FontType;
+  [Typography.Heading]: string;
+  [Typography.Body]: string;
 };

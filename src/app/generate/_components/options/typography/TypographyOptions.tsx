@@ -1,17 +1,17 @@
 import { useGenerateStore } from "~/app/generate/_store/useGenerateStore";
 import Typography from "~/components/ui/typography";
+import { strings } from "~/locales/generate";
 
 type FontProps = {
   font: string;
-
-  type: string;
+  label: string;
 };
 
-const Font = ({ font, type }: FontProps) => {
+const Font = ({ font, label }: FontProps) => {
   return (
     <div>
       <div className="text-secondary">
-        <Typography variant="h3">{type}</Typography>
+        <Typography variant="h3">{label}</Typography>
       </div>
       <div className="text-3xl" style={{ fontFamily: font }}>
         {font}
@@ -25,8 +25,8 @@ export const TypographyOptions = () => {
 
   return (
     <div className="ml-2 flex flex-col gap-4">
-      <Font font={heading.family} type="Heading" />
-      <Font font={body.family} type="Body" />
+      <Font font={heading} label={strings.typography.heading.label} />
+      <Font font={body} label={strings.typography.body.label} />
     </div>
   );
 };
