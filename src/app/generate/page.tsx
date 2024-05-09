@@ -24,6 +24,7 @@ export default function Generate() {
   useLoadFont(heading.family);
   useLoadFont(body.family);
 
+  // TODO: Add font to history and params
   useEffect(() => {
     if (!paletteLoaded.current) {
       updateHistory("clear");

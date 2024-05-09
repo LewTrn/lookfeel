@@ -21,7 +21,5 @@ export const useGenerateHistory = () => {
     setPaletteParams(palette);
   };
 
-  console.log(history);
-
   return { undo, redo, hasUndo, hasRedo };
 };

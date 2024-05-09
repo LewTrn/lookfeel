@@ -10,12 +10,14 @@ import { strings } from "~/locales/generate";
 import { GenerateMode } from "~/types/Mode";
 
 import { useGenerateStore } from "../../_store/useGenerateStore";
+import { useFontParams } from "../../_utils/params/useFontParams";
 import { usePaletteParams } from "../../_utils/params/usePaletteParams";
 import { useGenerateHistory } from "./useGenerateHistory";
 
 export const Header = () => {
   const generateRef = useRef<HTMLButtonElement>(null);
   const setPaletteParams = usePaletteParams();
+  const setFontParams = useFontParams();
 
   const mode = useGenerateStore((state) => state.mode);
   const generatePalette = useGenerateStore((state) => state.generatePalette);
@@ -29,10 +31,11 @@ export const Header = () => {
         setPaletteParams(palette);
         break;
       case GenerateMode.Typography:
-        generateFonts();
+        const { heading, body } = generateFonts();
+        setFontParams([heading.family, body.family]);
         break;
     }
-  }, [generateFonts, generatePalette, mode, setPaletteParams]);
+  }, [generateFonts, generatePalette, mode, setFontParams, setPaletteParams]);
 
   useEffect(() => {
     const onSpace = (event: KeyboardEvent) => {
