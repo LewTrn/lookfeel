@@ -12,6 +12,7 @@ import { GenerateMode } from "~/types/Mode";
 import { useGenerateStore } from "../../_store/useGenerateStore";
 import { useFontParams } from "../../_utils/params/useFontParams";
 import { usePaletteParams } from "../../_utils/params/usePaletteParams";
+import { PublishDialog } from "../publish/PublishDialog";
 import { useGenerateHistory } from "./useGenerateHistory";
 
 export const Header = () => {
@@ -79,10 +80,12 @@ export const Header = () => {
               generateRef.current?.blur();
             }}
           >
-            {strings.visualise.header.generate.action}
+            {strings.header.generate.action}
           </Button>
         </div>
-        <Button>{strings.visualise.header.publish.action}</Button>
+        <PublishDialog>
+          <Button>{strings.header.publish.action}</Button>
+        </PublishDialog>
       </div>
     </header>
   );

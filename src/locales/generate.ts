@@ -17,14 +17,22 @@ export const strings = {
     },
     title: "Colors",
   },
-  typography: {
-    body: {
-      label: "Body",
+  header: {
+    generate: {
+      action: "Press spacebar to generate",
     },
-    heading: {
-      label: "Heading",
+    publish: {
+      action: "Publish",
     },
-    title: "Typography",
+  },
+  publish: {
+    continue: {
+      action: "Continue",
+    },
+    tags: {
+      title: "Add tags",
+      subtitle: "Select up to 3 tags to describe your theme.",
+    },
   },
   styleTile: {
     badge: {
@@ -55,15 +63,16 @@ export const strings = {
       title: "Subheading",
     },
   },
-  visualise: {
-    header: {
-      generate: {
-        action: "Press spacebar to generate",
-      },
-      publish: {
-        action: "Publish",
-      },
+  typography: {
+    body: {
+      label: "Body",
     },
+    heading: {
+      label: "Heading",
+    },
+    title: "Typography",
+  },
+  visualise: {
     tabs: {
       landing: {
         action: "Landing",
