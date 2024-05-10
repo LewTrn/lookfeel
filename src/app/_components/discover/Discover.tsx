@@ -2,10 +2,9 @@
 
 import { FlameIcon, SparklesIcon, TrendingUpIcon } from "lucide-react";
 
+import { ThemeCard } from "~/components/theme/ThemeCard";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
 import { strings } from "~/locales/landing";
-
-import { ThemeCard } from "./ThemeCard";
 
 export const Discover = () => {
   return (
