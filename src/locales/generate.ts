@@ -26,8 +26,8 @@ export const strings = {
     },
   },
   publish: {
-    continue: {
-      action: "Continue",
+    next: {
+      action: "Next",
     },
     tags: {
       title: "Add tags",

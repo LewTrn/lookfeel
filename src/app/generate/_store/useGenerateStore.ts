@@ -23,6 +23,9 @@ export type GenerateState = {
 
   fonts: Fonts;
   generateFonts: (fonts?: string[]) => Fonts;
+
+  tags: string[];
+  setTags: (tags: string[]) => void;
 };
 
 const HISTORY_LIMIT = 30 - 1;
@@ -79,4 +82,7 @@ export const useGenerateStore = create<GenerateState>((set, get) => ({
     set({ fonts: selectedFonts, history: themeHistory, pointer: 0 });
     return selectedFonts;
   },
+
+  tags: [],
+  setTags: (tags) => set({ tags }),
 }));
