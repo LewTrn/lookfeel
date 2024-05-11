@@ -26,12 +26,19 @@ export const strings = {
     },
   },
   publish: {
+    action: "Publish",
     next: {
       action: "Next",
     },
+    open: {
+      action: "Open",
+    },
+    share: {
+      action: "Share link",
+    },
     tags: {
-      title: "Add tags",
       subtitle: "Select up to 3 tags to describe your theme.",
+      title: "Add tags",
     },
   },
   styleTile: {

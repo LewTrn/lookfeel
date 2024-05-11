@@ -18,6 +18,7 @@ const buttonVariants = cva(
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-primary/5",
+        tint: "bg-background/50 hover:bg-background/75",
         link: "text-primary underline-offset-4 hover:underline",
       },
       size: {
@@ -56,7 +57,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           {...props}
         >
           <span className="-translate-x-2">
-            <Icon strokeWidth={1.75} width={24} height={24} />
+            <Icon strokeWidth={1.75} width={20} height={20} />
           </span>
           <span>{children}</span>
         </Comp>
