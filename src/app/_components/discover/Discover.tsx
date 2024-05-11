@@ -4,6 +4,8 @@ import { FlameIcon, SparklesIcon, TrendingUpIcon } from "lucide-react";
 
 import { ThemeCard } from "~/components/theme/ThemeCard";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
+import { DEFAULT_FONTS } from "~/constants/fonts";
+import { DEFAULT_PALETTE } from "~/constants/palette";
 import { strings } from "~/locales/landing";
 
 export const Discover = () => {
@@ -23,16 +25,14 @@ export const Discover = () => {
       <TabsContent value="trending">
         <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           <ThemeCard
-            headingFont="Noto Sans Japanese"
-            bodyFont="Noto Sans Japanese"
+            theme={{ fonts: DEFAULT_FONTS, palette: DEFAULT_PALETTE }}
           />
-          <ThemeCard headingFont="Noto Sans" bodyFont="Georgia" />
           <ThemeCard
-            headingFont="Noto Sans Japanese"
-            bodyFont="Noto Sans Japanese"
+            theme={{ fonts: DEFAULT_FONTS, palette: DEFAULT_PALETTE }}
           />
-          <ThemeCard headingFont="Noto Sans" bodyFont="Georgia" />
-          <ThemeCard headingFont="Noto Sans" bodyFont="Georgia" />
+          <ThemeCard
+            theme={{ fonts: DEFAULT_FONTS, palette: DEFAULT_PALETTE }}
+          />
         </div>
       </TabsContent>
       <TabsContent value="popular"></TabsContent>

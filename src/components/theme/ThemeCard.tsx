@@ -2,21 +2,26 @@ import { HeartIcon } from "lucide-react";
 import { useRef, useState } from "react";
 
 import Typography from "~/components/ui/typography";
+import { type Theme } from "~/types/Theme";
 
 import { Badge } from "../ui/badge";
 
 export type ThemeCardProps = {
-  headingFont: string;
-  bodyFont: string;
+  theme: Theme;
 };
 
-export const ThemeCard = ({ headingFont, bodyFont }: ThemeCardProps) => {
+export const ThemeCard = ({ theme }: ThemeCardProps) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const typeRef = useRef<HTMLDivElement>(null);
   const tagsRef = useRef<HTMLDivElement>(null);
 
   const [typeX, setTypeX] = useState(0);
   const [tagsX, setTagsX] = useState(0);
+
+  const {
+    fonts: { heading, body },
+    palette: { primary, secondary, accent, neutral },
+  } = theme;
 
   return (
     <div
@@ -38,10 +43,22 @@ export const ThemeCard = ({ headingFont, bodyFont }: ThemeCardProps) => {
     >
       <div className="absolute inset-0 -z-10 scale-90 rounded-lg shadow transition-transform duration-300 wh-full group-hover:scale-100" />
       <div className="grid h-20 flex-shrink-0 grid-cols-4 overflow-hidden rounded-lg">
-        <div className="bg-red-500 wh-full" />
-        <div className="bg-blue-500 wh-full" />
-        <div className="bg-pink-500 wh-full" />
-        <div className="bg-yellow-500 wh-full" />
+        <div
+          className="wh-full"
+          style={{ backgroundColor: primary.baseColour }}
+        />
+        <div
+          className="wh-full"
+          style={{ backgroundColor: secondary.baseColour }}
+        />
+        <div
+          className="wh-full"
+          style={{ backgroundColor: accent.baseColour }}
+        />
+        <div
+          className="wh-full"
+          style={{ backgroundColor: neutral.baseColour }}
+        />
       </div>
       <div className="overflow-hidden px-1">
         <div className="relative my-2 flex items-center gap-3">
@@ -54,9 +71,9 @@ export const ThemeCard = ({ headingFont, bodyFont }: ThemeCardProps) => {
               transform: `translateX(${typeX}px)`,
             }}
           >
-            <span className="font-serif">{headingFont}</span>
+            <span className="font-serif">{heading}</span>
             <span className="mx-1">•</span>
-            <span>{bodyFont}</span>
+            <span>{body}</span>
           </Typography>
           <div className="absolute -left-2 h-full w-2 bg-gradient-to-r from-card to-transparent" />
           <div className="absolute -right-2 h-full w-4 bg-gradient-to-l from-card to-transparent" />
