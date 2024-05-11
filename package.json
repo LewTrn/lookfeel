@@ -27,6 +27,7 @@
     "edgedb": "^1.5.5",
     "lodash": "^4.17.21",
     "lucide-react": "^0.376.0",
+    "nanoid": "^5.0.7",
     "nearest-color": "^0.4.4",
     "next": "^14.2.1",
     "react": "18.2.0",
