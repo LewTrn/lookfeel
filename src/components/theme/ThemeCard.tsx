@@ -7,10 +7,11 @@ import { ThemeTags } from "./ThemeTags";
 
 export type ThemeCardProps = {
   theme: Theme;
+  tags: string[];
   showLikes?: boolean;
 };
 
-export const ThemeCard = ({ theme, showLikes }: ThemeCardProps) => {
+export const ThemeCard = ({ theme, tags, showLikes }: ThemeCardProps) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const fontsRef = useRef<HTMLDivElement>(null);
   const tagsRef = useRef<HTMLDivElement>(null);
@@ -67,7 +68,7 @@ export const ThemeCard = ({ theme, showLikes }: ThemeCardProps) => {
           <ThemeTags
             ref={tagsRef}
             translateX={tagsX}
-            tags={["Monochromatic", "Handwritten", "Professional"]}
+            tags={tags}
             showLikes={showLikes}
           />
         </div>

@@ -9,6 +9,7 @@ import { useGenerateStore } from "../../_store/useGenerateStore";
 export const PublishDialogContent = () => {
   const fonts = useGenerateStore((state) => state.fonts);
   const palette = useGenerateStore((state) => state.palette);
+  const tags = useGenerateStore((state) => state.tags);
 
   const { primary, secondary, accent } = palette;
 
@@ -21,7 +22,7 @@ export const PublishDialogContent = () => {
         }}
       >
         <div className="flex w-80 flex-col gap-4 pt-4">
-          <ThemeCard theme={{ fonts, palette }} />
+          <ThemeCard theme={{ fonts, palette }} tags={tags} />
           <div className="grid grid-cols-2 gap-2">
             <Button variant="tint" Icon={ExternalLinkIcon}>
               {strings.publish.open.action}
