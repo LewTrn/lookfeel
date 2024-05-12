@@ -21,6 +21,7 @@ export const strings = {
   header: {
     logIn: {
       action: "Log in",
+      description: "Logging in...",
     },
     logOut: {
       action: "Log out",
