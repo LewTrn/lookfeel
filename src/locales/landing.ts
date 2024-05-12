@@ -22,8 +22,8 @@ export const strings = {
     logIn: {
       action: "Log in",
     },
-    start: {
-      action: "Get started",
+    signUp: {
+      action: "Sign up",
     },
   },
   hero: {

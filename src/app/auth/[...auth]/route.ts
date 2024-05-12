@@ -9,8 +9,8 @@ export const { GET, POST } = auth.createAuthRouteHandlers({
 
       await client.query(`
       INSERT User {
-        name := '',
-        userRole := 'user',
+        username := '',
+        user_role := 'user',
         identity := (global ext::auth::ClientTokenIdentity)
       }
     `);

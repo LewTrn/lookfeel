@@ -15,7 +15,7 @@ const COLOUR_TAGS = [
   "Light",
   "Dark",
   "Pastel",
-  "Vibrant",
+  "Bright",
   "Warm",
   "Cold",
   "Rainbow",

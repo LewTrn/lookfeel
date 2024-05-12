@@ -12,8 +12,8 @@ export const Header = async () => {
         <Link href={auth.getBuiltinUIUrl()}>
           <Button variant="ghost">{strings.header.logIn.action}</Button>
         </Link>
-        <Link href="/generate">
-          <Button>{strings.header.start.action}</Button>
+        <Link href={auth.getBuiltinUISignUpUrl()}>
+          <Button>{strings.header.signUp.action}</Button>
         </Link>
       </div>
     </header>
