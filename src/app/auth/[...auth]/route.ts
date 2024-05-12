@@ -16,7 +16,7 @@ export const { GET, POST } = auth.createAuthRouteHandlers({
     `);
     }
 
-    redirect("/");
+    redirect("/redirect");
   },
   onSignout() {
     redirect("/");
