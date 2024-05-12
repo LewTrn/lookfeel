@@ -22,8 +22,14 @@ export const strings = {
     logIn: {
       action: "Log in",
     },
+    logOut: {
+      action: "Log out",
+    },
     signUp: {
       action: "Sign up",
+    },
+    start: {
+      action: "Get started",
     },
   },
   hero: {

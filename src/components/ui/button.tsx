@@ -1,6 +1,6 @@
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
-import { type LucideIcon } from "lucide-react";
+import { LoaderCircleIcon, type LucideIcon } from "lucide-react";
 import * as React from "react";
 
 import { cn } from "~/lib/utils";
@@ -40,24 +40,42 @@ export interface ButtonProps
     VariantProps<typeof buttonVariants> {
   Icon?: LucideIcon;
   asChild?: boolean;
+  loading?: boolean;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
-    { className, variant, size, Icon, asChild = false, children, ...props },
+    {
+      className,
+      variant,
+      size,
+      Icon: _Icon,
+      asChild = false,
+      loading,
+      children,
+      ...props
+    },
     ref,
   ) => {
     const Comp = asChild ? Slot : "button";
 
-    if (Icon) {
+    if (_Icon ?? loading) {
+      const Icon = loading ? LoaderCircleIcon : _Icon!;
+
       return (
         <Comp
           className={cn(buttonVariants({ variant, size, className }))}
           ref={ref}
+          disabled={loading}
           {...props}
         >
           <span className="-translate-x-2">
-            <Icon strokeWidth={1.75} width={20} height={20} />
+            <Icon
+              strokeWidth={1.75}
+              width={20}
+              height={20}
+              className={cn(loading && "animate-spin")}
+            />
           </span>
           <span>{children}</span>
         </Comp>
