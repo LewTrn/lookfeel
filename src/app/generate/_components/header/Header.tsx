@@ -2,7 +2,7 @@
 
 import { RedoIcon, UndoIcon } from "lucide-react";
 import Link from "next/link";
-import { useCallback, useEffect, useRef } from "react";
+import { type PropsWithChildren, useCallback, useEffect, useRef } from "react";
 
 import { Button } from "~/components/ui/button";
 import { IconButton } from "~/components/ui/icon-button";
@@ -12,10 +12,9 @@ import { GenerateMode } from "~/types/Mode";
 import { useGenerateStore } from "../../_store/useGenerateStore";
 import { useFontParams } from "../../_utils/params/useFontParams";
 import { usePaletteParams } from "../../_utils/params/usePaletteParams";
-import { PublishDialog } from "../publish/PublishDialog";
 import { useGenerateHistory } from "./useGenerateHistory";
 
-export const Header = () => {
+export const Header = ({ children }: PropsWithChildren) => {
   const generateRef = useRef<HTMLButtonElement>(null);
   const setPaletteParams = usePaletteParams();
   const setFontParams = useFontParams();
@@ -83,9 +82,7 @@ export const Header = () => {
             {strings.header.generate.action}
           </Button>
         </div>
-        <PublishDialog>
-          <Button>{strings.header.publish.action}</Button>
-        </PublishDialog>
+        {children}
       </div>
     </header>
   );

@@ -1,34 +1,28 @@
-"use client";
+import Link from "next/link";
 
-import { useLoadFont } from "~/utils/typography/useLoadFont";
+import { auth } from "~/edgedb";
 
+import { GenerateContent } from "./_components/content/GenerateContent";
 import { Header } from "./_components/header/Header";
-import { Options } from "./_components/options/Options";
-import { Visualise } from "./_components/visualise/Visualise";
-import { useGenerateStore } from "./_store/useGenerateStore";
-import { useInitTheme } from "./_utils/useInitTheme";
+import { UnauthedPublish } from "./_components/header/UnauthedPublish";
+import { PublishDialog } from "./_components/publish/PublishDialog";
 
-export default function Generate() {
-  const { heading, body } = useGenerateStore((state) => state.fonts);
-
-  useLoadFont(heading);
-  useLoadFont(body);
-
-  const { isThemeLoaded } = useInitTheme();
-
-  if (!isThemeLoaded) return null;
+export default async function Generate() {
+  const session = auth.getSession();
+  const signedIn = await session.isSignedIn();
 
   return (
     <main className="flex w-full flex-col">
-      <Header />
-      <div className="flex gap-8 px-8 pb-8">
-        <div className="w-80">
-          <Options />
-        </div>
-        <div className="w-full">
-          <Visualise />
-        </div>
-      </div>
+      <Header>
+        {signedIn ? (
+          <PublishDialog />
+        ) : (
+          <Link href={auth.getBuiltinUIUrl()}>
+            <UnauthedPublish />
+          </Link>
+        )}
+      </Header>
+      <GenerateContent />
     </main>
   );
 }

@@ -1,6 +1,10 @@
-import { type PropsWithChildren, useState } from "react";
+"use client";
 
+import { useState } from "react";
+
+import { Button } from "~/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "~/components/ui/dialog";
+import { strings } from "~/locales/generate";
 import { api } from "~/trpc/react";
 
 import { useGenerateStore } from "../../_store/useGenerateStore";
@@ -12,7 +16,7 @@ enum Page {
   Publish = "publish",
 }
 
-export const PublishDialog = ({ children }: PropsWithChildren) => {
+export const PublishDialog = () => {
   const [page, setPage] = useState(Page.Tags);
 
   const { primary, secondary, accent, neutral } = useGenerateStore(
@@ -32,7 +36,7 @@ export const PublishDialog = ({ children }: PropsWithChildren) => {
   const handleOnSubmit = () => {
     setPage(Page.Publish);
 
-    const result = mutate({
+    mutate({
       palette: {
         primary: primary.baseColour,
         secondary: secondary.baseColour,
@@ -42,13 +46,13 @@ export const PublishDialog = ({ children }: PropsWithChildren) => {
       fonts,
       tags,
     });
-
-    console.log(result);
   };
 
   return (
     <Dialog onOpenChange={onOpen}>
-      <DialogTrigger asChild>{children}</DialogTrigger>
+      <DialogTrigger asChild>
+        <Button>{strings.publish.action}</Button>
+      </DialogTrigger>
       <DialogContent className="flex h-96 flex-col justify-between overflow-clip">
         {page === Page.Tags && <TagsDialogContent onSubmit={handleOnSubmit} />}
         {page === Page.Publish && <PublishDialogContent />}
