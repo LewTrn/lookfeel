@@ -4,6 +4,8 @@ import { Button } from "~/components/ui/button";
 import { auth } from "~/edgedb";
 import { strings } from "~/locales/landing";
 
+import { LogInButton } from "./LogInButton";
+
 const SignedInOptions = () => {
   return (
     <>
@@ -20,7 +22,7 @@ const SignedInOptions = () => {
 const SignedOutOptions = () => (
   <>
     <Link href={auth.getBuiltinUIUrl()}>
-      <Button variant="ghost">{strings.header.logIn.action}</Button>
+      <LogInButton />
     </Link>
     <Link href={auth.getBuiltinUISignUpUrl()}>
       <Button>{strings.header.signUp.action}</Button>

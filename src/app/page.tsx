@@ -1,5 +1,5 @@
 import { Discover } from "./_components/discover/Discover";
-import { Header } from "./_components/Header";
+import { Header } from "./_components/header/Header";
 import { Hero } from "./_components/Hero";
 
 export default async function Home() {

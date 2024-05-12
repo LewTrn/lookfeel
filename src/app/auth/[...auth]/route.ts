@@ -19,6 +19,7 @@ export const { GET, POST } = auth.createAuthRouteHandlers({
     redirect("/redirect");
   },
   onSignout() {
-    redirect("/");
+    // Set param to force refetch of server component
+    redirect("/?u");
   },
 });

@@ -40,6 +40,8 @@ export const useRedirect = () => {
       router.push("/");
     } catch (error) {
       router.push("/");
+    } finally {
+      localStorage.removeItem(REDIRECT_KEY);
     }
   }, [router]);
 };
