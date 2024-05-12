@@ -60,10 +60,10 @@ const ButtonGroup = ({
 };
 
 type TagsDialogContentProps = {
-  onNext: () => void;
+  onSubmit: () => void;
 };
 
-export const TagsDialogContent = ({ onNext }: TagsDialogContentProps) => {
+export const TagsDialogContent = ({ onSubmit }: TagsDialogContentProps) => {
   const selectedTags = useGenerateStore((state) => state.tags);
   const setTags = useGenerateStore((state) => state.setTags);
 
@@ -97,7 +97,7 @@ export const TagsDialogContent = ({ onNext }: TagsDialogContentProps) => {
         ))}
       </div>
       <DialogFooter>
-        <Button disabled={selectedTags.length === 0} onClick={onNext}>
+        <Button disabled={selectedTags.length === 0} onClick={onSubmit}>
           {strings.publish.action}
         </Button>
       </DialogFooter>
