@@ -8,6 +8,8 @@ import { DEFAULT_FONTS } from "~/constants/fonts";
 import { DEFAULT_PALETTE } from "~/constants/palette";
 import { strings } from "~/locales/landing";
 
+const { primary, secondary, accent, neutral } = DEFAULT_PALETTE;
+
 export const Discover = () => {
   return (
     <Tabs defaultValue="trending">
@@ -25,17 +27,13 @@ export const Discover = () => {
       <TabsContent value="trending">
         <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           <ThemeCard
-            theme={{ fonts: DEFAULT_FONTS, palette: DEFAULT_PALETTE }}
-            tags={["Light", "Serif", "Modern"]}
-            showLikes
-          />
-          <ThemeCard
-            theme={{ fonts: DEFAULT_FONTS, palette: DEFAULT_PALETTE }}
-            tags={["Light", "Serif", "Modern"]}
-            showLikes
-          />
-          <ThemeCard
-            theme={{ fonts: DEFAULT_FONTS, palette: DEFAULT_PALETTE }}
+            fonts={DEFAULT_FONTS}
+            palette={{
+              primary: primary.baseColour,
+              secondary: secondary.baseColour,
+              accent: accent.baseColour,
+              neutral: neutral.baseColour,
+            }}
             tags={["Light", "Serif", "Modern"]}
             showLikes
           />

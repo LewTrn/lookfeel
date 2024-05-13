@@ -1,17 +1,24 @@
 import { useRef, useState } from "react";
 
-import { type Theme } from "~/types/Theme";
+import { type Fonts } from "~/types/Fonts";
+import { type BaseColours } from "~/types/Palette";
 
 import { ThemeFonts } from "./ThemeFonts";
 import { ThemeTags } from "./ThemeTags";
 
 export type ThemeCardProps = {
-  theme: Theme;
+  palette: BaseColours;
+  fonts: Fonts;
   tags: string[];
   showLikes?: boolean;
 };
 
-export const ThemeCard = ({ theme, tags, showLikes }: ThemeCardProps) => {
+export const ThemeCard = ({
+  palette,
+  fonts,
+  tags,
+  showLikes,
+}: ThemeCardProps) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const fontsRef = useRef<HTMLDivElement>(null);
   const tagsRef = useRef<HTMLDivElement>(null);
@@ -19,9 +26,7 @@ export const ThemeCard = ({ theme, tags, showLikes }: ThemeCardProps) => {
   const [fontsX, setFontsX] = useState(0);
   const [tagsX, setTagsX] = useState(0);
 
-  const {
-    palette: { primary, secondary, accent, neutral },
-  } = theme;
+  const { primary, secondary, accent, neutral } = palette;
 
   return (
     <div className="group relative rounded-lg">
@@ -46,25 +51,13 @@ export const ThemeCard = ({ theme, tags, showLikes }: ThemeCardProps) => {
         }}
       >
         <div className="grid h-20 flex-shrink-0 grid-cols-4 overflow-hidden rounded-lg">
-          <div
-            className="wh-full"
-            style={{ backgroundColor: primary.baseColour }}
-          />
-          <div
-            className="wh-full"
-            style={{ backgroundColor: secondary.baseColour }}
-          />
-          <div
-            className="wh-full"
-            style={{ backgroundColor: accent.baseColour }}
-          />
-          <div
-            className="wh-full"
-            style={{ backgroundColor: neutral.baseColour }}
-          />
+          <div className="wh-full" style={{ backgroundColor: primary }} />
+          <div className="wh-full" style={{ backgroundColor: secondary }} />
+          <div className="wh-full" style={{ backgroundColor: accent }} />
+          <div className="wh-full" style={{ backgroundColor: neutral }} />
         </div>
         <div className="px-1">
-          <ThemeFonts ref={fontsRef} translateX={fontsX} fonts={theme.fonts} />
+          <ThemeFonts ref={fontsRef} translateX={fontsX} fonts={fonts} />
           <ThemeTags
             ref={tagsRef}
             translateX={tagsX}
