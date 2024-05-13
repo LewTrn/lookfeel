@@ -36,8 +36,12 @@ module default {
       constraint exclusive;
     };
 
-    required palette: Palette;
-    required fonts: Fonts;
+    required palette: Palette{
+      on source delete delete target;
+    }
+    required fonts: Fonts{
+      on source delete delete target;
+    }
     required multi tags: Tags;
 
     required created_by: User {
