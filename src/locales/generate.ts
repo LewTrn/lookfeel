@@ -93,6 +93,9 @@ export const strings = {
       styleTile: {
         action: "Style tile",
       },
+      export: {
+        action: "Export (Coming soon)",
+      },
     },
   },
 };

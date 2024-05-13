@@ -1,4 +1,9 @@
-import { Grid2X2Icon, LayoutPanelTopIcon, SwatchBookIcon } from "lucide-react";
+import {
+  DownloadIcon,
+  Grid2X2Icon,
+  LayoutPanelTopIcon,
+  SwatchBookIcon,
+} from "lucide-react";
 import { Landing } from "templates/components/landing/Landing";
 import { Shades } from "templates/components/shades/Shades";
 import { StyleTile } from "templates/components/style-tile/StyleTile";
@@ -23,6 +28,9 @@ export const Visualise = () => {
           </TabsTrigger>
           <TabsTrigger value="shades" Icon={SwatchBookIcon}>
             {strings.visualise.tabs.shades.action}
+          </TabsTrigger>
+          <TabsTrigger value="export" Icon={DownloadIcon} disabled>
+            {strings.visualise.tabs.export.action}
           </TabsTrigger>
         </TabsList>
         <TabsContent value="tile">
