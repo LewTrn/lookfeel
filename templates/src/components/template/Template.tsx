@@ -1,16 +1,17 @@
 import { type PropsWithChildren } from "react";
 
-import { type Theme, ThemeProvider } from "../theme/ThemeContext";
+import { ThemeProvider } from "../theme/ThemeContext";
+import { type ThemeProviderTheme } from "../theme/types";
 
 type TemplateProps = PropsWithChildren<{
-  theme?: Theme;
+  theme?: ThemeProviderTheme;
 }>;
 
-export const Template = ({ theme, children }: TemplateProps) => {
+export const Template = ({ theme = {}, children }: TemplateProps) => {
   return (
     <ThemeProvider
       className="mx-auto max-w-7xl overflow-clip rounded-[1rem] shadow"
-      theme={{ palette: theme?.palette }}
+      theme={theme}
     >
       {children}
     </ThemeProvider>

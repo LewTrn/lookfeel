@@ -1,24 +1,33 @@
 import { createContext, type PropsWithChildren, useContext } from "react";
 
+import { DEFAULT_FONTS } from "~/constants/fonts";
 import { DEFAULT_PALETTE } from "~/constants/palette";
-import { type Palette } from "~/types/Palette";
+import { useLoadFont } from "~/utils/typography/useLoadFont";
 
 import { getThemeStyle } from "./getThemeStyle";
-
-export type Theme = {
-  palette?: Palette;
-};
+import { type ThemeProviderTheme } from "./types";
 
 type ThemeProviderProps = PropsWithChildren<{
   className?: string;
-  theme: Theme;
+  theme: ThemeProviderTheme;
 }>;
 
 const initialTheme = {
   palette: DEFAULT_PALETTE,
+  fonts: DEFAULT_FONTS,
 };
 
-export const ThemeContext = createContext<Theme>(initialTheme);
+export const ThemeContext = createContext<ThemeProviderTheme>(initialTheme);
+
+const LoadFonts = ({
+  heading,
+  body,
+}: NonNullable<ThemeProviderTheme["fonts"]>) => {
+  useLoadFont(heading);
+  useLoadFont(body);
+
+  return null;
+};
 
 export const ThemeProvider = ({
   className,
@@ -27,9 +36,10 @@ export const ThemeProvider = ({
 }: ThemeProviderProps) => {
   return (
     <ThemeContext.Provider value={theme}>
-      <div className={className} style={getThemeStyle(theme.palette)}>
+      <div className={className} style={getThemeStyle(theme)}>
         {children}
       </div>
+      {theme.fonts && <LoadFonts {...theme.fonts} />}
     </ThemeContext.Provider>
   );
 };

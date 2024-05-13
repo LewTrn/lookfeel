@@ -1,5 +1,5 @@
 import { Template } from "../template/Template";
-import { type Theme } from "../theme/ThemeContext";
+import { type ThemeProviderTheme } from "../theme/types";
 import { About } from "./sections/About";
 import { Discover } from "./sections/Discover";
 import { Features } from "./sections/Features";
@@ -7,7 +7,7 @@ import { Footer } from "./sections/Footer";
 import { Hero } from "./sections/Hero";
 
 type LandingProps = {
-  theme: Theme;
+  theme: ThemeProviderTheme;
 };
 
 export const Landing = ({ theme }: LandingProps) => {

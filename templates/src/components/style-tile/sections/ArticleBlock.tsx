@@ -9,7 +9,10 @@ export const ArticleBlock = () => {
       <div className="mb-4">
         <span
           className="text-4xl font-semibold"
-          style={{ color: primary.shades[950] }}
+          style={{
+            color: primary.shades[950],
+            fontFamily: "var(--heading-font)",
+          }}
         >
           {strings.styleTile.heading.title}
         </span>

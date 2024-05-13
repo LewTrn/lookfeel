@@ -15,6 +15,9 @@ import { useGenerateStore } from "../../_store/useGenerateStore";
 
 export const Visualise = () => {
   const palette = useGenerateStore((state) => state.palette);
+  const fonts = useGenerateStore((state) => state.fonts);
+
+  const theme = { palette, fonts };
 
   return (
     <div className="w-full">
@@ -34,13 +37,13 @@ export const Visualise = () => {
           </TabsTrigger>
         </TabsList>
         <TabsContent value="tile">
-          <StyleTile theme={{ palette }} />
+          <StyleTile theme={theme} />
         </TabsContent>
         <TabsContent value="landing">
-          <Landing theme={{ palette }} />
+          <Landing theme={theme} />
         </TabsContent>
         <TabsContent value="shades">
-          <Shades theme={{ palette }} />
+          <Shades theme={theme} />
         </TabsContent>
       </Tabs>
     </div>

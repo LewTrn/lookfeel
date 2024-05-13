@@ -30,7 +30,12 @@ export const ComponentBlock = () => {
           </div>
         </div>
         <div className="text-sm">
-          <h3 className="mb-1 font-bold">Lorem ipsum dolor sit amet</h3>
+          <h3
+            className="mb-1 font-bold"
+            style={{ fontFamily: "var(--heading-font)" }}
+          >
+            Lorem ipsum dolor sit amet
+          </h3>
           <p>
             Donec vel dui ac elit interdum mollis. Vivamus gravida porttitor
             nunc eu placerat.

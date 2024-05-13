@@ -15,7 +15,12 @@ const Feature = ({ Icon, title, description }: FeatureProps) => {
   return (
     <div className="flex flex-col items-center gap-2">
       <Icon className="mb-2 h-12 w-12 rounded-lg bg-accent p-2" />
-      <h3 className="text-lg font-semibold">{title}</h3>
+      <h3
+        className="text-lg font-semibold"
+        style={{ fontFamily: "var(--heading-font)" }}
+      >
+        {title}
+      </h3>
       <p>{description}</p>
     </div>
   );
@@ -26,7 +31,12 @@ export const Features = () => {
     <section className="flex flex-col gap-16 bg-accent/10 p-24 text-center">
       <div className="flex flex-col gap-4">
         <h3 className="font-semibold uppercase text-secondary">Features</h3>
-        <h2 className="text-4xl font-bold">All the themes</h2>
+        <h2
+          className="text-4xl font-bold"
+          style={{ fontFamily: "var(--heading-font)" }}
+        >
+          All the themes
+        </h2>
         <p className="text-lg">
           All the tools you need to theme your next project in seconds.
         </p>

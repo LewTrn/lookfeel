@@ -1,5 +1,5 @@
 import { Template } from "../template/Template";
-import { type Theme } from "../theme/ThemeContext";
+import { type ThemeProviderTheme } from "../theme/types";
 import { ArticleBlock } from "./sections/ArticleBlock";
 import { ButtonBlock } from "./sections/ButtonBlock";
 import { ComponentBlock } from "./sections/ComponentBlock";
@@ -7,7 +7,7 @@ import { PaletteBlock } from "./sections/PaletteBlock";
 import { VisualBlock } from "./sections/VisualBlock";
 
 type StyleTileProps = {
-  theme: Theme;
+  theme: ThemeProviderTheme;
 };
 
 export const StyleTile = ({ theme }: StyleTileProps) => {

@@ -17,7 +17,10 @@ export const Hero = () => {
             Read more
           </a>
         </div>
-        <div className="max-w-xl text-center text-6xl font-bold">
+        <div
+          className="max-w-xl text-center text-6xl font-bold"
+          style={{ fontFamily: "var(--heading-font)" }}
+        >
           <h1>Beautiful UI themes for your next project</h1>
         </div>
         <div className="mt-16 max-w-lg text-center text-lg">

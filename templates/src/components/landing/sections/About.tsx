@@ -5,7 +5,12 @@ export const About = () => {
     <section className="flex flex-col gap-16 p-8 text-center">
       <div className="flex flex-col items-center gap-4 rounded-lg bg-primary/10 p-16">
         <h3 className="font-semibold uppercase text-secondary">About</h3>
-        <h2 className="text-4xl font-bold">Made for makers</h2>
+        <h2
+          className="text-4xl font-bold"
+          style={{ fontFamily: "var(--heading-font)" }}
+        >
+          Made for makers
+        </h2>
         <div className="max-w-md">
           <p className="text-lg">
             Generated a cool theme? Or have a feature request? Follow

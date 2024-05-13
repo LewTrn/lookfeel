@@ -1,6 +1,7 @@
 import { forwardRef } from "react";
 
 import { type Fonts } from "~/types/Fonts";
+import { useLoadFont } from "~/utils/typography/useLoadFont";
 
 import Typography from "../ui/typography";
 
@@ -13,6 +14,9 @@ export const ThemeFonts = forwardRef<HTMLDivElement, ThemeFontsProps>(
   ({ fonts, translateX }, ref) => {
     const { heading, body } = fonts;
 
+    useLoadFont(heading);
+    useLoadFont(body);
+
     return (
       <div className="relative my-2 flex items-center gap-3">
         <Typography
@@ -24,11 +28,11 @@ export const ThemeFonts = forwardRef<HTMLDivElement, ThemeFontsProps>(
             transform: `translateX(${translateX}px)`,
           }}
         >
-          <span>{heading}</span>
+          <span style={{ fontFamily: heading }}>{heading}</span>
           {heading !== body && (
             <>
               <span className="mx-1">•</span>
-              <span>{body}</span>
+              <span style={{ fontFamily: body }}>{body}</span>
             </>
           )}
         </Typography>
