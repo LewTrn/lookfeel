@@ -24,6 +24,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "color-scheme": "^1.0.1",
+    "copy-to-clipboard": "^3.3.3",
     "edgedb": "^1.5.5",
     "lodash": "^4.17.21",
     "lucide-react": "^0.376.0",
