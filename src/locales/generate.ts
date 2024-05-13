@@ -27,6 +27,9 @@ export const strings = {
   },
   publish: {
     action: "Publish",
+    copied: {
+      action: "Copied",
+    },
     next: {
       action: "Next",
     },

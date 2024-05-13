@@ -1,34 +1,71 @@
+import copy from "copy-to-clipboard";
 import { CopyIcon, ExternalLinkIcon } from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
 
 import { ThemeCard } from "~/components/theme/ThemeCard";
 import { Button } from "~/components/ui/button";
 import { strings } from "~/locales/generate";
+import { type Fonts } from "~/types/Fonts";
+import { type BaseColours } from "~/types/Palette";
 
-import { useGenerateStore } from "../../_store/useGenerateStore";
+type PublishDialogContentProps = {
+  id?: string;
+  palette: BaseColours;
+  fonts: Fonts;
+  tags: string[];
+};
 
-export const PublishDialogContent = () => {
-  const fonts = useGenerateStore((state) => state.fonts);
-  const palette = useGenerateStore((state) => state.palette);
-  const tags = useGenerateStore((state) => state.tags);
-
+export const PublishDialogContent = ({
+  id,
+  palette,
+  fonts,
+  tags,
+}: PublishDialogContentProps) => {
+  const [copied, setCopied] = useState(false);
   const { primary, secondary, accent } = palette;
+
+  const handleCopy = () => {
+    const success = copy(`${window.location.origin}/theme/${id}`);
+
+    if (success) {
+      setCopied(true);
+      setTimeout(() => {
+        setCopied(false);
+      }, 2000);
+    }
+  };
 
   return (
     <>
       <div
         className="flex h-full flex-col items-center justify-center"
         style={{
-          background: `linear-gradient(45deg, ${primary.baseColour} 0%, ${secondary.baseColour} 50%, ${accent.baseColour} 100%)`,
+          background: `linear-gradient(45deg, ${primary} 0%, ${secondary} 50%, ${accent} 100%)`,
         }}
       >
         <div className="flex w-80 flex-col gap-4 pt-4">
-          <ThemeCard theme={{ fonts, palette }} tags={tags} />
+          <ThemeCard palette={palette} fonts={fonts} tags={tags} />
           <div className="grid grid-cols-2 gap-2">
-            <Button variant="tint" Icon={ExternalLinkIcon}>
-              {strings.publish.open.action}
-            </Button>
-            <Button variant="tint" Icon={CopyIcon}>
-              {strings.publish.share.action}
+            <Link href={`/theme/${id}`}>
+              <Button
+                variant="tint"
+                Icon={ExternalLinkIcon}
+                loading={!id}
+                className="w-full"
+              >
+                {strings.publish.open.action}
+              </Button>
+            </Link>
+            <Button
+              variant="tint"
+              Icon={CopyIcon}
+              loading={!id}
+              onClick={handleCopy}
+            >
+              {copied
+                ? strings.publish.copied.action
+                : strings.publish.share.action}
             </Button>
           </div>
         </div>

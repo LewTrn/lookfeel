@@ -26,7 +26,7 @@ export const PublishDialog = () => {
   const tags = useGenerateStore((state) => state.tags);
   const setTags = useGenerateStore((state) => state.setTags);
 
-  const { mutate } = api.theme.createTheme.useMutation();
+  const { mutate, data, variables } = api.theme.createTheme.useMutation();
 
   const onOpen = () => {
     setPage(Page.Tags);
@@ -55,7 +55,9 @@ export const PublishDialog = () => {
       </DialogTrigger>
       <DialogContent className="flex h-96 flex-col justify-between overflow-clip">
         {page === Page.Tags && <TagsDialogContent onSubmit={handleOnSubmit} />}
-        {page === Page.Publish && <PublishDialogContent />}
+        {page === Page.Publish && variables && (
+          <PublishDialogContent id={data?.short_id} {...variables} />
+        )}
       </DialogContent>
     </Dialog>
   );
