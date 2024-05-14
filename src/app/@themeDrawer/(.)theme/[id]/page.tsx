@@ -12,18 +12,14 @@ export default function ThemeDrawer() {
   const [open, setOpen] = useState(true);
   const router = useRouter();
 
+  // Wait for drawer close animation
+  const delayBack = () => setTimeout(() => router.back(), 300);
+
   return (
-    <Drawer
-      open={open}
-      onOpenChange={setOpen}
-      onClose={() => {
-        // Wait for drawer close animation
-        setTimeout(() => router.back(), 300);
-      }}
-    >
+    <Drawer open={open} onOpenChange={setOpen} onClose={delayBack}>
       <DrawerContent className="h-[calc(100%-64px)]">
         <div className="overflow-y-auto">
-          <ViewThemeHeader />
+          <ViewThemeHeader onBack={() => setOpen(false)} />
           <ViewThemeContainer />
         </div>
       </DrawerContent>

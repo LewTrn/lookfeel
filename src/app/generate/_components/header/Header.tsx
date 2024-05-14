@@ -53,7 +53,7 @@ export const Header = ({ children }: PropsWithChildren) => {
   }, [handleGenerate]);
 
   return (
-    <header className="sticky top-0 z-50 mx-2 mb-4 flex h-16 items-center justify-between gap-8 bg-background px-8">
+    <header className="sticky top-0 z-50 mx-2 mb-4 flex h-16 items-center justify-between bg-background px-8">
       <Link href="/" className="w-[19.5rem] text-2xl font-bold">
         lookfeel
       </Link>
