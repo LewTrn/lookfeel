@@ -2,13 +2,10 @@
 
 import { FlameIcon, SparklesIcon, TrendingUpIcon } from "lucide-react";
 
-import { ThemeCard } from "~/components/theme/ThemeCard";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
-import { DEFAULT_FONTS } from "~/constants/fonts";
-import { DEFAULT_PALETTE } from "~/constants/palette";
 import { strings } from "~/locales/landing";
 
-const { primary, secondary, accent, neutral } = DEFAULT_PALETTE;
+import { ThemeListing } from "./ThemeListing";
 
 export const Discover = () => {
   return (
@@ -25,19 +22,7 @@ export const Discover = () => {
         </TabsTrigger>
       </TabsList>
       <TabsContent value="trending">
-        <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          <ThemeCard
-            fonts={DEFAULT_FONTS}
-            palette={{
-              primary: primary.baseColour,
-              secondary: secondary.baseColour,
-              accent: accent.baseColour,
-              neutral: neutral.baseColour,
-            }}
-            tags={["Light", "Serif", "Modern"]}
-            showLikes
-          />
-        </div>
+        <ThemeListing />
       </TabsContent>
       <TabsContent value="popular"></TabsContent>
       <TabsContent value="latest"></TabsContent>
