@@ -1,9 +1,11 @@
-import { Theme } from "./_components/Theme";
+import { ViewThemeHeader } from "./_components/header/ViewThemeHeader";
+import { ViewThemeContainer } from "./_components/ViewThemeContainer";
 
-export default async function Home() {
+export default async function Theme() {
   return (
-    <main className="w-full max-w-screen-2xl px-8">
-      <Theme />
+    <main className="flex w-full flex-col">
+      <ViewThemeHeader />
+      <ViewThemeContainer />
     </main>
   );
 }

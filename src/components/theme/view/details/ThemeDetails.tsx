@@ -21,7 +21,10 @@ export const ThemeDetails = ({
 }: ThemeDetailsProps) => {
   return (
     <div className="sticky top-20 flex flex-col gap-6">
-      <Tabs defaultValue={defaultValue} onValueChange={onValueChange}>
+      <Tabs
+        defaultValue={defaultValue ?? GenerateMode.Colour}
+        onValueChange={onValueChange}
+      >
         <TabsList className="mb-6 w-full">
           <TabsTrigger
             value={GenerateMode.Colour}

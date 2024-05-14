@@ -1,3 +1,5 @@
+"use client";
+
 import {
   DownloadIcon,
   Grid2X2Icon,

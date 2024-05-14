@@ -1,3 +1,5 @@
+"use client";
+
 import { createContext, type PropsWithChildren, useContext } from "react";
 
 import { DEFAULT_FONTS } from "~/constants/fonts";

@@ -6,7 +6,7 @@ import { type GenerateMode } from "~/types/Mode";
 import { useGenerateStore } from "../../_store/useGenerateStore";
 import { useInitTheme } from "../../_utils/useInitTheme";
 
-export const GenerateContent = () => {
+export const GenerateViewThemeContainer = () => {
   const palette = useGenerateStore((state) => state.palette);
   const fonts = useGenerateStore((state) => state.fonts);
 

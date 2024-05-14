@@ -2,10 +2,10 @@ import Link from "next/link";
 
 import { auth } from "~/edgedb";
 
-import { GenerateContent } from "./_components/content/GenerateContent";
 import { Header } from "./_components/header/Header";
 import { UnauthedPublish } from "./_components/header/UnauthedPublish";
 import { PublishDialog } from "./_components/publish/PublishDialog";
+import { GenerateViewThemeContainer } from "./_components/view/GenerateViewThemeContainer";
 
 export default async function Generate() {
   const session = auth.getSession();
@@ -22,7 +22,7 @@ export default async function Generate() {
           </Link>
         )}
       </Header>
-      <GenerateContent />
+      <GenerateViewThemeContainer />
     </main>
   );
 }
