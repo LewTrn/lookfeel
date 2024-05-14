@@ -1,8 +1,12 @@
-import { useGenerateStore } from "~/app/generate/_store/useGenerateStore";
-import { strings } from "~/locales/generate";
+import { strings } from "~/locales/lookfeel";
+import { type Palette } from "~/types/Palette";
 
-export const ArticleBlock = () => {
-  const { primary } = useGenerateStore((state) => state.palette);
+type ArticleBlockProps = {
+  palette: Palette;
+};
+
+export const ArticleBlock = ({ palette }: ArticleBlockProps) => {
+  const { primary } = palette;
 
   return (
     <section className="mb-4 flex flex-col">

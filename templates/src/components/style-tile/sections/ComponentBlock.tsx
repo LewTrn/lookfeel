@@ -4,7 +4,7 @@ import { type DateRange } from "react-day-picker";
 import { Badge } from "templates/components/ui/badge";
 import { Calendar } from "templates/components/ui/calendar";
 
-import { strings } from "~/locales/generate";
+import { strings } from "~/locales/lookfeel";
 
 const from = new Date();
 

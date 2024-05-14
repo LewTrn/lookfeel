@@ -1,8 +1,10 @@
-import { useGenerateStore } from "~/app/generate/_store/useGenerateStore";
+import { type Palette } from "~/types/Palette";
 
-export const PaletteBlock = () => {
-  const palette = useGenerateStore((state) => state.palette);
+type PaletteBlockProps = {
+  palette: Palette;
+};
 
+export const PaletteBlock = ({ palette }: PaletteBlockProps) => {
   return (
     <div className="grid grid-cols-4 gap-4">
       {Object.values(palette).map(({ baseColour }, index) => (

@@ -1,29 +1,31 @@
 "use client";
 
-import { useLoadFont } from "~/utils/typography/useLoadFont";
+import { ViewTheme } from "~/components/theme/view/ViewTheme";
+import { type GenerateMode } from "~/types/Mode";
 
 import { useGenerateStore } from "../../_store/useGenerateStore";
 import { useInitTheme } from "../../_utils/useInitTheme";
-import { Options } from "../options/Options";
-import { Visualise } from "../visualise/Visualise";
 
 export const GenerateContent = () => {
-  const { heading, body } = useGenerateStore((state) => state.fonts);
+  const palette = useGenerateStore((state) => state.palette);
+  const fonts = useGenerateStore((state) => state.fonts);
 
-  useLoadFont(heading);
-  useLoadFont(body);
+  const mode = useGenerateStore((state) => state.mode);
+  const setMode = useGenerateStore((state) => state.setMode);
 
   const { isThemeLoaded } = useInitTheme();
 
   if (!isThemeLoaded) return null;
+
+  const theme = { palette, fonts };
+
   return (
-    <div className="flex gap-8 px-8 pb-8">
-      <div className="w-80">
-        <Options />
-      </div>
-      <div className="w-full">
-        <Visualise />
-      </div>
-    </div>
+    <ViewTheme
+      theme={theme}
+      detailsProps={{
+        defaultValue: mode,
+        onValueChange: (mode) => setMode(mode as GenerateMode),
+      }}
+    />
   );
 };

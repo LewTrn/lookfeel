@@ -2,7 +2,7 @@ import { Button } from "templates/components/ui/button";
 import { Input } from "templates/components/ui/input";
 import { Label } from "templates/components/ui/label";
 
-import { strings } from "~/locales/generate";
+import { strings } from "~/locales/lookfeel";
 
 export const ButtonBlock = () => {
   return (

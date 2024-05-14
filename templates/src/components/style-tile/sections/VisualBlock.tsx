@@ -1,6 +1,6 @@
 import tinycolor from "tinycolor2";
 
-import { useGenerateStore } from "~/app/generate/_store/useGenerateStore";
+import { type Palette } from "~/types/Palette";
 
 const getStyles = ({
   background,
@@ -19,10 +19,12 @@ const getStyles = ({
   };
 };
 
-export const VisualBlock = () => {
-  const { primary, secondary, accent, neutral } = useGenerateStore(
-    (state) => state.palette,
-  );
+type VisualBlockProps = {
+  palette: Palette;
+};
+
+export const VisualBlock = ({ palette }: VisualBlockProps) => {
+  const { primary, secondary, accent, neutral } = palette;
 
   return (
     <div className="flex w-60 max-w-60 flex-col gap-4">

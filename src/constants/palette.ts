@@ -1,3 +1,4 @@
+import { strings } from "~/locales/lookfeel";
 import { ColourType, type Palette } from "~/types/Palette";
 
 const SHADES = {
@@ -35,4 +36,11 @@ export const DEFAULT_PALETTE: Palette = {
     baseStop: 900,
     shades: SHADES,
   },
+};
+
+export const PALETTE_HEADINGS = {
+  [ColourType.Primary]: strings.colour.palette.primary.label,
+  [ColourType.Secondary]: strings.colour.palette.secondary.label,
+  [ColourType.Accent]: strings.colour.palette.accent.label,
+  [ColourType.Neutral]: strings.colour.palette.neutral.label,
 };
