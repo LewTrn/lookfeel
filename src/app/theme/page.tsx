@@ -1,11 +1,5 @@
-import { ViewThemeHeader } from "./_components/header/ViewThemeHeader";
-import { ViewThemeContainer } from "./_components/ViewThemeContainer";
+import { redirect } from "next/navigation";
 
 export default async function Theme() {
-  return (
-    <main className="flex w-full flex-col">
-      <ViewThemeHeader />
-      <ViewThemeContainer />
-    </main>
-  );
+  redirect("/");
 }

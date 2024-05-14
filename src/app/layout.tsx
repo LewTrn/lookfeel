@@ -17,13 +17,18 @@ export const metadata = {
 
 export default function RootLayout({
   children,
+  themeDrawer,
 }: {
   children: React.ReactNode;
+  themeDrawer: React.ReactNode;
 }) {
   return (
     <html lang="en">
       <body className={`font-sans ${inter.variable}`}>
-        <TRPCReactProvider>{children}</TRPCReactProvider>
+        <TRPCReactProvider>
+          {children}
+          {themeDrawer}
+        </TRPCReactProvider>
       </body>
     </html>
   );
