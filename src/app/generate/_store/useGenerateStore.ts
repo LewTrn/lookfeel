@@ -7,8 +7,8 @@ import { GenerateMode } from "~/types/Mode";
 import { type BaseColours, type Palette } from "~/types/Palette";
 import { type Theme } from "~/types/Theme";
 
+import { makePalette } from "../../../utils/colours/palette/makePalette";
 import { selectFonts } from "../_utils/fonts/selectFonts";
-import { makePalette } from "../_utils/palette/makePalette";
 
 export type GenerateState = {
   palette: Palette;
