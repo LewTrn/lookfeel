@@ -17,3 +17,7 @@ export const createThemeSchema = z.object({
   fonts: fontsSchema,
   tags: z.array(z.string()).min(1),
 });
+
+export const getThemeSchema = z.object({
+  id: z.string().min(1),
+});
