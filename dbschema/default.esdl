@@ -48,6 +48,10 @@ module default {
       default := global current_user;
     }
 
+    multi likes: Likes {
+      on source delete delete target;
+    }
+
     created_at: datetime {
       rewrite insert using (datetime_of_statement());
     }
@@ -88,5 +92,10 @@ module default {
       using (global current_user.user_role ?= Role.admin);
     access policy others_read_only
       allow select;
+  }
+
+  type Likes {
+    required user: User;
+    required theme: Theme;
   }
 }
