@@ -5,17 +5,20 @@ import { ViewThemeHeader } from "./../_components/header/ViewThemeHeader";
 import { ViewThemeContainer } from "./../_components/ViewThemeContainer";
 
 export default async function Theme({ params }: { params: { id: string } }) {
-  const theme = await api.theme.getTheme({ id: params.id });
+  const data = await api.theme.getTheme({ id: params.id });
 
   // TODO: Handle theme not found
-  if (!theme) return null;
+  if (!data) return null;
 
-  const palette = makePalette(theme.palette);
+  const theme = {
+    palette: makePalette(data.palette),
+    fonts: data.fonts,
+  };
 
   return (
     <main className="flex w-full flex-col">
-      <ViewThemeHeader />
-      <ViewThemeContainer theme={{ palette, fonts: theme.fonts }} />
+      <ViewThemeHeader theme={theme} />
+      <ViewThemeContainer theme={theme} />
     </main>
   );
 }
