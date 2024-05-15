@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  DownloadIcon,
-  Grid2X2Icon,
-  LayoutPanelTopIcon,
-  SwatchBookIcon,
-} from "lucide-react";
+import { Grid2X2Icon, LayoutPanelTopIcon, SwatchBookIcon } from "lucide-react";
 import { Landing } from "templates/components/landing/Landing";
 import { Shades } from "templates/components/shades/Shades";
 import { StyleTile } from "templates/components/style-tile/StyleTile";
@@ -31,9 +26,6 @@ export const ThemeVisuals = ({ theme }: ThemeVisualsProps) => {
           </TabsTrigger>
           <TabsTrigger value="shades" Icon={SwatchBookIcon}>
             {strings.visuals.tabs.shades.action}
-          </TabsTrigger>
-          <TabsTrigger value="export" Icon={DownloadIcon} disabled>
-            {strings.visuals.tabs.export.action}
           </TabsTrigger>
         </TabsList>
         <TabsContent value="tile">
