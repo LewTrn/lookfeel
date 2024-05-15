@@ -7,7 +7,7 @@ import { useLandingStore } from "~/app/_store/useLandingStore";
 import { ViewThemeContainer } from "~/app/theme/_components/ViewThemeContainer";
 import { Drawer, DrawerContent } from "~/components/ui/drawer";
 
-import { ViewThemeHeader } from "./_components/ThemeDrawerHeader";
+import { ThemeDrawerHeader } from "./_components/ThemeDrawerHeader";
 
 export default function ThemeDrawer() {
   const [open, setOpen] = useState(true);
@@ -34,7 +34,7 @@ export default function ThemeDrawer() {
     >
       <DrawerContent className="h-[calc(100%-64px)]">
         <div className="overflow-y-auto">
-          <ViewThemeHeader onBack={() => setOpen(false)} />
+          <ThemeDrawerHeader onBack={() => setOpen(false)} />
           <ViewThemeContainer theme={selectedTheme} />
         </div>
       </DrawerContent>

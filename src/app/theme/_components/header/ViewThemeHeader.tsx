@@ -9,7 +9,7 @@ export const ViewThemeHeader = () => {
       <Link href="/" className="text-2xl font-bold">
         lookfeel
       </Link>
-      <Button>{strings.view.modify.action}</Button>
+      <Button>{strings.view.edit.action}</Button>
     </header>
   );
 };

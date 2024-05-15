@@ -3,8 +3,8 @@ export const strings = {
     back: {
       action: "Back",
     },
-    modify: {
-      action: "Modify theme",
+    edit: {
+      action: "Edit theme",
     },
   },
 };
