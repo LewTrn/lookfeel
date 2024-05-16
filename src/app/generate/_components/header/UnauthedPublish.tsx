@@ -1,15 +1,23 @@
 "use client";
 
 import { useSetRedirect } from "~/app/redirect/_utils/redirect";
-import { Button } from "~/components/ui/button";
+import { LinkButton } from "~/components/ui/link-button";
 import { strings } from "~/locales/generate";
 
-export const UnauthedPublish = () => {
+type UnauthedPublishProps = {
+  href: string;
+};
+
+export const UnauthedPublish = ({ href }: UnauthedPublishProps) => {
   const setRedirect = useSetRedirect();
 
   const handleOnClick = () => {
     setRedirect();
   };
 
-  return <Button onClick={handleOnClick}>{strings.publish.action}</Button>;
+  return (
+    <LinkButton href={href} onClick={handleOnClick}>
+      {strings.publish.action}
+    </LinkButton>
+  );
 };

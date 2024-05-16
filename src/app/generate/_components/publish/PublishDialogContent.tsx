@@ -1,10 +1,10 @@
 import copy from "copy-to-clipboard";
 import { CopyIcon, ExternalLinkIcon } from "lucide-react";
-import Link from "next/link";
 import { useState } from "react";
 
 import { ThemeCard } from "~/components/theme/ThemeCard";
 import { Button } from "~/components/ui/button";
+import { LinkButton } from "~/components/ui/link-button";
 import { strings } from "~/locales/generate";
 import { type Fonts } from "~/types/Fonts";
 import { type BaseColours } from "~/types/Palette";
@@ -47,16 +47,15 @@ export const PublishDialogContent = ({
         <div className="flex w-80 flex-col gap-4 pt-4">
           <ThemeCard palette={palette} fonts={fonts} tags={tags} />
           <div className="grid grid-cols-2 gap-2">
-            <Link href={`/theme/${id}`}>
-              <Button
-                variant="tint"
-                Icon={ExternalLinkIcon}
-                loading={!id}
-                className="w-full"
-              >
-                {strings.publish.open.action}
-              </Button>
-            </Link>
+            <LinkButton
+              href={`/theme/${id}`}
+              variant="tint"
+              Icon={ExternalLinkIcon}
+              loading={!id}
+              className="w-full"
+            >
+              {strings.publish.open.action}
+            </LinkButton>
             <Button
               variant="tint"
               Icon={CopyIcon}

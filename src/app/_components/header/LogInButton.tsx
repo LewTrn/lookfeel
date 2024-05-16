@@ -3,10 +3,14 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 
-import { Button } from "~/components/ui/button";
+import { LinkButton } from "~/components/ui/link-button";
 import { strings } from "~/locales/landing";
 
-export const LogInButton = () => {
+type LogInButtonProps = {
+  href: string;
+};
+
+export const LogInButton = ({ href }: LogInButtonProps) => {
   const router = useRouter();
   const pathname = usePathname();
   const params = useSearchParams();
@@ -22,5 +26,9 @@ export const LogInButton = () => {
     }
   }, [params, pathname, router]);
 
-  return <Button variant="ghost">{strings.header.logIn.action}</Button>;
+  return (
+    <LinkButton href={href} variant="ghost">
+      {strings.header.logIn.action}
+    </LinkButton>
+  );
 };

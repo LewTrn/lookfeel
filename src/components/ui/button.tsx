@@ -69,15 +69,17 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           disabled={loading}
           {...props}
         >
-          <span className="-translate-x-2">
-            <Icon
-              strokeWidth={1.75}
-              width={20}
-              height={20}
-              className={cn(loading && "animate-spin")}
-            />
-          </span>
-          <span>{children}</span>
+          <div className="flex">
+            <span className="-translate-x-2">
+              <Icon
+                strokeWidth={1.75}
+                width={20}
+                height={20}
+                className={cn(loading && "animate-spin")}
+              />
+            </span>
+            <span>{children}</span>
+          </div>
         </Comp>
       );
     }

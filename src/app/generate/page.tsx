@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import { auth } from "~/edgedb";
 
 import { Header } from "./_components/header/Header";
@@ -17,9 +15,7 @@ export default async function Generate() {
         {signedIn ? (
           <PublishDialog />
         ) : (
-          <Link href={auth.getBuiltinUIUrl()}>
-            <UnauthedPublish />
-          </Link>
+          <UnauthedPublish href={auth.getBuiltinUIUrl()} />
         )}
       </Header>
       <GenerateViewThemeContainer />

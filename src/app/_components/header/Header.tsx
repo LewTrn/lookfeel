@@ -1,6 +1,4 @@
-import Link from "next/link";
-
-import { Button } from "~/components/ui/button";
+import { LinkButton } from "~/components/ui/link-button";
 import { auth } from "~/edgedb";
 import { strings } from "~/locales/landing";
 
@@ -9,24 +7,20 @@ import { LogInButton } from "./LogInButton";
 const SignedInOptions = () => {
   return (
     <>
-      <Link href={auth.getSignoutUrl()}>
-        <Button variant="ghost">{strings.header.logOut.action}</Button>
-      </Link>
-      <Link href="/generate">
-        <Button>{strings.header.start.action}</Button>
-      </Link>
+      <LinkButton variant="ghost" href={auth.getSignoutUrl()}>
+        {strings.header.logOut.action}
+      </LinkButton>
+      <LinkButton href="/generate">{strings.header.start.action}</LinkButton>
     </>
   );
 };
 
 const SignedOutOptions = () => (
   <>
-    <Link href={auth.getBuiltinUIUrl()}>
-      <LogInButton />
-    </Link>
-    <Link href={auth.getBuiltinUISignUpUrl()}>
-      <Button>{strings.header.signUp.action}</Button>
-    </Link>
+    <LogInButton href={auth.getBuiltinUIUrl()} />
+    <LinkButton href={auth.getBuiltinUISignUpUrl()}>
+      {strings.header.signUp.action}
+    </LinkButton>
   </>
 );
 
