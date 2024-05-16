@@ -1,5 +1,5 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { z } from "zod";
 
 const redirectSchema = z.object({
@@ -33,24 +33,30 @@ export const useSetRedirect = () => {
 };
 
 export const useRedirect = () => {
+  const redirectOnce = useRef(false);
   const router = useRouter();
 
   useEffect(() => {
-    try {
-      let redirectPath = "/";
-      const item = localStorage.getItem(REDIRECT_KEY);
+    if (!redirectOnce.current) {
+      try {
+        let redirectPath = "/";
+        const item = localStorage.getItem(REDIRECT_KEY);
 
-      if (item) {
-        const { pathname, params } = redirectSchema.parse(JSON.parse(item));
+        if (item) {
+          const { pathname, params } = redirectSchema.parse(JSON.parse(item));
 
-        if (pathname) {
-          redirectPath = params ? `${pathname}?${params}` : pathname;
+          if (pathname) {
+            redirectPath = params ? `${pathname}?${params}` : pathname;
+          }
         }
-      }
 
-      router.push(redirectPath);
-    } catch (error) {
-      router.push("/");
+        router.push(redirectPath);
+      } catch (error) {
+        router.push("/");
+      } finally {
+        localStorage.removeItem(REDIRECT_KEY);
+        redirectOnce.current = true;
+      }
     }
   }, [router]);
 };
