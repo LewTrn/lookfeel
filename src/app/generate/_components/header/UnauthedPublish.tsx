@@ -12,7 +12,7 @@ export const UnauthedPublish = ({ href }: UnauthedPublishProps) => {
   const setRedirect = useSetRedirect();
 
   const handleOnClick = () => {
-    setRedirect();
+    setRedirect({ publish: "true" });
   };
 
   return (

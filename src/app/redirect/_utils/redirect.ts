@@ -15,13 +15,21 @@ export const useSetRedirect = () => {
   const pathname = usePathname();
   const params = useSearchParams();
 
-  return useCallback(() => {
-    const redirectProperties: RedirectProperties = {
-      pathname,
-      params: params.toString(),
-    };
-    localStorage.setItem(REDIRECT_KEY, JSON.stringify(redirectProperties));
-  }, [pathname, params]);
+  return useCallback(
+    (additionalParams?: Record<string, string>) => {
+      const fullParams = new URLSearchParams(params);
+      Object.entries(additionalParams ?? {}).forEach(([key, value]) => {
+        fullParams.set(key, value);
+      });
+
+      const redirectProperties: RedirectProperties = {
+        pathname,
+        params: fullParams.toString(),
+      };
+      localStorage.setItem(REDIRECT_KEY, JSON.stringify(redirectProperties));
+    },
+    [pathname, params],
+  );
 };
 
 export const useRedirect = () => {
@@ -29,19 +37,20 @@ export const useRedirect = () => {
 
   useEffect(() => {
     try {
-      const { pathname, params } = redirectSchema.parse(
-        JSON.parse(localStorage.getItem(REDIRECT_KEY) ?? ""),
-      );
+      let redirectPath = "/";
+      const item = localStorage.getItem(REDIRECT_KEY);
 
-      if (pathname) {
-        router.push(params ? `${pathname}?${params}` : pathname);
-        return;
+      if (item) {
+        const { pathname, params } = redirectSchema.parse(JSON.parse(item));
+
+        if (pathname) {
+          redirectPath = params ? `${pathname}?${params}` : pathname;
+        }
       }
-      router.push("/");
+
+      router.push(redirectPath);
     } catch (error) {
       router.push("/");
-    } finally {
-      localStorage.removeItem(REDIRECT_KEY);
     }
   }, [router]);
 };

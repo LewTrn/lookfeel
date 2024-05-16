@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { useCallback, useEffect, useState } from "react";
 
 import { Button } from "~/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "~/components/ui/dialog";
@@ -17,6 +18,9 @@ enum Page {
 }
 
 export const PublishDialog = () => {
+  const params = useSearchParams();
+
+  const [open, setOpen] = useState(false);
   const [page, setPage] = useState(Page.Tags);
 
   const { primary, secondary, accent, neutral } = useGenerateStore(
@@ -28,10 +32,23 @@ export const PublishDialog = () => {
 
   const { mutate, data, variables } = api.theme.createTheme.useMutation();
 
-  const onOpen = () => {
-    setPage(Page.Tags);
-    setTags([]);
-  };
+  const onOpen = useCallback(
+    (value: boolean) => {
+      setOpen(value);
+
+      if (value) {
+        setPage(Page.Tags);
+        setTags([]);
+      }
+    },
+    [setTags],
+  );
+
+  useEffect(() => {
+    if (params.get("publish") === "true") {
+      onOpen(true);
+    }
+  }, [onOpen, params]);
 
   const handleOnSubmit = () => {
     setPage(Page.Publish);
@@ -49,7 +66,7 @@ export const PublishDialog = () => {
   };
 
   return (
-    <Dialog onOpenChange={onOpen}>
+    <Dialog open={open} onOpenChange={onOpen}>
       <DialogTrigger asChild>
         <Button>{strings.publish.action}</Button>
       </DialogTrigger>
