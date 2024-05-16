@@ -73,7 +73,7 @@ export const PublishDialog = () => {
       <DialogContent className="flex h-96 flex-col justify-between overflow-clip">
         {page === Page.Tags && <TagsDialogContent onSubmit={handleOnSubmit} />}
         {page === Page.Publish && variables && (
-          <PublishDialogContent id={data?.short_id} {...variables} />
+          <PublishDialogContent id={data?.id} {...variables} />
         )}
       </DialogContent>
     </Dialog>

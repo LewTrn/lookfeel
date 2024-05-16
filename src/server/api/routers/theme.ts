@@ -3,7 +3,11 @@ import { nanoid } from "nanoid";
 
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 
-import { createThemeSchema, getThemeSchema } from "../schemas/theme";
+import {
+  createThemeSchema,
+  getThemeSchema,
+  likeThemeSchema,
+} from "../schemas/theme";
 
 export const themeRouter = createTRPCRouter({
   getTheme: publicProcedure
@@ -30,7 +34,15 @@ export const themeRouter = createTRPCRouter({
 
       const result = await query.run(ctx.session.client);
 
-      return result;
+      if (!result) return null;
+
+      return {
+        id: result.short_id,
+        palette: result.palette,
+        fonts: result.fonts,
+        like_count: result.like_count,
+        tags: result.tags.map((tag) => tag.name),
+      };
     }),
 
   createTheme: publicProcedure
@@ -48,6 +60,26 @@ export const themeRouter = createTRPCRouter({
 
       await query.run(ctx.session.client);
 
-      return { short_id, ...input };
+      return { id: short_id, ...input };
+    }),
+
+  likeTheme: publicProcedure
+    .input(likeThemeSchema)
+    .mutation(async ({ input, ctx }) => {
+      if (input.liked) {
+        const query = e.insert(e.Likes, {
+          theme: e.select(e.Theme, (theme) => ({
+            filter_single: e.op(theme.short_id, "=", input.id),
+          })),
+        });
+        await query.run(ctx.session.client);
+      } else {
+        const query = e.delete(e.Likes, (likes) => ({
+          filter_single: e.op(likes.theme.short_id, "=", input.id),
+        }));
+        await query.run(ctx.session.client);
+      }
+
+      return { id: input.id, liked: input.liked };
     }),
 });
