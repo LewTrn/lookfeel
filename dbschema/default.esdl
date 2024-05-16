@@ -95,7 +95,12 @@ module default {
   }
 
   type Likes {
-    required user: User;
+    required user: User{
+      default := global current_user;
+    }
+    
     required theme: Theme;
+
+    constraint exclusive on ((.user, .theme));
   }
 }

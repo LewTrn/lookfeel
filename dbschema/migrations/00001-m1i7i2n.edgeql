@@ -1,4 +1,4 @@
-CREATE MIGRATION m16i4l3ihli2kls24vrjsyzccbzphjgjtbyqisoeib6vnca5mvtoeq
+CREATE MIGRATION m1i7i2n3zgc5uaowckc4reaoqy55jzu6sn64ttzl56yoduu2csqjaa
     ONTO initial
 {
   CREATE EXTENSION pgcrypto VERSION '1.3';
@@ -58,8 +58,12 @@ CREATE MIGRATION m16i4l3ihli2kls24vrjsyzccbzphjgjtbyqisoeib6vnca5mvtoeq
       };
       CREATE ACCESS POLICY creator_has_full_access
           ALLOW ALL USING ((.created_by ?= GLOBAL default::current_user));
-      CREATE REQUIRED LINK fonts: default::Fonts;
-      CREATE REQUIRED LINK palette: default::Palette;
+      CREATE REQUIRED LINK fonts: default::Fonts {
+          ON SOURCE DELETE DELETE TARGET;
+      };
+      CREATE REQUIRED LINK palette: default::Palette {
+          ON SOURCE DELETE DELETE TARGET;
+      };
       CREATE REQUIRED MULTI LINK tags: default::Tags;
       CREATE ACCESS POLICY others_read_only
           ALLOW SELECT, INSERT ;
@@ -78,6 +82,18 @@ CREATE MIGRATION m16i4l3ihli2kls24vrjsyzccbzphjgjtbyqisoeib6vnca5mvtoeq
           CREATE REWRITE
               UPDATE 
               USING (std::datetime_of_statement());
+      };
+  };
+  CREATE TYPE default::Likes {
+      CREATE REQUIRED LINK user: default::User {
+          SET default := (GLOBAL default::current_user);
+      };
+      CREATE REQUIRED LINK theme: default::Theme;
+      CREATE CONSTRAINT std::exclusive ON ((.user, .theme));
+  };
+  ALTER TYPE default::Theme {
+      CREATE MULTI LINK likes: default::Likes {
+          ON SOURCE DELETE DELETE TARGET;
       };
   };
 };
