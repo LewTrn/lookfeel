@@ -1,14 +1,18 @@
-import Link, { type LinkProps } from "next/link";
+import Link from "next/link";
 
 import { Button, type ButtonProps } from "./button";
 
-type LinkButtonProps = ButtonProps & Pick<LinkProps, "href">;
+type LinkButtonProps = ButtonProps & {
+  href: string;
+  asAnchor?: boolean;
+};
 
 export const LinkButton = ({
   href,
   loading,
   disabled,
   children,
+  asAnchor,
   ...buttonProps
 }: LinkButtonProps) => {
   if (loading) {
@@ -27,9 +31,13 @@ export const LinkButton = ({
     );
   }
 
+  const Comp = asAnchor ? "a" : Link;
+
   return (
-    <Button asChild {...buttonProps}>
-      <Link href={href}>{children}</Link>
-    </Button>
+    <Comp href={href}>
+      <Button asChild {...buttonProps}>
+        <span>{children}</span>
+      </Button>
+    </Comp>
   );
 };

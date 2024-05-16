@@ -53,6 +53,7 @@ export const PublishDialogContent = ({
               Icon={ExternalLinkIcon}
               loading={!id}
               className="w-full"
+              asAnchor
             >
               {strings.publish.open.action}
             </LinkButton>

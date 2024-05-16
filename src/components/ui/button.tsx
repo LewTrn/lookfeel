@@ -78,7 +78,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
                 className={cn(loading && "animate-spin")}
               />
             </span>
-            <span>{children}</span>
+            {children}
           </div>
         </Comp>
       );
