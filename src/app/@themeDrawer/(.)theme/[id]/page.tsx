@@ -9,7 +9,7 @@ import { Drawer, DrawerContent } from "~/components/ui/drawer";
 
 import { ThemeDrawerHeader } from "./_components/ThemeDrawerHeader";
 
-export default function ThemeDrawer() {
+export default function ThemeDrawer({ params }: { params: { id: string } }) {
   const [open, setOpen] = useState(true);
   const router = useRouter();
   const pathname = usePathname();
@@ -41,6 +41,7 @@ export default function ThemeDrawer() {
       <DrawerContent className="h-[calc(100%-64px)]">
         <div className="overflow-y-auto">
           <ThemeDrawerHeader
+            id={params.id}
             theme={selectedTheme}
             onBack={() => setOpen(false)}
           />

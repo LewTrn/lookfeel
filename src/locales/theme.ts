@@ -6,5 +6,8 @@ export const strings = {
     edit: {
       action: "Edit theme",
     },
+    like: {
+      action: "Like",
+    },
   },
 };

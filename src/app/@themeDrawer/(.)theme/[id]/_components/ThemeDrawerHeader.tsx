@@ -1,23 +1,27 @@
 import { ArrowLeftIcon } from "lucide-react";
 
+import { ViewThemeActions } from "~/app/theme/_components/header/ViewThemeActions";
 import { Button } from "~/components/ui/button";
 import { strings } from "~/locales/theme";
 import { type Theme } from "~/types/Theme";
 
-import { EditThemeButton } from "./EditThemeButton";
-
 type ViewThemeHeaderProps = {
+  id: string;
   theme: Theme;
   onBack: () => void;
 };
 
-export const ThemeDrawerHeader = ({ theme, onBack }: ViewThemeHeaderProps) => {
+export const ThemeDrawerHeader = ({
+  id,
+  theme,
+  onBack,
+}: ViewThemeHeaderProps) => {
   return (
     <div className="sticky top-0 z-50 mx-2 mb-4 flex h-16 items-center justify-between gap-8 bg-background pl-2 pr-6">
       <Button variant="ghost" Icon={ArrowLeftIcon} onClick={onBack}>
         {strings.view.back.action}
       </Button>
-      <EditThemeButton theme={theme} />
+      <ViewThemeActions id={id} theme={theme} />
     </div>
   );
 };

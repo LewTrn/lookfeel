@@ -17,7 +17,7 @@ export default async function Theme({ params }: { params: { id: string } }) {
 
   return (
     <main className="flex w-full flex-col">
-      <ViewThemeHeader theme={theme} />
+      <ViewThemeHeader id={params.id} theme={theme} />
       <ViewThemeContainer theme={theme} />
     </main>
   );
