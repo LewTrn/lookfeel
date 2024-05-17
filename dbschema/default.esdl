@@ -36,20 +36,24 @@ module default {
       constraint exclusive;
     };
 
-    required palette: Palette{
+    required palette: Palette {
       on source delete delete target;
     }
-    required fonts: Fonts{
+    required fonts: Fonts {
       on source delete delete target;
     }
     required multi tags: Tags;
 
-    required created_by: User {
-      default := global current_user;
-    }
-
     multi likes: Likes {
       on source delete delete target;
+      on target delete allow;
+    }
+    required like_count: int32 {
+      default := 0;
+    }
+
+    required created_by: User {
+      default := global current_user;
     }
 
     created_at: datetime {
@@ -95,7 +99,7 @@ module default {
   }
 
   type Likes {
-    required user: User{
+    required user: User {
       default := global current_user;
     }
     

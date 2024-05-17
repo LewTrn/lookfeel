@@ -28,7 +28,7 @@ export const themeRouter = createTRPCRouter({
         tags: {
           name: true,
         },
-        like_count: e.count(theme.likes),
+        like_count: true,
         filter_single: e.op(theme.short_id, "=", input.id),
       }));
 
@@ -67,19 +67,47 @@ export const themeRouter = createTRPCRouter({
     .input(likeThemeSchema)
     .mutation(async ({ input, ctx }) => {
       if (input.liked) {
-        const query = e.insert(e.Likes, {
-          theme: e.select(e.Theme, (theme) => ({
-            filter_single: e.op(theme.short_id, "=", input.id),
-          })),
-        });
+        const query = e.update(e.Theme, (theme) => ({
+          set: {
+            likes: {
+              "+=": e.insert(e.Likes, {
+                theme: e.select(e.Theme, (theme) => ({
+                  filter_single: e.op(theme.short_id, "=", input.id),
+                })),
+              }),
+            },
+            like_count: e.op(theme.like_count, "+", 1),
+          },
+          filter_single: e.op(theme.short_id, "=", input.id),
+        }));
+
         await query.run(ctx.session.client);
       } else {
-        const query = e.delete(e.Likes, (likes) => ({
-          filter_single: e.op(likes.theme.short_id, "=", input.id),
+        const selectQuery = e.select(e.Likes, (likes) => ({
+          filter_single: e.op(
+            e.op(likes.theme.short_id, "=", input.id),
+            "and",
+            e.op(likes.user, "=", e.global.current_user),
+          ),
         }));
-        await query.run(ctx.session.client);
-      }
 
-      return { id: input.id, liked: input.liked };
+        const likeExists = await selectQuery.run(ctx.session.client);
+
+        if (likeExists) {
+          const query = e.update(e.Theme, (theme) => ({
+            set: {
+              likes: {
+                "-=": e.delete(e.Likes, (likes) => ({
+                  filter_single: e.op(likes.theme.short_id, "=", input.id),
+                })),
+              },
+              like_count: e.op(theme.like_count, "-", 1),
+            },
+            filter_single: e.op(theme.short_id, "=", input.id),
+          }));
+
+          await query.run(ctx.session.client);
+        }
+      }
     }),
 });
