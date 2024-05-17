@@ -28,6 +28,9 @@ export const themeRouter = createTRPCRouter({
         tags: {
           name: true,
         },
+        likes: (likes) => ({
+          filter_single: e.op(likes.user, "=", e.global.current_user),
+        }),
         like_count: true,
         filter_single: e.op(theme.short_id, "=", input.id),
       }));
@@ -41,6 +44,7 @@ export const themeRouter = createTRPCRouter({
         palette: result.palette,
         fonts: result.fonts,
         like_count: result.like_count,
+        liked: result.likes.length > 0,
         tags: result.tags.map((tag) => tag.name),
       };
     }),
