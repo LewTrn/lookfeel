@@ -20,12 +20,7 @@ export const UnauthedLikeThemeButton = ({
   };
 
   return (
-    <LinkButton
-      href={href}
-      onClick={handleOnClick}
-      Icon={HeartIcon}
-      variant="ghost"
-    >
+    <LinkButton href={href} onClick={handleOnClick} Icon={HeartIcon}>
       {strings.view.like.action}
     </LinkButton>
   );

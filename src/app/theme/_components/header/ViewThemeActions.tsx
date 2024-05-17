@@ -23,14 +23,14 @@ export const ViewThemeActions = async ({
 
   return (
     <div className="flex gap-2">
+      <LinkButton href={`/generate?${params}`} variant="ghost">
+        {strings.view.edit.action}
+      </LinkButton>
       {signedIn ? (
         <LikeThemeButton id={id} />
       ) : (
         <UnauthedLikeThemeButton href={auth.getBuiltinUIUrl()} />
       )}
-      <LinkButton href={`/generate?${params}`}>
-        {strings.view.edit.action}
-      </LinkButton>
     </div>
   );
 };

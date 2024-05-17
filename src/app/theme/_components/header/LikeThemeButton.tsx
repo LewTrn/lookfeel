@@ -10,9 +10,10 @@ import { api } from "~/trpc/react";
 
 type LikeThemeButtonProps = {
   id: string;
+  liked?: boolean;
 };
 
-export const LikeThemeButton = ({ id }: LikeThemeButtonProps) => {
+export const LikeThemeButton = ({ id, liked }: LikeThemeButtonProps) => {
   const router = useRouter();
   const pathname = usePathname();
   const params = useSearchParams();
@@ -20,18 +21,18 @@ export const LikeThemeButton = ({ id }: LikeThemeButtonProps) => {
 
   useEffect(() => {
     if (params.get("like") === "true") {
-      mutate({ id, liked: true });
+      mutate({ id, like: true });
       router.replace(pathname);
     }
   }, [id, mutate, params, pathname, router]);
 
   return (
     <Button
-      onClick={() => mutate({ id, liked: true })}
+      onClick={() => mutate({ id, like: !liked })}
       Icon={HeartIcon}
-      variant="ghost"
+      iconProps={liked ? { fill: "#fafafa", stroke: "#fafafa" } : {}}
     >
-      {strings.view.like.action}
+      {liked ? strings.view.liked.action : strings.view.like.action}
     </Button>
   );
 };

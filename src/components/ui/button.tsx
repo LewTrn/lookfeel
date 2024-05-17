@@ -39,6 +39,7 @@ export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   Icon?: LucideIcon;
+  iconProps?: React.SVGProps<SVGSVGElement>;
   asChild?: boolean;
   loading?: boolean;
 }
@@ -61,6 +62,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
     if (_Icon ?? loading) {
       const Icon = loading ? LoaderCircleIcon : _Icon!;
+      const { className: iconClassName, ...iconProps } = props.iconProps ?? {};
 
       return (
         <Comp
@@ -75,7 +77,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
                 strokeWidth={1.75}
                 width={20}
                 height={20}
-                className={cn(loading && "animate-spin")}
+                className={cn(iconClassName, loading && "animate-spin")}
+                {...iconProps}
               />
             </span>
             {children}
