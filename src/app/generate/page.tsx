@@ -1,3 +1,5 @@
+"use client";
+
 import { useSignedIn } from "~/components/auth/AuthProvider";
 
 import { Header } from "./_components/header/Header";
@@ -5,7 +7,7 @@ import { UnauthedPublish } from "./_components/header/UnauthedPublish";
 import { PublishDialog } from "./_components/publish/PublishDialog";
 import { GenerateViewThemeContainer } from "./_components/view/GenerateViewThemeContainer";
 
-export default async function Generate() {
+export default function Generate() {
   const { signedIn, signInUrl } = useSignedIn();
 
   return (

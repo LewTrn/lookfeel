@@ -19,9 +19,11 @@ export const metadata = {
 
 export default async function RootLayout({
   children,
+  logout,
   themeDrawer,
 }: {
   children: React.ReactNode;
+  logout: React.ReactNode;
   themeDrawer: React.ReactNode;
 }) {
   const session = auth.getSession();
@@ -40,6 +42,7 @@ export default async function RootLayout({
           >
             {children}
             {themeDrawer}
+            {logout}
           </AuthProvider>
         </TRPCReactProvider>
       </body>
