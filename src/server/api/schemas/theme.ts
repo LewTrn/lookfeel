@@ -22,6 +22,10 @@ export const getThemeSchema = z.object({
   id: z.string().min(1),
 });
 
+export const getThemesSchema = z.object({
+  filter: z.enum(["latest", "trending"]),
+});
+
 export const likeThemeSchema = z.object({
   id: z.string().min(1),
   like: z.boolean(),

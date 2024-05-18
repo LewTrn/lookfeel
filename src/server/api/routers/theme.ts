@@ -6,32 +6,40 @@ import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 import {
   createThemeSchema,
   getThemeSchema,
+  getThemesSchema,
   likeThemeSchema,
 } from "../schemas/theme";
+
+const baseThemeQuery = {
+  short_id: true,
+  palette: {
+    primary: true,
+    secondary: true,
+    accent: true,
+    neutral: true,
+  },
+  fonts: {
+    heading: true,
+    body: true,
+  },
+  tags: {
+    name: true,
+  },
+  likes: (likes) => ({
+    filter_single: e.op(likes.user, "=", e.global.current_user),
+  }),
+  like_count: true,
+};
 
 export const themeRouter = createTRPCRouter({
   getTheme: publicProcedure
     .input(getThemeSchema)
     .query(async ({ input, ctx }) => {
       const query = e.select(e.Theme, (theme) => ({
-        short_id: true,
-        palette: {
-          primary: true,
-          secondary: true,
-          accent: true,
-          neutral: true,
-        },
-        fonts: {
-          heading: true,
-          body: true,
-        },
-        tags: {
-          name: true,
-        },
+        ...baseThemeQuery,
         likes: (likes) => ({
           filter_single: e.op(likes.user, "=", e.global.current_user),
         }),
-        like_count: true,
         filter_single: e.op(theme.short_id, "=", input.id),
       }));
 
@@ -47,6 +55,43 @@ export const themeRouter = createTRPCRouter({
         liked: result.likes.length > 0,
         tags: result.tags.map((tag) => tag.name),
       };
+    }),
+
+  getThemes: publicProcedure
+    .input(getThemesSchema)
+    .query(async ({ input, ctx }) => {
+      let query;
+
+      if (input.filter === "trending") {
+        query = e.select(e.Theme, (theme) => ({
+          ...baseThemeQuery,
+          limit: e.int64(24),
+          order_by: {
+            expression: theme.like_count,
+            direction: e.DESC,
+          },
+        }));
+      } else {
+        query = e.select(e.Theme, (theme) => ({
+          ...baseThemeQuery,
+          limit: e.int64(24),
+          order_by: {
+            expression: theme.created_at,
+            direction: e.DESC,
+          },
+        }));
+      }
+
+      const result = await query.run(ctx.session.client);
+
+      return result.map((theme) => ({
+        id: theme.short_id,
+        palette: theme.palette,
+        fonts: theme.fonts,
+        like_count: theme.like_count,
+        liked: theme.likes.length > 0,
+        tags: theme.tags.map((tag) => tag.name),
+      }));
     }),
 
   createTheme: publicProcedure

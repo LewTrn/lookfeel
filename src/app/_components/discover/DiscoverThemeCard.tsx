@@ -1,21 +1,27 @@
+"use client";
+
 import Link from "next/link";
 
 import { useLandingStore } from "~/app/_store/useLandingStore";
 import { ThemeCard } from "~/components/theme/ThemeCard";
-import { DEFAULT_FONTS } from "~/constants/fonts";
-import { DEFAULT_PALETTE } from "~/constants/palette";
+import { type Fonts } from "~/types/Fonts";
+import { type BaseColours } from "~/types/Palette";
+import { type Likes } from "~/types/Theme";
 
-const { primary, secondary, accent, neutral } = DEFAULT_PALETTE;
+type DiscoverThemeCardProps = {
+  palette: BaseColours;
+  fonts: Fonts;
+  tags: string[];
+  likes: Likes;
+};
 
-export const DiscoverThemeCard = () => {
+export const DiscoverThemeCard = ({
+  palette,
+  fonts,
+  tags,
+  likes,
+}: DiscoverThemeCardProps) => {
   const setSelectedTheme = useLandingStore((state) => state.setSelectedTheme);
-
-  const palette = {
-    primary: primary.baseColour,
-    secondary: secondary.baseColour,
-    accent: accent.baseColour,
-    neutral: neutral.baseColour,
-  };
 
   return (
     <Link
@@ -23,17 +29,17 @@ export const DiscoverThemeCard = () => {
       onClick={() =>
         setSelectedTheme({
           baseColours: palette,
-          fonts: DEFAULT_FONTS,
-          likes: { likeCount: 120 },
+          fonts: fonts,
+          likes,
         })
       }
     >
       <ThemeCard
-        fonts={DEFAULT_FONTS}
+        fonts={fonts}
         palette={palette}
-        tags={["Light", "Serif", "Modern"]}
+        tags={tags}
         showLikes
-        likeCount={120}
+        likeCount={likes.likeCount}
       />
     </Link>
   );

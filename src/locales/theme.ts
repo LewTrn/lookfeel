@@ -4,7 +4,7 @@ export const strings = {
       action: "Back",
     },
     edit: {
-      action: "Edit theme",
+      action: "Open in generator",
     },
     like: {
       action: "Like",
