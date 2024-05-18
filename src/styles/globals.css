@@ -49,9 +49,17 @@
   }
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 @layer base {
   * {
     @apply border-border;
+  }
+  html {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
   }
   body {
     @apply bg-background text-foreground;
