@@ -1,3 +1,5 @@
+"use client";
+
 import { useSignedIn } from "~/components/auth/AuthProvider";
 import { LinkButton } from "~/components/ui/link-button";
 import { strings } from "~/locales/theme";

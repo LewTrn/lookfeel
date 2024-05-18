@@ -9,7 +9,7 @@ export const Hero = () => {
           <h1 className="text-5xl font-medium">{strings.hero.title}</h1>
         </div>
         <div>
-          <LinkButton href="/generate">
+          <LinkButton href="/generate" size="lg">
             {strings.hero.generate.action}
           </LinkButton>
         </div>

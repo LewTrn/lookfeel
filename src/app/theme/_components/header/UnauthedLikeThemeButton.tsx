@@ -15,7 +15,8 @@ export const UnauthedLikeThemeButton = ({
   href,
   likeCount,
 }: UnauthedLikeThemeButtonProps) => {
-  const setRedirect = useSetRedirect();
+  // Hard redirect to override intercepted theme route
+  const setRedirect = useSetRedirect({ hard: true });
 
   const handleOnClick = () => {
     setRedirect({ like: "true" });

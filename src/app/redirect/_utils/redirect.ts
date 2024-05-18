@@ -5,13 +5,14 @@ import { z } from "zod";
 const redirectSchema = z.object({
   pathname: z.string(),
   params: z.string(),
+  hard: z.boolean().optional(),
 });
 
 type RedirectProperties = z.infer<typeof redirectSchema>;
 
 const REDIRECT_KEY = "redirect";
 
-export const useSetRedirect = () => {
+export const useSetRedirect = (options?: { hard?: boolean }) => {
   const pathname = usePathname();
   const params = useSearchParams();
 
@@ -25,10 +26,11 @@ export const useSetRedirect = () => {
       const redirectProperties: RedirectProperties = {
         pathname,
         params: fullParams.toString(),
+        hard: options?.hard,
       };
       localStorage.setItem(REDIRECT_KEY, JSON.stringify(redirectProperties));
     },
-    [pathname, params],
+    [params, pathname, options?.hard],
   );
 };
 
@@ -39,18 +41,26 @@ export const useRedirect = () => {
   useEffect(() => {
     if (!redirectOnce.current) {
       try {
-        let redirectPath = "/";
         const item = localStorage.getItem(REDIRECT_KEY);
 
         if (item) {
-          const { pathname, params } = redirectSchema.parse(JSON.parse(item));
+          const { pathname, params, hard } = redirectSchema.parse(
+            JSON.parse(item),
+          );
 
           if (pathname) {
-            redirectPath = params ? `${pathname}?${params}` : pathname;
+            const redirectPath = params ? `${pathname}?${params}` : pathname;
+
+            if (hard) {
+              window.location.href = redirectPath;
+            } else {
+              router.push(redirectPath);
+            }
+            return;
           }
         }
 
-        router.push(redirectPath);
+        router.push("/");
       } catch (error) {
         router.push("/");
       } finally {

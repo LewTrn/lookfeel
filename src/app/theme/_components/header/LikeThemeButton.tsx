@@ -33,7 +33,7 @@ export const LikeThemeButton = ({ id, likes }: LikeThemeButtonProps) => {
     <Button
       onClick={() => mutate({ id, like: !liked })}
       Icon={HeartIcon}
-      iconProps={liked ? { fill: "#fafafa", stroke: "#fafafa" } : {}}
+      iconProps={liked ? { fill: "#171717" } : {}}
       variant="outline"
       aria-label={liked ? strings.view.unlike.action : strings.view.like.action}
     >
