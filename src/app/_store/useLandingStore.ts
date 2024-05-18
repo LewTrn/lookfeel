@@ -1,19 +1,21 @@
 import { create } from "zustand";
 
-import { type LightweightTheme, type Theme } from "~/types/Theme";
+import { type Likes, type PreviewTheme, type Theme } from "~/types/Theme";
 
 import { makePalette } from "../../utils/colours/palette/makePalette";
 
 export type GenerateState = {
   selectedTheme: Theme | null;
-  setSelectedTheme: (lightweightTheme: LightweightTheme | null) => Theme | null;
+  selectedLikes: Likes | null;
+  setSelectedTheme: (preview: PreviewTheme | null) => Theme | null;
 };
 
 export const useLandingStore = create<GenerateState>((set) => ({
   selectedTheme: null,
+  selectedLikes: null,
   setSelectedTheme: (theme) => {
     if (!theme) {
-      set({ selectedTheme: null });
+      set({ selectedTheme: null, selectedLikes: null });
       return null;
     }
 
@@ -22,7 +24,7 @@ export const useLandingStore = create<GenerateState>((set) => ({
       fonts: theme.fonts,
     };
 
-    set({ selectedTheme });
+    set({ selectedTheme, selectedLikes: theme.likes });
     return selectedTheme;
   },
 }));

@@ -6,12 +6,13 @@ export type Theme = {
   fonts: Fonts;
 };
 
-export type LightweightTheme = {
-  baseColours: BaseColours;
-  fonts: Fonts;
-};
-
 export type Likes = {
   likeCount: number;
   liked?: boolean;
+};
+
+export type PreviewTheme = {
+  baseColours: BaseColours;
+  fonts: Fonts;
+  likes: Likes;
 };

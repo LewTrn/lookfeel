@@ -8,10 +8,11 @@ type ThemeTagsProps = {
   tags: string[];
   translateX: number;
   showLikes?: boolean;
+  likeCount?: number;
 };
 
 export const ThemeTags = forwardRef<HTMLDivElement, ThemeTagsProps>(
-  ({ tags, translateX, showLikes }, ref) => {
+  ({ tags, translateX, showLikes, likeCount = 0 }, ref) => {
     return (
       <div className="relative flex h-8 items-center">
         <div
@@ -35,7 +36,7 @@ export const ThemeTags = forwardRef<HTMLDivElement, ThemeTagsProps>(
             <div className="absolute -left-4 h-full w-4 bg-gradient-to-r from-card via-card to-transparent" />
             <div className="absolute right-8 h-full w-8 bg-gradient-to-l from-card via-card to-transparent" />
             <div className="absolute -right-4 bottom-0 flex h-8 items-center gap-1 bg-card pr-4 text-muted-foreground">
-              <Typography variant="button">9</Typography>
+              <Typography variant="button">{likeCount}</Typography>
               <HeartIcon width={20} height={20} />
             </div>
           </>

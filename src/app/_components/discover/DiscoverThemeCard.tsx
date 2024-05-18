@@ -19,9 +19,13 @@ export const DiscoverThemeCard = () => {
 
   return (
     <Link
-      href="/theme/3fp2V-gpL30M"
+      href="/theme/3E6Z59tkP8n3"
       onClick={() =>
-        setSelectedTheme({ baseColours: palette, fonts: DEFAULT_FONTS })
+        setSelectedTheme({
+          baseColours: palette,
+          fonts: DEFAULT_FONTS,
+          likes: { likeCount: 120 },
+        })
       }
     >
       <ThemeCard
@@ -29,6 +33,7 @@ export const DiscoverThemeCard = () => {
         palette={palette}
         tags={["Light", "Serif", "Modern"]}
         showLikes
+        likeCount={120}
       />
     </Link>
   );

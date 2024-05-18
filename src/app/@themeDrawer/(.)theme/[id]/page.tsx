@@ -15,6 +15,10 @@ export default function ThemeDrawer({ params }: { params: { id: string } }) {
   const pathname = usePathname();
 
   const selectedTheme = useLandingStore((state) => state.selectedTheme);
+  const selectedLikes = useLandingStore((state) => state.selectedLikes) ?? {
+    liked: false,
+    likeCount: 0,
+  };
   const setSelectedTheme = useLandingStore((state) => state.setSelectedTheme);
 
   const handleClose = () => {
@@ -43,6 +47,7 @@ export default function ThemeDrawer({ params }: { params: { id: string } }) {
           <ThemeDrawerHeader
             id={params.id}
             theme={selectedTheme}
+            likes={selectedLikes}
             onBack={() => setOpen(false)}
           />
           <ViewThemeContainer theme={selectedTheme} />
