@@ -1,5 +1,5 @@
+import { useSignedIn } from "~/components/auth/AuthProvider";
 import { LinkButton } from "~/components/ui/link-button";
-import { auth } from "~/edgedb";
 import { strings } from "~/locales/theme";
 import { type Likes, type Theme } from "~/types/Theme";
 import { getThemeParams } from "~/utils/theme/getThemeParams";
@@ -13,13 +13,12 @@ type ViewThemeActionsProps = {
   likes: Likes;
 };
 
-export const ViewThemeActions = async ({
+export const ViewThemeActions = ({
   id,
   theme,
   likes,
 }: ViewThemeActionsProps) => {
-  const session = auth.getSession();
-  const signedIn = await session.isSignedIn();
+  const { signedIn, signInUrl } = useSignedIn();
 
   const params = getThemeParams(theme);
 
@@ -28,10 +27,7 @@ export const ViewThemeActions = async ({
       {signedIn ? (
         <LikeThemeButton id={id} likes={likes} />
       ) : (
-        <UnauthedLikeThemeButton
-          href={auth.getBuiltinUIUrl()}
-          likeCount={likes.likeCount}
-        />
+        <UnauthedLikeThemeButton href={signInUrl} likeCount={likes.likeCount} />
       )}
       <LinkButton href={`/generate?${params}`}>
         {strings.view.edit.action}
