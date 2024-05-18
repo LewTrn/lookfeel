@@ -6,18 +6,20 @@ import { Shades } from "templates/components/shades/Shades";
 import { StyleTile } from "templates/components/style-tile/StyleTile";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
+import { cn } from "~/lib/utils";
 import { strings } from "~/locales/lookfeel";
 import { type Theme } from "~/types/Theme";
 
 type ThemeVisualsProps = {
   theme: Theme;
+  liftTabs?: boolean;
 };
 
-export const ThemeVisuals = ({ theme }: ThemeVisualsProps) => {
+export const ThemeVisuals = ({ theme, liftTabs }: ThemeVisualsProps) => {
   return (
     <div className="w-full">
       <Tabs defaultValue="tile">
-        <TabsList className="mb-6">
+        <TabsList className={cn("mb-6", liftTabs && "fixed top-4 z-50 ")}>
           <TabsTrigger value="tile" Icon={Grid2X2Icon}>
             {strings.visuals.tabs.styleTile.action}
           </TabsTrigger>

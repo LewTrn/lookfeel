@@ -10,7 +10,12 @@ import {
 export const Header = () => {
   return (
     <header className="m-4 flex w-full">
-      <div className="flex-1 text-xl font-semibold">lookfeel</div>
+      <div
+        className="flex-1 text-xl font-semibold"
+        style={{ fontFamily: "var(--heading-font)" }}
+      >
+        lookfeel
+      </div>
       <div className="flex flex-1 justify-center">
         <NavigationMenu className="flex-1">
           <NavigationMenuList>

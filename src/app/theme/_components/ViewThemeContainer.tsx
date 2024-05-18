@@ -6,5 +6,5 @@ type ViewThemeContainerProps = {
 };
 
 export const ViewThemeContainer = ({ theme }: ViewThemeContainerProps) => {
-  return <ViewTheme theme={theme} />;
+  return <ViewTheme theme={theme} isView />;
 };

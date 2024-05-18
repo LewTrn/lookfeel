@@ -6,27 +6,24 @@ import { ThemeDetails } from "./details/ThemeDetails";
 import { ThemeDetailsTabs } from "./details/ThemeDetailsTabs";
 import { ThemeVisuals } from "./visuals/ThemeVisuals";
 
-type ViewThemeTabsProps = {
-  showTabs: true;
-  tabsProps: Omit<ComponentProps<typeof ThemeDetailsTabs>, "theme">;
-};
-
 type ViewThemeProps = {
   theme: Theme;
-} & (ViewThemeTabsProps | { showTabs?: false });
+  isView?: boolean;
+  tabsProps?: Omit<ComponentProps<typeof ThemeDetailsTabs>, "theme">;
+};
 
-export const ViewTheme = ({ theme, ...props }: ViewThemeProps) => {
+export const ViewTheme = ({ theme, isView, tabsProps }: ViewThemeProps) => {
   return (
     <div className="flex gap-8 px-8 pb-8">
       <div className="w-80">
-        {props.showTabs ? (
-          <ThemeDetailsTabs theme={theme} {...props.tabsProps} />
+        {!isView ? (
+          <ThemeDetailsTabs theme={theme} {...tabsProps} />
         ) : (
           <ThemeDetails theme={theme} />
         )}
       </div>
       <div className="w-full">
-        <ThemeVisuals theme={theme} />
+        <ThemeVisuals theme={theme} liftTabs={isView} />
       </div>
     </div>
   );
