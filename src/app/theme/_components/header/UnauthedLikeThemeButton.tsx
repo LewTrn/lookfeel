@@ -19,7 +19,7 @@ export const UnauthedLikeThemeButton = ({
   const setRedirect = useSetRedirect({ hard: true });
 
   const handleOnClick = () => {
-    setRedirect({ like: "true" });
+    setRedirect();
   };
 
   return (

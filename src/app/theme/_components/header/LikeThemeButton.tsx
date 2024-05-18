@@ -1,8 +1,6 @@
 "use client";
 
 import { HeartIcon } from "lucide-react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useEffect } from "react";
 
 import { Button } from "~/components/ui/button";
 import { strings } from "~/locales/theme";
@@ -15,18 +13,7 @@ type LikeThemeButtonProps = {
 };
 
 export const LikeThemeButton = ({ id, likes }: LikeThemeButtonProps) => {
-  const router = useRouter();
-  const pathname = usePathname();
-  const params = useSearchParams();
-
   const { mutate, variables } = api.theme.likeTheme.useMutation();
-
-  useEffect(() => {
-    if (params.get("like") === "true") {
-      mutate({ id, like: true });
-      router.replace(pathname);
-    }
-  }, [id, mutate, params, pathname, router]);
 
   // Psuedo optimistic like updates
   const pseudoLiked = variables?.like ?? likes.liked;
