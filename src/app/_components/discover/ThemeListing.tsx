@@ -5,7 +5,7 @@ import { api } from "~/trpc/react";
 import { DiscoverThemeCard } from "./DiscoverThemeCard";
 
 type ThemeListingProps = {
-  filter: "latest" | "trending";
+  filter: "latest" | "trending" | "liked" | "created";
 };
 
 const CardSkeleton = () => (

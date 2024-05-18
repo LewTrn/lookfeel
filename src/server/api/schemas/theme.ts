@@ -23,7 +23,7 @@ export const getThemeSchema = z.object({
 });
 
 export const getThemesSchema = z.object({
-  filter: z.enum(["latest", "trending"]),
+  filter: z.enum(["latest", "trending", "liked", "created"]),
 });
 
 export const likeThemeSchema = z.object({

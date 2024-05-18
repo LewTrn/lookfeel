@@ -62,24 +62,49 @@ export const themeRouter = createTRPCRouter({
     .query(async ({ input, ctx }) => {
       let query;
 
-      if (input.filter === "trending") {
-        query = e.select(e.Theme, (theme) => ({
-          ...baseThemeQuery,
-          limit: e.int64(24),
-          order_by: {
-            expression: theme.like_count,
-            direction: e.DESC,
-          },
-        }));
-      } else {
-        query = e.select(e.Theme, (theme) => ({
-          ...baseThemeQuery,
-          limit: e.int64(24),
-          order_by: {
-            expression: theme.created_at,
-            direction: e.DESC,
-          },
-        }));
+      switch (input.filter) {
+        case "latest":
+          query = e.select(e.Theme, (theme) => ({
+            ...baseThemeQuery,
+            limit: e.int64(24),
+            order_by: {
+              expression: theme.created_at,
+              direction: e.DESC,
+            },
+          }));
+          break;
+        case "trending":
+          query = e.select(e.Theme, (theme) => ({
+            ...baseThemeQuery,
+            limit: e.int64(24),
+            order_by: {
+              expression: theme.like_count,
+              direction: e.DESC,
+            },
+          }));
+          break;
+        case "liked":
+          query = e.select(e.Theme, (theme) => ({
+            ...baseThemeQuery,
+            limit: e.int64(60),
+            filter: e.op(theme.likes.user, "=", e.global.current_user),
+            order_by: {
+              expression: theme.created_at,
+              direction: e.DESC,
+            },
+          }));
+          break;
+        case "created":
+          query = e.select(e.Theme, (theme) => ({
+            ...baseThemeQuery,
+            limit: e.int64(60),
+            filter: e.op(theme.created_by, "=", e.global.current_user),
+            order_by: {
+              expression: theme.created_at,
+              direction: e.DESC,
+            },
+          }));
+          break;
       }
 
       const result = await query.run(ctx.session.client);

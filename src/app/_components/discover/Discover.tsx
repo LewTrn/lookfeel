@@ -33,11 +33,7 @@ export const Discover = () => {
         >
           {strings.discover.filter.liked.action}
         </TabsTrigger>
-        <TabsTrigger
-          value="My themes"
-          Icon={SwatchBookIcon}
-          disabled={!signedIn}
-        >
+        <TabsTrigger value="created" Icon={SwatchBookIcon} disabled={!signedIn}>
           {strings.discover.filter.myThemes.action}
         </TabsTrigger>
       </TabsList>
@@ -46,6 +42,12 @@ export const Discover = () => {
       </TabsContent>
       <TabsContent value="trending">
         <ThemeListing filter="trending" />
+      </TabsContent>
+      <TabsContent value="liked">
+        <ThemeListing filter="liked" />
+      </TabsContent>
+      <TabsContent value="created">
+        <ThemeListing filter="created" />
       </TabsContent>
     </Tabs>
   );
