@@ -70,7 +70,7 @@ export const themeRouter = createTRPCRouter({
   likeTheme: publicProcedure
     .input(likeThemeSchema)
     .mutation(async ({ input, ctx }) => {
-      if (input.liked) {
+      if (input.like) {
         const query = e.update(e.Theme, (theme) => ({
           set: {
             likes: {

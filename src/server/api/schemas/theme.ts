@@ -24,5 +24,5 @@ export const getThemeSchema = z.object({
 
 export const likeThemeSchema = z.object({
   id: z.string().min(1),
-  liked: z.boolean(),
+  like: z.boolean(),
 });

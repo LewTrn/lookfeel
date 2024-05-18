@@ -1,7 +1,7 @@
 import { LinkButton } from "~/components/ui/link-button";
 import { auth } from "~/edgedb";
 import { strings } from "~/locales/theme";
-import { type Theme } from "~/types/Theme";
+import { type Likes, type Theme } from "~/types/Theme";
 import { getThemeParams } from "~/utils/theme/getThemeParams";
 
 import { LikeThemeButton } from "./LikeThemeButton";
@@ -10,11 +10,13 @@ import { UnauthedLikeThemeButton } from "./UnauthedLikeThemeButton";
 type ViewThemeActionsProps = {
   id: string;
   theme: Theme;
+  likes: Likes;
 };
 
 export const ViewThemeActions = async ({
   id,
   theme,
+  likes,
 }: ViewThemeActionsProps) => {
   const session = auth.getSession();
   const signedIn = await session.isSignedIn();
@@ -23,14 +25,17 @@ export const ViewThemeActions = async ({
 
   return (
     <div className="flex gap-2">
-      <LinkButton href={`/generate?${params}`} variant="ghost">
+      {signedIn ? (
+        <LikeThemeButton id={id} likes={likes} />
+      ) : (
+        <UnauthedLikeThemeButton
+          href={auth.getBuiltinUIUrl()}
+          likeCount={likes.likeCount}
+        />
+      )}
+      <LinkButton href={`/generate?${params}`}>
         {strings.view.edit.action}
       </LinkButton>
-      {signedIn ? (
-        <LikeThemeButton id={id} />
-      ) : (
-        <UnauthedLikeThemeButton href={auth.getBuiltinUIUrl()} />
-      )}
     </div>
   );
 };

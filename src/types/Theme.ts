@@ -10,3 +10,8 @@ export type LightweightTheme = {
   baseColours: BaseColours;
   fonts: Fonts;
 };
+
+export type Likes = {
+  likeCount: number;
+  liked?: boolean;
+};

@@ -7,13 +7,14 @@ import { useEffect } from "react";
 import { Button } from "~/components/ui/button";
 import { strings } from "~/locales/theme";
 import { api } from "~/trpc/react";
+import { type Likes } from "~/types/Theme";
 
 type LikeThemeButtonProps = {
   id: string;
-  liked?: boolean;
+  likes: Likes;
 };
 
-export const LikeThemeButton = ({ id, liked }: LikeThemeButtonProps) => {
+export const LikeThemeButton = ({ id, likes }: LikeThemeButtonProps) => {
   const router = useRouter();
   const pathname = usePathname();
   const params = useSearchParams();
@@ -26,13 +27,17 @@ export const LikeThemeButton = ({ id, liked }: LikeThemeButtonProps) => {
     }
   }, [id, mutate, params, pathname, router]);
 
+  const { liked, likeCount } = likes;
+
   return (
     <Button
       onClick={() => mutate({ id, like: !liked })}
       Icon={HeartIcon}
       iconProps={liked ? { fill: "#fafafa", stroke: "#fafafa" } : {}}
+      variant="outline"
+      aria-label={liked ? strings.view.unlike.action : strings.view.like.action}
     >
-      {liked ? strings.view.liked.action : strings.view.like.action}
+      {likeCount}
     </Button>
   );
 };

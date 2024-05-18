@@ -14,10 +14,14 @@ export default async function Theme({ params }: { params: { id: string } }) {
     palette: makePalette(data.palette),
     fonts: data.fonts,
   };
+  const likes = {
+    liked: data.liked,
+    likeCount: data.like_count,
+  };
 
   return (
     <main className="flex w-full flex-col">
-      <ViewThemeHeader id={params.id} theme={theme} />
+      <ViewThemeHeader id={params.id} theme={theme} likes={likes} />
       <ViewThemeContainer theme={theme} />
     </main>
   );

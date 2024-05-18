@@ -8,10 +8,12 @@ import { strings } from "~/locales/theme";
 
 type UnauthedLikeThemeButtonProps = {
   href: string;
+  likeCount: number;
 };
 
 export const UnauthedLikeThemeButton = ({
   href,
+  likeCount,
 }: UnauthedLikeThemeButtonProps) => {
   const setRedirect = useSetRedirect();
 
@@ -20,8 +22,14 @@ export const UnauthedLikeThemeButton = ({
   };
 
   return (
-    <LinkButton href={href} onClick={handleOnClick} Icon={HeartIcon}>
-      {strings.view.like.action}
+    <LinkButton
+      href={href}
+      onClick={handleOnClick}
+      Icon={HeartIcon}
+      aria-label={strings.view.like.action}
+      variant="outline"
+    >
+      {likeCount}
     </LinkButton>
   );
 };

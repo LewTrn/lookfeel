@@ -3,17 +3,19 @@ import { ArrowLeftIcon } from "lucide-react";
 import { ViewThemeActions } from "~/app/theme/_components/header/ViewThemeActions";
 import { Button } from "~/components/ui/button";
 import { strings } from "~/locales/theme";
-import { type Theme } from "~/types/Theme";
+import { type Likes, type Theme } from "~/types/Theme";
 
 type ViewThemeHeaderProps = {
   id: string;
   theme: Theme;
+  likes: Likes;
   onBack: () => void;
 };
 
 export const ThemeDrawerHeader = ({
   id,
   theme,
+  likes,
   onBack,
 }: ViewThemeHeaderProps) => {
   return (
@@ -21,7 +23,7 @@ export const ThemeDrawerHeader = ({
       <Button variant="ghost" Icon={ArrowLeftIcon} onClick={onBack}>
         {strings.view.back.action}
       </Button>
-      <ViewThemeActions id={id} theme={theme} />
+      <ViewThemeActions id={id} theme={theme} likes={likes} />
     </div>
   );
 };

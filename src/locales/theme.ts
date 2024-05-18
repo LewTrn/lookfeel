@@ -9,5 +9,8 @@ export const strings = {
     like: {
       action: "Like",
     },
+    unlike: {
+      action: "Unlike",
+    },
   },
 };
