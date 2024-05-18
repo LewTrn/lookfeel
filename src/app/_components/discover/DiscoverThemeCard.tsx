@@ -9,6 +9,7 @@ import { type BaseColours } from "~/types/Palette";
 import { type Likes } from "~/types/Theme";
 
 type DiscoverThemeCardProps = {
+  id: string;
   palette: BaseColours;
   fonts: Fonts;
   tags: string[];
@@ -16,6 +17,7 @@ type DiscoverThemeCardProps = {
 };
 
 export const DiscoverThemeCard = ({
+  id,
   palette,
   fonts,
   tags,
@@ -25,7 +27,7 @@ export const DiscoverThemeCard = ({
 
   return (
     <Link
-      href="/theme/3E6Z59tkP8n3"
+      href={`/theme/${id}`}
       onClick={() =>
         setSelectedTheme({
           baseColours: palette,
