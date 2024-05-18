@@ -18,7 +18,8 @@ export const LikeThemeButton = ({ id, likes }: LikeThemeButtonProps) => {
   const router = useRouter();
   const pathname = usePathname();
   const params = useSearchParams();
-  const { mutate } = api.theme.likeTheme.useMutation();
+
+  const { mutate, variables } = api.theme.likeTheme.useMutation();
 
   useEffect(() => {
     if (params.get("like") === "true") {
@@ -27,17 +28,31 @@ export const LikeThemeButton = ({ id, likes }: LikeThemeButtonProps) => {
     }
   }, [id, mutate, params, pathname, router]);
 
-  const { liked, likeCount } = likes;
+  // Psuedo optimistic like updates
+  const pseudoLiked = variables?.like ?? likes.liked;
+  const getPseudoLikeCount = () => {
+    if (variables?.like === undefined) {
+      return likes.likeCount;
+    }
+
+    if (likes.liked) {
+      return variables.like ? likes.likeCount : likes.likeCount - 1;
+    } else {
+      return variables.like ? likes.likeCount + 1 : likes.likeCount;
+    }
+  };
 
   return (
     <Button
-      onClick={() => mutate({ id, like: !liked })}
+      onClick={() => mutate({ id, like: !pseudoLiked })}
       Icon={HeartIcon}
-      iconProps={liked ? { fill: "#171717" } : {}}
+      iconProps={pseudoLiked ? { fill: "#171717" } : {}}
       variant="outline"
-      aria-label={liked ? strings.view.unlike.action : strings.view.like.action}
+      aria-label={
+        pseudoLiked ? strings.view.unlike.action : strings.view.like.action
+      }
     >
-      {likeCount}
+      {getPseudoLikeCount()}
     </Button>
   );
 };
