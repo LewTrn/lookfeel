@@ -1,4 +1,4 @@
-CREATE MIGRATION m1i7i2n3zgc5uaowckc4reaoqy55jzu6sn64ttzl56yoduu2csqjaa
+CREATE MIGRATION m1fbufh27gb5p347xbgm22hmjgzud3b7kjdmxmidtasnjyvaryanha
     ONTO initial
 {
   CREATE EXTENSION pgcrypto VERSION '1.3';
@@ -72,6 +72,9 @@ CREATE MIGRATION m1i7i2n3zgc5uaowckc4reaoqy55jzu6sn64ttzl56yoduu2csqjaa
               INSERT 
               USING (std::datetime_of_statement());
       };
+      CREATE REQUIRED PROPERTY like_count: std::int32 {
+          SET default := 0;
+      };
       CREATE REQUIRED PROPERTY short_id: std::str {
           CREATE CONSTRAINT std::exclusive;
       };
@@ -94,6 +97,7 @@ CREATE MIGRATION m1i7i2n3zgc5uaowckc4reaoqy55jzu6sn64ttzl56yoduu2csqjaa
   ALTER TYPE default::Theme {
       CREATE MULTI LINK likes: default::Likes {
           ON SOURCE DELETE DELETE TARGET;
+          ON TARGET DELETE ALLOW;
       };
   };
 };
