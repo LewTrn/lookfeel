@@ -1,13 +1,21 @@
 "use client";
 
-import { FlameIcon, SparklesIcon } from "lucide-react";
+import {
+  FlameIcon,
+  HeartIcon,
+  SparklesIcon,
+  SwatchBookIcon,
+} from "lucide-react";
 
+import { useSignedIn } from "~/components/auth/AuthProvider";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
 import { strings } from "~/locales/landing";
 
 import { ThemeListing } from "./ThemeListing";
 
 export const Discover = () => {
+  const { signedIn } = useSignedIn();
+
   return (
     <Tabs defaultValue="latest">
       <TabsList className="mb-6">
@@ -16,6 +24,21 @@ export const Discover = () => {
         </TabsTrigger>
         <TabsTrigger value="trending" Icon={FlameIcon}>
           {strings.discover.filter.trending.action}
+        </TabsTrigger>
+        <TabsTrigger
+          value="liked"
+          Icon={HeartIcon}
+          className="ml-auto"
+          disabled={!signedIn}
+        >
+          {strings.discover.filter.liked.action}
+        </TabsTrigger>
+        <TabsTrigger
+          value="My themes"
+          Icon={SwatchBookIcon}
+          disabled={!signedIn}
+        >
+          {strings.discover.filter.myThemes.action}
         </TabsTrigger>
       </TabsList>
       <TabsContent value="latest">

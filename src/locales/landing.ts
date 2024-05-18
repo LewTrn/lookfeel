@@ -4,6 +4,12 @@ export const strings = {
       latest: {
         action: "Latest",
       },
+      liked: {
+        action: "Liked",
+      },
+      myThemes: {
+        action: "My themes",
+      },
       popular: {
         action: "Popular",
       },
