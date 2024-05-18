@@ -42,6 +42,7 @@ export const DiscoverThemeCard = ({
         tags={tags}
         showLikes
         likeCount={likes.likeCount}
+        liked={likes.liked}
       />
     </Link>
   );

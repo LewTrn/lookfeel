@@ -12,6 +12,7 @@ export type ThemeCardProps = {
   tags: string[];
   showLikes?: boolean;
   likeCount?: number;
+  liked?: boolean;
 };
 
 export const ThemeCard = ({
@@ -20,6 +21,7 @@ export const ThemeCard = ({
   tags,
   showLikes,
   likeCount,
+  liked,
 }: ThemeCardProps) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const fontsRef = useRef<HTMLDivElement>(null);
@@ -66,6 +68,7 @@ export const ThemeCard = ({
             tags={tags}
             showLikes={showLikes}
             likeCount={likeCount}
+            liked={liked}
           />
         </div>
       </div>
