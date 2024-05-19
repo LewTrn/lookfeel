@@ -1,4 +1,5 @@
 import { PaletteIcon, TypeIcon } from "lucide-react";
+import { type ComponentProps } from "react";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
 import { strings } from "~/locales/lookfeel";
@@ -12,12 +13,14 @@ type ThemeDetailsTabsProps = {
   theme: Theme;
   defaultValue?: string;
   onValueChange?: (value: string) => void;
+  CustomColourRow?: ComponentProps<typeof PaletteDetails>["CustomColourRow"];
 };
 
 export const ThemeDetailsTabs = ({
   theme,
   defaultValue,
   onValueChange,
+  CustomColourRow,
 }: ThemeDetailsTabsProps) => {
   return (
     <div className="sticky top-20 flex flex-col gap-6">
@@ -42,7 +45,10 @@ export const ThemeDetailsTabs = ({
           </TabsTrigger>
         </TabsList>
         <TabsContent value={GenerateMode.Colour}>
-          <PaletteDetails palette={theme.palette} />
+          <PaletteDetails
+            palette={theme.palette}
+            CustomColourRow={CustomColourRow}
+          />
         </TabsContent>
         <TabsContent value={GenerateMode.Typography}>
           <FontDetails fonts={theme.fonts} />

@@ -5,6 +5,7 @@ import { type GenerateMode } from "~/types/Mode";
 
 import { useGenerateStore } from "../../_store/useGenerateStore";
 import { useInitTheme } from "../../_utils/useInitTheme";
+import { ColourPickerRow } from "../colours/ColourPickerRow";
 
 export const GenerateViewThemeContainer = () => {
   const palette = useGenerateStore((state) => state.palette);
@@ -26,6 +27,7 @@ export const GenerateViewThemeContainer = () => {
         defaultValue: mode,
         onValueChange: (mode) => setMode(mode as GenerateMode),
       }}
+      CustomColourRow={ColourPickerRow}
     />
   );
 };
