@@ -1,3 +1,4 @@
+// @ts-expect-error -- ignore due to missing types declaration
 import ColorScheme from "color-scheme";
 import { sample } from "lodash";
 import tinycolor from "tinycolor2";
@@ -37,8 +38,10 @@ export const generateBaseColours = () => {
   const { scheme, select } = sample(SCHEMES)!;
   const variation = sample(VARIATIONS);
 
+  // eslint-disable-next-line -- ignore due to color-scheme missing types declaration
   const s = new ColorScheme().from_hue(hue).scheme(scheme).variation(variation);
 
+  // eslint-disable-next-line
   const colours = select(s.colors()).map((colour) => `#${colour}`);
 
   const sorted = colours.sort(

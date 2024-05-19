@@ -1,4 +1,7 @@
 import { api } from "~/trpc/server";
+import { type Fonts } from "~/types/Fonts";
+import { type BaseColours } from "~/types/Palette";
+import { type Likes } from "~/types/Theme";
 import { makePalette } from "~/utils/colours/palette/makePalette";
 
 import { ViewThemeHeader } from "./../_components/header/ViewThemeHeader";
@@ -11,13 +14,13 @@ export default async function Theme({ params }: { params: { id: string } }) {
   if (!data) return null;
 
   const theme = {
-    palette: makePalette(data.palette),
-    fonts: data.fonts,
+    palette: makePalette(data.palette as BaseColours),
+    fonts: data.fonts as Fonts,
   };
   const likes = {
     liked: data.liked,
     likeCount: data.like_count,
-  };
+  } as Likes;
 
   return (
     <main className="flex w-full flex-col">

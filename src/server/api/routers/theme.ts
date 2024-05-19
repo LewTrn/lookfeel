@@ -25,9 +25,6 @@ const baseThemeQuery = {
   tags: {
     name: true,
   },
-  likes: (likes) => ({
-    filter_single: e.op(likes.user, "=", e.global.current_user),
-  }),
   like_count: true,
 };
 
@@ -66,6 +63,9 @@ export const themeRouter = createTRPCRouter({
         case "latest":
           query = e.select(e.Theme, (theme) => ({
             ...baseThemeQuery,
+            likes: (likes) => ({
+              filter_single: e.op(likes.user, "=", e.global.current_user),
+            }),
             limit: e.int64(24),
             order_by: {
               expression: theme.created_at,
@@ -76,6 +76,9 @@ export const themeRouter = createTRPCRouter({
         case "trending":
           query = e.select(e.Theme, (theme) => ({
             ...baseThemeQuery,
+            likes: (likes) => ({
+              filter_single: e.op(likes.user, "=", e.global.current_user),
+            }),
             limit: e.int64(24),
             order_by: {
               expression: theme.like_count,
@@ -86,6 +89,9 @@ export const themeRouter = createTRPCRouter({
         case "liked":
           query = e.select(e.Theme, (theme) => ({
             ...baseThemeQuery,
+            likes: (likes) => ({
+              filter_single: e.op(likes.user, "=", e.global.current_user),
+            }),
             limit: e.int64(60),
             filter: e.op(theme.likes.user, "=", e.global.current_user),
             order_by: {
@@ -97,6 +103,9 @@ export const themeRouter = createTRPCRouter({
         case "created":
           query = e.select(e.Theme, (theme) => ({
             ...baseThemeQuery,
+            likes: (likes) => ({
+              filter_single: e.op(likes.user, "=", e.global.current_user),
+            }),
             limit: e.int64(60),
             filter: e.op(theme.created_by, "=", e.global.current_user),
             order_by: {
