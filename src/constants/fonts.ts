@@ -1,4 +1,10 @@
-import { type Fonts, type FontType } from "~/types/Fonts";
+import { strings } from "~/locales/lookfeel";
+import { type Fonts, type FontType, Typography } from "~/types/Fonts";
+
+export const TYPOGRAPHY_HEADINGS = {
+  [Typography.Heading]: strings.typography.heading.label,
+  [Typography.Body]: strings.typography.body.label,
+};
 
 export const DEFAULT_FONTS: Fonts = {
   heading: "Roboto",
