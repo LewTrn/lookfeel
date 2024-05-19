@@ -46,6 +46,7 @@
     "zustand": "^4.5.2"
   },
   "devDependencies": {
+    "@edgedb/generate": "^0.5.3",
     "@types/eslint": "^8.56.2",
     "@types/lodash": "^4.17.1",
     "@types/node": "^20.11.20",
