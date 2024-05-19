@@ -7,7 +7,7 @@ import { PALETTE_HEADINGS } from "~/constants/palette";
 import { cn } from "~/lib/utils";
 import { ColourType } from "~/types/Palette";
 
-type ColourProps = {
+type ColourRowProps = {
   colourType: ColourType;
   value: string;
 };
@@ -19,7 +19,7 @@ const COLOUR_PROPERTIES = {
   [ColourType.Neutral]: { className: "h-10" },
 };
 
-export const ColourRow = ({ colourType, value }: ColourProps) => {
+export const ColourRow = ({ colourType, value }: ColourRowProps) => {
   const whiteIsReadable = tinycolor.isReadable(value, "#fff", {
     size: "large",
   });

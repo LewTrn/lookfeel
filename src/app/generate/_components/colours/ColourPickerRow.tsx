@@ -14,9 +14,9 @@ import { useGenerateStore } from "../../_store/useGenerateStore";
 import { usePaletteParams } from "../../_utils/params/usePaletteParams";
 import { EyeDropperButton } from "./EyeDropperButton";
 
-type ColourPickerProps = ComponentProps<typeof ColourRow>;
+type ColourPickerRowProps = ComponentProps<typeof ColourRow>;
 
-export const ColourPickerRow = (props: ColourPickerProps) => {
+export const ColourPickerRow = (props: ColourPickerRowProps) => {
   const palette = useGenerateStore((state) => state.palette);
   const updatePalette = useGenerateStore((state) => state.updatePalette);
 

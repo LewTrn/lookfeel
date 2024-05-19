@@ -11,6 +11,7 @@ type ViewThemeProps = {
   isView?: boolean;
   tabsProps?: Omit<ComponentProps<typeof ThemeDetailsTabs>, "theme">;
   CustomColourRow?: ComponentProps<typeof ThemeDetailsTabs>["CustomColourRow"];
+  CustomFontRow?: ComponentProps<typeof ThemeDetailsTabs>["CustomFontRow"];
 };
 
 export const ViewTheme = ({
@@ -18,6 +19,7 @@ export const ViewTheme = ({
   isView,
   tabsProps,
   CustomColourRow,
+  CustomFontRow,
 }: ViewThemeProps) => {
   return (
     <div className="flex gap-8 px-8 pb-8">
@@ -26,6 +28,7 @@ export const ViewTheme = ({
           <ThemeDetailsTabs
             theme={theme}
             CustomColourRow={CustomColourRow}
+            CustomFontRow={CustomFontRow}
             {...tabsProps}
           />
         ) : (

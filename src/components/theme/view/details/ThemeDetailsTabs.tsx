@@ -14,6 +14,7 @@ type ThemeDetailsTabsProps = {
   defaultValue?: string;
   onValueChange?: (value: string) => void;
   CustomColourRow?: ComponentProps<typeof PaletteDetails>["CustomColourRow"];
+  CustomFontRow?: ComponentProps<typeof FontDetails>["CustomFontRow"];
 };
 
 export const ThemeDetailsTabs = ({
@@ -21,6 +22,7 @@ export const ThemeDetailsTabs = ({
   defaultValue,
   onValueChange,
   CustomColourRow,
+  CustomFontRow,
 }: ThemeDetailsTabsProps) => {
   return (
     <div className="sticky top-20 flex flex-col gap-6">
@@ -51,7 +53,7 @@ export const ThemeDetailsTabs = ({
           />
         </TabsContent>
         <TabsContent value={GenerateMode.Typography}>
-          <FontDetails fonts={theme.fonts} />
+          <FontDetails fonts={theme.fonts} CustomFontRow={CustomFontRow} />
         </TabsContent>
       </Tabs>
     </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { type ComponentProps } from "react";
+import { type ComponentProps, type ComponentType } from "react";
 
 import Typography from "~/components/ui/typography";
 import { strings } from "~/locales/lookfeel";
@@ -10,7 +10,7 @@ import { ColourRow } from "./ColourRow";
 
 type PaletteDetailsProps = {
   palette: Palette;
-  CustomColourRow?: React.ComponentType<ComponentProps<typeof ColourRow>>;
+  CustomColourRow?: ComponentType<ComponentProps<typeof ColourRow>>;
 };
 
 export const PaletteDetails = ({
