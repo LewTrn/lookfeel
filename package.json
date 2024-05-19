@@ -6,9 +6,10 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev",
+    "generate:edgeql": "npx @edgedb/generate edgeql-js",
     "lint": "next lint",
-    "start": "next start",
-    "generate:edgeql": "npx @edgedb/generate edgeql-js"
+    "prebuild": "npx @edgedb/generate edgeql-js",
+    "start": "next start"
   },
   "dependencies": {
     "@edgedb/auth-nextjs": "^0.3.1",
