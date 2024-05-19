@@ -22,14 +22,17 @@ export const ThemeListing = ({ filter }: ThemeListingProps) => {
   );
 
   const cards = useMemo(() => {
-    return data?.map(({ id, liked, like_count: likeCount = 0, ...rest }) => {
-      const card = {
-        id,
-        likes: { likeCount, liked },
-        ...rest,
-      } as unknown as PreviewThemeCard;
-      return card;
-    });
+    return data?.map(
+      ({ id, palette, liked, like_count: likeCount = 0, ...rest }) => {
+        const card = {
+          id,
+          baseColours: palette,
+          likes: { likeCount, liked },
+          ...rest,
+        } as unknown as PreviewThemeCard;
+        return card;
+      },
+    );
   }, [data]);
 
   return (

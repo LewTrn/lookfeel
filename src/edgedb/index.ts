@@ -6,5 +6,7 @@ export const client = createClient({
 });
 
 export const auth = createAuth(client, {
-  baseUrl: "http://localhost:3000",
+  baseUrl: process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : "http://localhost:3000",
 });
