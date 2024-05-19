@@ -17,6 +17,11 @@ export const strings = {
     },
     title: "Colors",
   },
+  shades: {
+    copyShade: {
+      action: "Copy shade",
+    },
+  },
   styleTile: {
     badge: {
       label: "Badge",
