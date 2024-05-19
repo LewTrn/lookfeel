@@ -26,4 +26,14 @@ export const strings = {
       title: "Add tags",
     },
   },
+  typography: {
+    font: {
+      empty: {
+        description: "No fonts found",
+      },
+      search: {
+        description: "Search fonts",
+      },
+    },
+  },
 };
