@@ -16,3 +16,8 @@ export type PreviewTheme = {
   fonts: Fonts;
   likes: Likes;
 };
+
+export type PreviewThemeCard = PreviewTheme & {
+  id: string;
+  tags: string[];
+};

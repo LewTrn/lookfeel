@@ -1,6 +1,9 @@
 "use client";
 
+import { useMemo } from "react";
+
 import { api } from "~/trpc/react";
+import { type PreviewThemeCard } from "~/types/Theme";
 
 import { DiscoverThemeCard } from "./DiscoverThemeCard";
 
@@ -18,6 +21,17 @@ export const ThemeListing = ({ filter }: ThemeListingProps) => {
     { refetchOnMount: false },
   );
 
+  const cards = useMemo(() => {
+    return data?.map(({ id, liked, like_count: likeCount = 0, ...rest }) => {
+      const card = {
+        id,
+        likes: { likeCount, liked },
+        ...rest,
+      } as unknown as PreviewThemeCard;
+      return card;
+    });
+  }, [data]);
+
   return (
     <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       {isLoading && (
@@ -28,14 +42,7 @@ export const ThemeListing = ({ filter }: ThemeListingProps) => {
           <CardSkeleton />
         </>
       )}
-      {data?.map(({ id, liked, like_count: likeCount = 0, ...rest }) => (
-        <DiscoverThemeCard
-          key={id}
-          id={id}
-          likes={{ likeCount, liked }}
-          {...rest}
-        />
-      ))}
+      {cards?.map((card) => <DiscoverThemeCard key={card.id} {...card} />)}
     </div>
   );
 };
