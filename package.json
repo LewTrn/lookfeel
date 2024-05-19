@@ -26,6 +26,7 @@
     "@trpc/server": "next",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "cmdk": "^1.0.0",
     "color-scheme": "^1.0.1",
     "copy-to-clipboard": "^3.3.3",
     "edgedb": "^1.5.5",
