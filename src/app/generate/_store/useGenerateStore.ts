@@ -4,15 +4,28 @@ import { DEFAULT_FONTS } from "~/constants/fonts";
 import { DEFAULT_PALETTE } from "~/constants/palette";
 import { type Fonts } from "~/types/Fonts";
 import { GenerateMode } from "~/types/Mode";
-import { type BaseColours, type Palette } from "~/types/Palette";
+import {
+  type BaseColours,
+  type ColourType,
+  type Palette,
+} from "~/types/Palette";
 import { type Theme } from "~/types/Theme";
 
-import { makePalette } from "../../../utils/colours/palette/makePalette";
+import {
+  makePalette,
+  makeSwatch,
+} from "../../../utils/colours/palette/makePalette";
 import { selectFonts } from "../_utils/fonts/selectFonts";
+
+type UpdatePaletteParams = {
+  colourType: ColourType;
+  baseColour: string;
+};
 
 export type GenerateState = {
   palette: Palette;
   generatePalette: (baseColours?: BaseColours) => Palette;
+  updatePalette: ({ colourType, baseColour }: UpdatePaletteParams) => Palette;
 
   history: Theme[];
   pointer: number;
@@ -43,6 +56,21 @@ export const useGenerateStore = create<GenerateState>((set, get) => ({
 
     set({ palette, history: themeHistory, pointer: 0 });
     return palette;
+  },
+  updatePalette: ({ colourType, baseColour }) => {
+    const { palette, fonts, history, pointer } = get();
+    const newPalette = {
+      ...palette,
+      [colourType]: makeSwatch(baseColour),
+    };
+
+    const themeHistory = [
+      { palette: newPalette, fonts },
+      ...history.slice(pointer, HISTORY_LIMIT),
+    ];
+
+    set({ palette: newPalette, history: themeHistory, pointer: 0 });
+    return newPalette;
   },
 
   history: [],

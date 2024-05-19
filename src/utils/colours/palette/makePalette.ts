@@ -39,14 +39,17 @@ const makeShades = ({ colour, colourStop }: ShadesConfig) => {
   return Object.fromEntries(swatch) as Shades;
 };
 
+export const makeSwatch = (colour: string) => {
+  const colourStop = nearestColourStop(colour);
+  const shades = makeShades({ colour, colourStop });
+  return { baseColour: colour, baseStop: colourStop, shades };
+};
+
 export const makePalette = (baseColours?: BaseColours) => {
   const colours = baseColours ?? generateBaseColours();
 
   return Object.entries(colours).reduce((acc, [key, colour]) => {
-    const colourStop = nearestColourStop(colour);
-    const shades = makeShades({ colour, colourStop });
-    const swatch: Swatch = { baseColour: colour, baseStop: colourStop, shades };
-
+    const swatch: Swatch = makeSwatch(colour);
     return { ...acc, [key]: swatch };
   }, {} as Palette);
 };
