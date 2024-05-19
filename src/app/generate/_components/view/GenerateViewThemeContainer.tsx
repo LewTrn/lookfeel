@@ -22,7 +22,6 @@ export const GenerateViewThemeContainer = () => {
   return (
     <ViewTheme
       theme={theme}
-      showTabs
       tabsProps={{
         defaultValue: mode,
         onValueChange: (mode) => setMode(mode as GenerateMode),
