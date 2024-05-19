@@ -8,7 +8,7 @@ declare class EyeDropper {
 
 type EyeDropperButton = {
   onSelectColour: (colour: string) => void;
-  onClose: () => void;
+  onClose?: () => void;
 };
 
 export const EyeDropperButton = ({
@@ -26,10 +26,10 @@ export const EyeDropperButton = ({
       .open()
       .then(({ sRGBHex }) => {
         onSelectColour(sRGBHex);
-        onClose();
+        onClose?.();
       })
       .catch(() => {
-        onClose();
+        onClose?.();
       });
   };
 

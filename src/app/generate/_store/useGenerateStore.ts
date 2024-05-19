@@ -20,12 +20,17 @@ import { selectFonts } from "../_utils/fonts/selectFonts";
 type UpdatePaletteParams = {
   colourType: ColourType;
   baseColour: string;
+  updateHistory?: boolean;
 };
 
 export type GenerateState = {
   palette: Palette;
   generatePalette: (baseColours?: BaseColours) => Palette;
-  updatePalette: ({ colourType, baseColour }: UpdatePaletteParams) => Palette;
+  updatePalette: ({
+    colourType,
+    baseColour,
+    updateHistory,
+  }: UpdatePaletteParams) => Palette;
 
   history: Theme[];
   pointer: number;
@@ -57,19 +62,23 @@ export const useGenerateStore = create<GenerateState>((set, get) => ({
     set({ palette, history: themeHistory, pointer: 0 });
     return palette;
   },
-  updatePalette: ({ colourType, baseColour }) => {
+  updatePalette: ({ colourType, baseColour, updateHistory = false }) => {
     const { palette, fonts, history, pointer } = get();
     const newPalette = {
       ...palette,
       [colourType]: makeSwatch(baseColour),
     };
 
-    const themeHistory = [
-      { palette: newPalette, fonts },
-      ...history.slice(pointer, HISTORY_LIMIT),
-    ];
+    if (updateHistory) {
+      const themeHistory = [
+        { palette: newPalette, fonts },
+        ...history.slice(pointer, HISTORY_LIMIT),
+      ];
+      set({ palette: newPalette, history: themeHistory, pointer: 0 });
+    } else {
+      set({ palette: newPalette });
+    }
 
-    set({ palette: newPalette, history: themeHistory, pointer: 0 });
     return newPalette;
   },
 

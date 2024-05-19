@@ -1,4 +1,4 @@
-import { type ComponentProps, useEffect, useState } from "react";
+import { type ComponentProps } from "react";
 import { HexColorInput, HexColorPicker } from "react-colorful";
 
 import { ColourRow } from "~/components/theme/view/details/ColourRow";
@@ -21,12 +21,11 @@ export const ColourPickerRow = (props: ColourPickerProps) => {
   const updatePalette = useGenerateStore((state) => state.updatePalette);
 
   const currentColour = palette[props.colourType].baseColour;
-  const [colour, setColour] = useState(currentColour);
   const setPaletteParams = usePaletteParams();
 
-  useEffect(() => {
-    setColour(currentColour);
-  }, [currentColour]);
+  const handleSelectColour = (colour: string) => {
+    updatePalette({ colourType: props.colourType, baseColour: colour });
+  };
 
   return (
     <Popover
@@ -34,35 +33,32 @@ export const ColourPickerRow = (props: ColourPickerProps) => {
         if (!open) {
           const palette = updatePalette({
             colourType: props.colourType,
-            baseColour: colour,
+            baseColour: currentColour,
+            updateHistory: true,
           });
           setPaletteParams(palette);
         }
       }}
     >
-      <PopoverTrigger className="flex w-full">
+      <PopoverTrigger className="group relative flex w-full">
         <ColourRow {...props} />
+        <div className="absolute inset-0 bg-white opacity-0 transition-opacity wh-full group-hover:opacity-10" />
       </PopoverTrigger>
       <PopoverContent side="right" className="flex w-[200px] flex-col gap-2">
         <HexColorPicker
           className="custom"
-          color={colour}
-          onChange={setColour}
+          color={currentColour}
+          onChange={handleSelectColour}
         />
         <div className="flex gap-1">
           <HexColorInput
             prefixed
-            color={colour}
-            onChange={setColour}
+            color={currentColour}
+            onChange={handleSelectColour}
             className={cn(inputVariants())}
           />
           <div>
-            <EyeDropperButton
-              onSelectColour={setColour}
-              onClose={() => {
-                //
-              }}
-            />
+            <EyeDropperButton onSelectColour={handleSelectColour} />
           </div>
         </div>
       </PopoverContent>
