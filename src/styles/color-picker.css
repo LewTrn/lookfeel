@@ -1,0 +1,10 @@
+.react-colorful.custom {
+  height: 160px;
+  width: 100%;
+
+  & .react-colorful__pointer {
+    height: 20px;
+    width: 20px;
+    border: 1px solid white;
+  }
+}

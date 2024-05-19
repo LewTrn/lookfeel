@@ -1,18 +1,39 @@
+import { cva, type VariantProps } from "class-variance-authority";
+import { type LucideIcon } from "lucide-react";
 import * as React from "react";
 
 import { cn } from "~/lib/utils";
 
-export type InputProps = React.InputHTMLAttributes<HTMLInputElement>;
+const variants = cva(
+  "flex w-full rounded-full placeholder:text-muted-foreground focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50",
+  {
+    variants: {
+      variant: {
+        default:
+          "text-accent-primary bg-accent placeholder:text-muted-foreground",
+      },
+      size: {
+        default: "h-8 px-2.5 py-1 text-sm",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+      size: "default",
+    },
+  },
+);
+
+export type InputProps = React.InputHTMLAttributes<HTMLInputElement> &
+  VariantProps<typeof variants> & {
+    Icon?: LucideIcon;
+  };
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, type, ...props }, ref) => {
+  ({ className, type, variant, size, ...props }, ref) => {
     return (
       <input
         type={type}
-        className={cn(
-          "flex h-9 w-full rounded-full border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50",
-          className,
-        )}
+        className={cn(variants({ variant, size, className }))}
         ref={ref}
         {...props}
       />
@@ -21,4 +42,4 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 );
 Input.displayName = "Input";
 
-export { Input };
+export { Input, variants as inputVariants };
