@@ -38,7 +38,6 @@ export default async function RootLayout({
             values={{
               signedIn,
               signInUrl: auth.getBuiltinUIUrl(),
-              signUpUrl: auth.getBuiltinUISignUpUrl(),
               signOutUrl: auth.getSignoutUrl(),
             }}
           >

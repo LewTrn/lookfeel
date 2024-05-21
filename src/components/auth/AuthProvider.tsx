@@ -5,14 +5,12 @@ import { createContext, type PropsWithChildren, useContext } from "react";
 type AuthProviderValues = {
   signedIn: boolean;
   signInUrl: string;
-  signUpUrl: string;
   signOutUrl: string;
 };
 
 const initialValues = {
   signedIn: false,
   signInUrl: "/",
-  signUpUrl: "/",
   signOutUrl: "/",
 };
 
