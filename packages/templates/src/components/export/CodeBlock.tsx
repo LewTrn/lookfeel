@@ -1,14 +1,15 @@
 import copy from "copy-to-clipboard";
-import { CopyIcon } from "lucide-react";
+import { CheckIcon, CopyIcon } from "lucide-react";
 import { useState } from "react";
 
 import { Button } from "~/components/ui/button";
 
 interface CodeBlockProps {
+  title?: string;
   code: string;
 }
 
-const CodeBlock: React.FC<CodeBlockProps> = ({ code }) => {
+const CodeBlock: React.FC<CodeBlockProps> = ({ title, code }) => {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
@@ -23,17 +24,18 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ code }) => {
   };
 
   return (
-    <div className="relative">
-      <Button
-        className="absolute right-4 top-4"
-        Icon={CopyIcon}
-        variant="outline"
-        onClick={handleCopy}
-      >
-        {copied ? "Copied" : "Copy"}
-      </Button>
-
-      <pre className="rounded-lg border bg-neutral-100 p-8">
+    <div className="rounded-lg border bg-neutral-100">
+      <div className="flex items-center justify-between border-b px-4 py-2">
+        <pre className="text-sm">{title}</pre>
+        <Button
+          Icon={copied ? CheckIcon : CopyIcon}
+          variant="outline"
+          onClick={handleCopy}
+        >
+          Copy
+        </Button>
+      </div>
+      <pre className="px-8 py-6">
         <code>{code}</code>
       </pre>
     </div>
