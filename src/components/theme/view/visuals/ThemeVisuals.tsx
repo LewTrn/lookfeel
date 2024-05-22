@@ -24,8 +24,7 @@ type ThemeVisualsProps = {
 export const ThemeVisuals = ({ theme, liftTabs }: ThemeVisualsProps) => {
   return (
     <div className="w-full">
-      {/* TODO: Revert */}
-      <Tabs defaultValue="export">
+      <Tabs defaultValue="tile">
         <TabsList className={cn("mb-6", liftTabs && "fixed top-4 z-50 ")}>
           <TabsTrigger value="tile" Icon={Grid2X2Icon}>
             {strings.visuals.tabs.styleTile.action}
