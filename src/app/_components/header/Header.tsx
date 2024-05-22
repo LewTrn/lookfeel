@@ -6,7 +6,7 @@ import { strings } from "~/locales/landing";
 
 import { LogInButton } from "./LogInButton";
 
-export const Header = async () => {
+export const Header = () => {
   const { signedIn, signInUrl, signOutUrl } = useSignedIn();
 
   return (
