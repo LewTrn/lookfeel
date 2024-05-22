@@ -3,6 +3,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
 import { Template } from "../template/Template";
 import { type ThemeProviderTheme } from "../theme/types";
 import { CssCodeBlock } from "./CssCodeBlock";
+import { TailwindCodeBlock } from "./TailwindCodeBlock";
 
 type LandingProps = {
   theme: Required<ThemeProviderTheme>;
@@ -21,7 +22,9 @@ export const Export = ({ theme }: LandingProps) => {
           <TabsContent value="css">
             <CssCodeBlock theme={theme} />
           </TabsContent>
-          <TabsContent value="tailwind"></TabsContent>
+          <TabsContent value="tailwind">
+            <TailwindCodeBlock theme={theme} />
+          </TabsContent>
           <TabsContent value="shadcn"></TabsContent>
         </Tabs>
       </div>
