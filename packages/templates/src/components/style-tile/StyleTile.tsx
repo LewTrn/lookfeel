@@ -15,7 +15,7 @@ export const StyleTile = ({ theme }: StyleTileProps) => {
   const { palette } = theme;
   return (
     <Template theme={theme}>
-      <div className="flex gap-12 p-8">
+      <div className="flex gap-12 bg-background p-8">
         <div className="col-span-2">
           <VisualBlock palette={palette} />
         </div>

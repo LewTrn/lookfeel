@@ -20,6 +20,7 @@ export const getThemeStyle = ({ palette, fonts }: ThemeProviderTheme) => {
     "--radius": "0.5rem",
     "--heading-font": heading,
     "--body-font": body,
+    "--background": toHsl("#fff"),
     fontFamily: body,
   } as React.CSSProperties;
 };

@@ -62,6 +62,9 @@ export const strings = {
   },
   visuals: {
     tabs: {
+      export: {
+        action: "Export",
+      },
       landing: {
         action: "Landing",
       },
@@ -70,9 +73,6 @@ export const strings = {
       },
       styleTile: {
         action: "Style tile",
-      },
-      export: {
-        action: "Export (Coming soon)",
       },
     },
   },

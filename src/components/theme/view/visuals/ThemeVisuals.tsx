@@ -1,6 +1,12 @@
 "use client";
 
-import { Grid2X2Icon, LayoutPanelTopIcon, SwatchBookIcon } from "lucide-react";
+import {
+  DownloadIcon,
+  Grid2X2Icon,
+  LayoutPanelTopIcon,
+  SwatchBookIcon,
+} from "lucide-react";
+import { Export } from "templates/components/export/Export";
 import { Landing } from "templates/components/landing/Landing";
 import { Shades } from "templates/components/shades/Shades";
 import { StyleTile } from "templates/components/style-tile/StyleTile";
@@ -18,7 +24,8 @@ type ThemeVisualsProps = {
 export const ThemeVisuals = ({ theme, liftTabs }: ThemeVisualsProps) => {
   return (
     <div className="w-full">
-      <Tabs defaultValue="tile">
+      {/* TODO: Revert */}
+      <Tabs defaultValue="export">
         <TabsList className={cn("mb-6", liftTabs && "fixed top-4 z-50 ")}>
           <TabsTrigger value="tile" Icon={Grid2X2Icon}>
             {strings.visuals.tabs.styleTile.action}
@@ -29,6 +36,9 @@ export const ThemeVisuals = ({ theme, liftTabs }: ThemeVisualsProps) => {
           <TabsTrigger value="shades" Icon={SwatchBookIcon}>
             {strings.visuals.tabs.shades.action}
           </TabsTrigger>
+          <TabsTrigger value="export" Icon={DownloadIcon}>
+            {strings.visuals.tabs.export.action}
+          </TabsTrigger>
         </TabsList>
         <TabsContent value="tile">
           <StyleTile theme={theme} />
@@ -38,6 +48,9 @@ export const ThemeVisuals = ({ theme, liftTabs }: ThemeVisualsProps) => {
         </TabsContent>
         <TabsContent value="shades">
           <Shades palette={theme.palette} />
+        </TabsContent>
+        <TabsContent value="export">
+          <Export theme={theme} />
         </TabsContent>
       </Tabs>
     </div>
