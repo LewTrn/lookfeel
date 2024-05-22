@@ -10,7 +10,7 @@ export const Header = () => {
   const { signedIn, signInUrl, signOutUrl } = useSignedIn();
 
   return (
-    <header className="mx-2 mb-4 flex h-16 items-center justify-between">
+    <header className="mx-2 mb-4 flex h-20 items-center justify-between">
       <div className="text-2xl font-bold">lookfeel</div>
       <div className="flex gap-2">
         {signedIn ? (

@@ -25,7 +25,7 @@ export const ThemeVisuals = ({ theme, liftTabs }: ThemeVisualsProps) => {
   return (
     <div className="w-full">
       <Tabs defaultValue="tile">
-        <TabsList className={cn("mb-6", liftTabs && "fixed top-4 z-50 ")}>
+        <TabsList className={cn("mb-6", liftTabs && "fixed top-6 z-50 ")}>
           <TabsTrigger value="tile" Icon={Grid2X2Icon}>
             {strings.visuals.tabs.styleTile.action}
           </TabsTrigger>
