@@ -15,6 +15,7 @@ export const useInitTheme = () => {
   const updateHistory = useGenerateStore((state) => state.updateHistory);
   const generatePalette = useGenerateStore((state) => state.generatePalette);
   const generateFonts = useGenerateStore((state) => state.generateFonts);
+  const toggleLock = useGenerateStore((state) => state.toggleLock);
 
   useEffect(() => {
     if (!themeLoaded.current) {
@@ -27,12 +28,14 @@ export const useInitTheme = () => {
       setThemeParams({ palette, fonts: generatedFonts });
       themeLoaded.current = true;
       updateHistory("reset");
+      toggleLock(null);
     }
   }, [
     generateFonts,
     generatePalette,
     searchParams,
     setThemeParams,
+    toggleLock,
     updateHistory,
   ]);
 

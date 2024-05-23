@@ -56,8 +56,9 @@ export const ColourPickerRow = (props: ColourPickerRowProps) => {
         <div className="absolute inset-0 bg-white opacity-0 transition-opacity wh-full group-hover:opacity-10" />
         <div
           className={cn(
-            "absolute right-1 top-1",
+            "absolute right-1 top-1 transition-opacity group-hover:opacity-100",
             whiteIsReadable ? "text-white" : "text-foreground",
+            isLocked ? "opacity-100" : "opacity-0",
           )}
         >
           <IconButton
