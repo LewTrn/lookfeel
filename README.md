@@ -1,29 +1,48 @@
-# Create T3 App
+# lookfeel
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+lookfeel is a design inspiration tool for developers that supports generating, visualising and discovering beautiful UI themes.
 
-## What's next? How do I make an app with this?
+It was developed as part of the EdgeDB Hackathon.
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+Try it out at [lookfeel.io](https://lookfeel.io/).
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+## 👩‍💻 Stack
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+This project was built with the T3 Stack, including Next.js (app router), Tailwind CSS and TRPC, with UI components from shadcn/ui.
 
-## Learn More
+EdgeDB was the database of choice.
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+- [T3 Stack](https://create.t3.gg/)
+- [EdgeDB](https://www.edgedb.com/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [shadcn/ui](https://ui.shadcn.com/)
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+## Getting started
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+### 1) Initialise project
 
-## How do I deploy this?
+Clone the project and install dependencies.
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+```
+pnpm i
+```
+
+### 2) Setup EdgeDB
+
+Initialise the EdgeDB project and generate the EdgeDB query builder types.
+
+```
+edgedb project init
+
+pnpm generate:edgeql
+```
+
+### 3) Start development server
+
+```
+pnpm dev
+```
+
+### 4) Setup auth
+
+This project uses EdgeDB's built-in UI for auth. Follow [these instructions](https://docs.edgedb.com/guides/auth/built_in_ui) to set up your auth providers of choice.
