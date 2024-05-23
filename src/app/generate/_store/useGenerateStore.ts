@@ -46,6 +46,9 @@ export type GenerateState = {
 
   tags: string[];
   setTags: (tags: string[]) => void;
+
+  locked: (ColourType | Typography)[];
+  toggleLock: (property: ColourType | Typography) => void;
 };
 
 const HISTORY_LIMIT = 30 - 1;
@@ -136,4 +139,16 @@ export const useGenerateStore = create<GenerateState>((set, get) => ({
 
   tags: [],
   setTags: (tags) => set({ tags }),
+
+  locked: [],
+  toggleLock: (property) => {
+    const { locked } = get();
+    const lockedSet = new Set(locked);
+
+    lockedSet.has(property)
+      ? lockedSet.delete(property)
+      : lockedSet.add(property);
+
+    set({ locked: Array.from(lockedSet) });
+  },
 }));

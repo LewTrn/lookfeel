@@ -35,7 +35,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ title, code }) => {
           Copy
         </Button>
       </div>
-      <pre className="px-8 py-6">
+      <pre className="px-8 py-6 text-sm">
         <code>{code}</code>
       </pre>
     </div>
