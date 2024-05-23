@@ -1,3 +1,4 @@
+import { omit } from "lodash";
 import { create } from "zustand";
 
 import { DEFAULT_FONTS } from "~/constants/fonts";
@@ -56,8 +57,9 @@ const HISTORY_LIMIT = 30 - 1;
 export const useGenerateStore = create<GenerateState>((set, get) => ({
   palette: DEFAULT_PALETTE,
   generatePalette: (baseColours) => {
-    const palette = makePalette(baseColours);
-    const { fonts, history, pointer } = get();
+    const generatedPalette = makePalette(baseColours);
+    const { fonts, history, pointer, locked, palette: storedPalette } = get();
+    const palette = { ...storedPalette, ...omit(generatedPalette, locked) };
 
     const themeHistory = [
       { palette, fonts },
@@ -112,17 +114,18 @@ export const useGenerateStore = create<GenerateState>((set, get) => ({
   setMode: (mode) => set({ mode }),
 
   fonts: DEFAULT_FONTS,
-  generateFonts: (fonts) => {
-    const selectedFonts = selectFonts(fonts);
-    const { palette, history, pointer } = get();
+  generateFonts: (fontsParams) => {
+    const selectedFonts = selectFonts(fontsParams);
+    const { palette, history, pointer, fonts: storedFonts, locked } = get();
+    const fonts = { ...storedFonts, ...omit(selectedFonts, locked) };
 
     const themeHistory = [
       { fonts: selectedFonts, palette },
       ...history.slice(pointer, HISTORY_LIMIT),
     ];
 
-    set({ fonts: selectedFonts, history: themeHistory, pointer: 0 });
-    return selectedFonts;
+    set({ fonts, history: themeHistory, pointer: 0 });
+    return fonts;
   },
   updateFont: ({ typographyType, font }) => {
     const { palette, fonts, history, pointer } = get();
