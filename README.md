@@ -6,7 +6,7 @@ It was developed as part of the EdgeDB Hackathon.
 
 Try it out at [lookfeel.io](https://lookfeel.io/).
 
-## 👩‍💻 Stack
+## Stack
 
 This project was built with the T3 Stack, including Next.js (app router), Tailwind CSS and TRPC, with UI components from shadcn/ui.
 
@@ -49,19 +49,21 @@ This project uses EdgeDB's built-in UI for auth. Follow [these instructions](htt
 
 ## Using EdgeDB
 
-The schema for this project is defined in [dbschema/default.esdl](dbschema/default.esdl).
+EdgeDB is a key part of **lookfeel**, enabling the sharing and discovery of user generated themes.
+
+Themes consist of palette colours, heading and body fonts, and tags. Users can generate themes through the client and publish them to share with others.
+
+Users can like themes they find useful and save them for future reference. Themes can also be filtered to show trending, saved and created themes.
 
 ### Themes
 
-Themes are the main object type and include theme information including palette, fonts and tags.
+Themes are the main object type and include theme and like information, a URL-friendly short ID and creator information.
 
-**Short ID** - short, URL friendly, unique identifier.
+A theme palette includes 4 base colours which are converted into a range of shades.
 
-**Palette, fonts, tags** - theme information used to construct the UI theme.
+To generate a theme, a random hue is selected and used to generate one of three color schemes: monochromatic, contrast and triade. An additional variant modifier is then applied to vary the theme.
 
-**Likes** - links to the likes table joining users and themes.
-
-**Like count** - number of unique likes by users on the theme.
+For more detail on color scheme generation see [color-scheme-js](https://github.com/c0bra/color-scheme-js).
 
 ```tsx
 type Theme = {
@@ -79,7 +81,7 @@ type Theme = {
   tags: {
     name: string;
   };
-  likes: Array<{ id: string }>;
+  likes: Likes;
   like_count: number;
   created_at: Date;
   udpated_at: Date;
@@ -88,9 +90,11 @@ type Theme = {
 
 ### Likes
 
-Likes join users and and themes and are linked to a theme when a like is inserted.
+Likes join user and theme IDs with a unique constraint. When a user likes a theme, a new like entry is created and linked to the theme.
 
-Like count on the theme is also updated when a post is liked. This was preferred over computing properties using likes to avoid expensive computation when fetching many themes with lots of likes.
+When a post is liked, the like count value is also increased. This method was preferred over the count computed property to avoid expensive computation across themes with many likes.
+
+When fetching a theme, a `liked` property is also returned if made by a logged in user. This is used to indicate which themes the user has currently liked.
 
 ```tsx
 type Likes = {
@@ -99,10 +103,10 @@ type Likes = {
 };
 ```
 
-### API design
+### Theme filters
 
-The theme APIs are defined via the TRPC router: [theme.ts](src/server/api/routers/theme.ts).
-
-Themes containing theme information are queried either by filtering on a single ID, or as a list based on the filter parameter.
+Themes can be queried as a single entity or as a list based on various filters.
 
 Filters include `latest`, `trending` (most liked themes), `liked` (current user's liked themes) and `created` (current user's created themes).
+
+These filtered lists are used to display themes customised to each user.
