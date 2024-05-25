@@ -3,7 +3,7 @@ import React from "react";
 
 import { cn } from "~/lib/utils";
 
-export const variants = cva({
+export const variants = cva("", {
   variants: {
     variant: {
       h1: "mb-4 text-4xl font-bold",
