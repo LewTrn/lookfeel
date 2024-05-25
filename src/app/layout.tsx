@@ -4,6 +4,7 @@ import "~/styles/color-picker.css";
 import { Inter } from "next/font/google";
 
 import { AuthProvider } from "~/components/auth/AuthProvider";
+import { MobileView } from "~/components/mobile/MobileView";
 import { auth } from "~/edgedb";
 import { TRPCReactProvider } from "~/trpc/react";
 
@@ -44,6 +45,7 @@ export default async function RootLayout({
             {children}
             {themeDrawer}
             {logout}
+            <MobileView />
           </AuthProvider>
         </TRPCReactProvider>
       </body>

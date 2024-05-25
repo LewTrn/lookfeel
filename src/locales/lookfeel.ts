@@ -17,6 +17,13 @@ export const strings = {
     },
     title: "Colors",
   },
+  mobileView: {
+    title: "lookfeel is not yet supported mobile devices.",
+    follow: {
+      action: "Follow @lookfeelio",
+      description: "Follow @lookfeelio for updates.",
+    },
+  },
   shades: {
     copyShade: {
       action: "Copy shade",
