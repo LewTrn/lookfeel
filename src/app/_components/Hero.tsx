@@ -44,10 +44,10 @@ export const Hero = () => {
   }, []);
 
   return (
-    <section className="flex h-96 w-full justify-between gap-4 rounded-lg bg-gradient-to-tr from-neutral-200 to-background p-12">
+    <section className="flex h-64 w-full justify-between gap-4 rounded-lg bg-gradient-to-tr from-neutral-200 to-background p-6 md:h-96 md:p-12">
       <div className="flex h-full flex-col gap-4">
         <div className="flex h-full max-w-xl items-center">
-          <h1 className="text-5xl font-medium">
+          <h1 className="text-3xl font-medium md:text-5xl">
             <span className="group relative font-semibold" data-title={title}>
               <span className="absolute -left-[6.5px] origin-left text-rose-500 opacity-0 transition-opacity duration-500 group-data-[title=generate]:opacity-100">
                 Generate

@@ -10,9 +10,9 @@ export const Header = () => {
   const { signedIn, signInUrl, signOutUrl } = useSignedIn();
 
   return (
-    <header className="mx-2 mb-4 flex h-20 items-center justify-between">
+    <header className="mx-2 flex h-20 items-center justify-between md:mb-4">
       <div className="text-2xl font-bold">lookfeel</div>
-      <div className="flex gap-2">
+      <div className="hidden gap-2 md:flex">
         {signedIn ? (
           <LinkButton variant="ghost" href={signOutUrl}>
             {strings.header.logOut.action}

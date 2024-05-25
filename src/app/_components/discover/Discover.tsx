@@ -28,12 +28,17 @@ export const Discover = () => {
         <TabsTrigger
           value="liked"
           Icon={HeartIcon}
-          className="ml-auto"
+          className="ml-auto hidden md:block"
           disabled={!signedIn}
         >
           {strings.discover.filter.liked.action}
         </TabsTrigger>
-        <TabsTrigger value="created" Icon={SwatchBookIcon} disabled={!signedIn}>
+        <TabsTrigger
+          value="created"
+          Icon={SwatchBookIcon}
+          disabled={!signedIn}
+          className="hidden md:block"
+        >
           {strings.discover.filter.myThemes.action}
         </TabsTrigger>
       </TabsList>
