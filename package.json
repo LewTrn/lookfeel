@@ -24,6 +24,7 @@
     "@trpc/client": "next",
     "@trpc/react-query": "next",
     "@trpc/server": "next",
+    "canvas-confetti": "^1.9.3",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
@@ -51,6 +52,7 @@
   },
   "devDependencies": {
     "@edgedb/generate": "^0.5.3",
+    "@types/canvas-confetti": "^1.6.4",
     "@types/eslint": "^8.56.2",
     "@types/lodash": "^4.17.1",
     "@types/nearest-color": "^0.4.1",

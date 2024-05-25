@@ -1,6 +1,7 @@
+import confetti from "canvas-confetti";
 import copy from "copy-to-clipboard";
 import { CopyIcon, ExternalLinkIcon } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { ThemeCard } from "~/components/theme/ThemeCard";
 import { Button } from "~/components/ui/button";
@@ -24,6 +25,20 @@ export const PublishDialogContent = ({
 }: PublishDialogContentProps) => {
   const [copied, setCopied] = useState(false);
   const { primary, secondary, accent } = palette;
+
+  const isLoading = !id;
+
+  useEffect(() => {
+    if (!isLoading) {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+      confetti({
+        particleCount: 200,
+        spread: 70,
+        origin: { y: 0.7 },
+        colors: [primary, secondary, accent],
+      });
+    }
+  }, [accent, isLoading, primary, secondary]);
 
   const handleCopy = () => {
     const success = copy(`${window.location.origin}/theme/${id}`);
@@ -51,7 +66,7 @@ export const PublishDialogContent = ({
               href={`/theme/${id}`}
               variant="tint"
               Icon={ExternalLinkIcon}
-              loading={!id}
+              loading={isLoading}
               className="w-full"
               asAnchor
             >
@@ -60,7 +75,7 @@ export const PublishDialogContent = ({
             <Button
               variant="tint"
               Icon={CopyIcon}
-              loading={!id}
+              loading={isLoading}
               onClick={handleCopy}
             >
               {copied
