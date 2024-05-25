@@ -32,7 +32,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className={`font-sans ${inter.variable}`}>
+      <body className={`select-none font-sans ${inter.variable}`}>
         <TRPCReactProvider>
           <AuthProvider
             values={{

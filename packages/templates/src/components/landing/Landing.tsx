@@ -13,7 +13,7 @@ type LandingProps = {
 export const Landing = ({ theme }: LandingProps) => {
   return (
     <Template theme={theme}>
-      <div className="flex w-full select-none flex-col bg-background">
+      <div className="flex w-full flex-col bg-background">
         <Hero />
         <Features />
         <Discover />
