@@ -43,6 +43,6 @@ export const strings = {
     generate: {
       action: "Start generating",
     },
-    title: "Generate beautiful themes for your next project",
+    title: "beautiful themes for your next project",
   },
 };
