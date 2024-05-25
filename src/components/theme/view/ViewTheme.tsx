@@ -32,7 +32,11 @@ export const ViewTheme = ({
             {...tabsProps}
           />
         ) : (
-          <ThemeDetails theme={theme} />
+          <ThemeDetails
+            theme={theme}
+            CustomColourRow={CustomColourRow}
+            CustomFontRow={CustomFontRow}
+          />
         )}
       </div>
       <div className="w-full">
