@@ -40,6 +40,9 @@ export const strings = {
     },
   },
   hero: {
+    featured: {
+      action: "Featured theme",
+    },
     generate: {
       action: "Start generating",
     },

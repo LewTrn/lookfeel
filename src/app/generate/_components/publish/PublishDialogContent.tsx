@@ -52,39 +52,37 @@ export const PublishDialogContent = ({
   };
 
   return (
-    <>
-      <div
-        className="flex h-full flex-col items-center justify-center"
-        style={{
-          background: `linear-gradient(45deg, ${primary} 0%, ${secondary} 50%, ${accent} 100%)`,
-        }}
-      >
-        <div className="flex w-80 flex-col gap-4 pt-4">
-          <ThemeCard palette={palette} fonts={fonts} tags={tags} />
-          <div className="grid grid-cols-2 gap-2">
-            <LinkButton
-              href={`/theme/${id}`}
-              variant="tint"
-              Icon={ExternalLinkIcon}
-              loading={isLoading}
-              className="w-full"
-              asAnchor
-            >
-              {strings.publish.open.action}
-            </LinkButton>
-            <Button
-              variant="tint"
-              Icon={CopyIcon}
-              loading={isLoading}
-              onClick={handleCopy}
-            >
-              {copied
-                ? strings.publish.copied.action
-                : strings.publish.share.action}
-            </Button>
-          </div>
+    <div
+      className="flex h-full flex-col items-center justify-center"
+      style={{
+        background: `linear-gradient(45deg, ${primary} 0%, ${secondary} 50%, ${accent} 100%)`,
+      }}
+    >
+      <div className="flex w-80 flex-col gap-4 pt-4">
+        <ThemeCard palette={palette} fonts={fonts} tags={tags} />
+        <div className="grid grid-cols-2 gap-2">
+          <LinkButton
+            href={`/theme/${id}`}
+            variant="tint"
+            Icon={ExternalLinkIcon}
+            loading={isLoading}
+            className="w-full"
+            asAnchor
+          >
+            {strings.publish.open.action}
+          </LinkButton>
+          <Button
+            variant="tint"
+            Icon={CopyIcon}
+            loading={isLoading}
+            onClick={handleCopy}
+          >
+            {copied
+              ? strings.publish.copied.action
+              : strings.publish.share.action}
+          </Button>
         </div>
       </div>
-    </>
+    </div>
   );
 };

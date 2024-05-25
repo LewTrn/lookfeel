@@ -1,9 +1,25 @@
 "use client";
 
+import { ExternalLinkIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 
+import { ThemeCard } from "~/components/theme/ThemeCard";
 import { LinkButton } from "~/components/ui/link-button";
 import { strings } from "~/locales/landing";
+
+const themeId = "3iKJ4YwaZxkJ";
+const palette = {
+  primary: "#993300",
+  secondary: "#ff5500",
+  accent: "#ff9966",
+  neutral: "#38312e",
+};
+const { primary, secondary, accent } = palette;
+const fonts = {
+  body: "Quattrocento",
+  heading: "Merienda",
+};
+const tags = ["Fun", "Warm", "Monochromatic"];
 
 export const Hero = () => {
   const [title, setTitle] = useState("generate");
@@ -28,7 +44,7 @@ export const Hero = () => {
   }, []);
 
   return (
-    <section className="h-96 w-full rounded-lg bg-gradient-to-tr from-neutral-200 to-background p-12">
+    <section className="flex h-96 w-full justify-between gap-4 rounded-lg bg-gradient-to-tr from-neutral-200 to-background p-12">
       <div className="flex h-full flex-col gap-4">
         <div className="flex h-full max-w-xl items-center">
           <h1 className="text-5xl font-medium">
@@ -54,6 +70,25 @@ export const Hero = () => {
             {strings.hero.generate.action}
           </LinkButton>
         </div>
+      </div>
+      <div
+        className="hidden h-full flex-col items-center justify-center gap-4 rounded-lg px-20 md:flex"
+        style={{
+          background: `linear-gradient(45deg, ${primary} 0%, ${secondary} 50%, ${accent} 100%)`,
+        }}
+      >
+        <div className="flex w-80 flex-col gap-4 pt-4">
+          <ThemeCard palette={palette} fonts={fonts} tags={tags} />
+        </div>
+        <LinkButton
+          href={`/theme/${themeId}`}
+          variant="tint"
+          Icon={ExternalLinkIcon}
+          className="w-full"
+          asAnchor
+        >
+          {strings.hero.featured.action}
+        </LinkButton>
       </div>
     </section>
   );
