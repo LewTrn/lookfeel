@@ -59,7 +59,7 @@ export const VisualBlock = ({ palette }: VisualBlockProps) => {
         style={{ backgroundColor: primary.baseColour }}
       >
         <img
-          src="https://source.unsplash.com/blue-orange-and-yellow-wallpaper-E8Ufcyxz514"
+          src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe"
           alt=""
           className="object-cover mix-blend-luminosity wh-full"
         />
