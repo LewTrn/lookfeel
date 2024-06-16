@@ -7,17 +7,17 @@ import { ThemeCard } from "~/components/theme/ThemeCard";
 import { LinkButton } from "~/components/ui/link-button";
 import { strings } from "~/locales/landing";
 
-const themeId = "3iKJ4YwaZxkJ";
+const themeId = "6i8jMlCG5zEP";
 const palette = {
-  primary: "#993300",
-  secondary: "#ff5500",
-  accent: "#ff9966",
-  neutral: "#38312e",
+  primary: "#005f70",
+  secondary: "#b30c00",
+  accent: "#ffe8bf",
+  neutral: "#1b2122",
 };
 const { primary, secondary, accent } = palette;
 const fonts = {
+  heading: "Gelasio",
   body: "Quattrocento",
-  heading: "Merienda",
 };
 const tags = ["Fun", "Warm", "Monochromatic"];
 
