@@ -19,7 +19,7 @@ const fonts = {
   heading: "Gelasio",
   body: "Quattrocento",
 };
-const tags = ["Fun", "Warm", "Monochromatic"];
+const tags = ["Retro", "3 Colors", "Serif"];
 
 export const Hero = () => {
   const [title, setTitle] = useState("generate");
