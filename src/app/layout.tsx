@@ -42,7 +42,7 @@ export default async function RootLayout({
               signOutUrl: auth.getSignoutUrl(),
             }}
           >
-            {children}
+            <div className="overflow-hidden">{children}</div>
             {themeDrawer}
             {logout}
             <MobileView />
